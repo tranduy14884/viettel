@@ -1,0 +1,48 @@
+.navbar{
+    margin: 5px 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 14px;
+}
+.navbar-nav li:last-child{
+    border-right: none;
+}
+.navbar-nav li{
+    border-right: 1px solid  #f2f2f2;
+    padding: 0 4.5px;
+}
+.nav-item{
+    background-color:#e65c00 ;
+}
+.nav-item a{
+    color: white;
+}
+.dropdown-menu{
+    background-color: #e65c00;
+    padding: 0;
+    border-radius: 0;
+    margin: 0;
+}
+.dropdown-item:hover{
+    background-color: #ff944d;
+    color: white;
+}
+.menu-bar{
+    background-color: #e65c00;
+}
+
+.mainbar h4{
+    font-weight: 700;
+    font-size: 22px;
+    color: red;
+    position: relative;
+    animation: myfirst 3s linear  infinite alternate;
+    text-align: left;
+}
+@keyframes myfirst {
+    0%   {color:red; left:0px; top:0px;}
+    25%  {color:yellow; left:50px; top:0px;}
+    50%  {color:blue; left:140px; top:0px;}
+    75%  {color:green; left:185px; top:0px;}
+    100% {color:red; left:200px; top:0px;}
+}
