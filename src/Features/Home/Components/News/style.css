@@ -1,0 +1,29 @@
+.news-text{
+    text-align: left;
+    padding: 20px;
+}
+.container-news a:hover{
+    box-shadow: 1px 1px 5px 5px #b3b3b3;
+}
+.news-img {
+    overflow: hidden;
+    
+}
+.news-img img{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px; 
+    transition: 2s;
+}
+.news-img img:hover{
+    transform: scale(1.2);
+    transition: 2s;
+}
+.container-news a{
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 3px 3px #b3b3b3;
+    text-decoration: none;
+    color: #595959;
+    display: block;
+    background-color: white;
+}

@@ -47,29 +47,59 @@
   }
 
   .left-content{
-      border-right: 2px solid black;
+      border-right: 2px solid #e6e6e6;
+      margin-top: 20px;
   }
   .title{
       font-weight: 600;
       font-style: italic;
   }
-.families, .boxtv{
-    padding: 30px;
-}
+
 
 
 /* schedule */
 .container-shedule{
-    margin-top: 20px;
+    margin-top: 60px;
     text-align: center;
 }
 .container-shedule h3{
+    font-weight: 700;
+}
+
+/* support customer */
+.container-support{
+    padding-top: 30px;
+}
+.container-support h3{
+    font-weight: 700;
+}
+.container-support h4{
+    font-weight: 500;
+    color: #000099;
+    font-style: italic;
+}
+.support-text p:first-child{
+    font-size: 24px;
     font-weight: 600;
 }
 
 
+/* custom title */
+.left-content h2{
+    background-color: #e65c00;
+    padding: 10px;
+
+}
+.right-content h2{
+    margin-top: 20px;
+    background-color: #e65c00;
+    padding: 10px;
+}
 
 
+.support-section{
+    margin-top: 60px;
+}
 
   /* style chữ nhấp nháy */
   @-webkit-keyframes my {

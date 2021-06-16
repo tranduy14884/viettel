@@ -30,11 +30,11 @@ function Family(props) {
           <div className="container-item" key={item.id}>
             <div className="item">
               <a href="#" className="item-content-family">
-                <div>
+                
                   <h4>
                     {item.name} &nbsp; {item.speed}
                   </h4>
-                </div>
+                
                 <div className="item-content-info">
                   <span className="item-price">
                     {formatter.format(item.price)}

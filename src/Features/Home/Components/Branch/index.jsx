@@ -17,7 +17,7 @@ function Branch(props) {
         <div className="row branch">
           {branchs.map((item) => {
             return (
-              <div className="col-md-6 branch-content">
+              <div className="col-md-6 branch-content" key={item.id}>
                 <div className="branch">
                   <div className="branch-img">
                     <img

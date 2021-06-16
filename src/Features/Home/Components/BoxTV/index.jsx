@@ -37,27 +37,31 @@ function BoxTV(props) {
                       {item.name} &nbsp; {item.speed}
                     </h4>
                   </div>
-                  <span className="item-price">
-                    {formatter.format(item.price)}
-                  </span>
-                  <span>Đ/Tháng</span>
-                  <div className="container halfYear">
-                    <h6>Trả trước 6 tháng </h6>
-                    <h6>Tặng {item.halfYear} tháng</h6>
-                    <p>Miễn phí lắp đặt</p>
-                    <hr />
-                  </div>
-                  <div className="container fullYear">
-                    <h6>Trả trước 12 tháng </h6>
-                    <h6>Tặng {item.fullYear} tháng</h6>
-                    <p>Miễn phí lắp đặt</p>
-                    <hr />
-                  </div>
-                  <div className="prepare">
-                    <h6>{item.boxtv} BoxTV + {item.modem} Modem</h6>
-                  </div>
-                  <div className="container-sale">
-                    <div className="sale">Sale</div>
+                  <div className="item-content-info">
+                    <span className="item-price">
+                      {formatter.format(item.price)}
+                    </span>
+                    <span>Đ/Tháng</span>
+                    <div className="container halfYear">
+                      <h6>Trả trước 6 tháng </h6>
+                      <h6>Tặng {item.halfYear} tháng</h6>
+                      <p>Miễn phí lắp đặt</p>
+                      <hr />
+                    </div>
+                    <div className="container fullYear">
+                      <h6>Trả trước 12 tháng </h6>
+                      <h6>Tặng {item.fullYear} tháng</h6>
+                      <p>Miễn phí lắp đặt</p>
+                      <hr />
+                    </div>
+                    <div className="prepare">
+                      <h6>
+                        {item.boxtv} BoxTV + {item.modem} Modem
+                      </h6>
+                    </div>
+                    <div className="container-sale">
+                      <div className="sale">Sale</div>
+                    </div>
                   </div>
                 </a>
               </div>

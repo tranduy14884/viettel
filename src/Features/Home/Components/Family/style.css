@@ -13,7 +13,7 @@
     transition: linear;
   }
   .owl-carousel .item a:hover{
-      box-shadow: 1px 1px 5px 10px #e6e6e6;
+    box-shadow: 1px 1px 5px 5px #b3b3b3;
      transition: linear;
   }
   .owl-carousel .item .item-img {
@@ -49,15 +49,17 @@
   
   }
   .slick-next{
-    right: -45px !important;
+    right: 5px !important;
+    z-index: 2;
   
   }
   .slick-prev{
-    left: -45px !important;
+    left: 5px !important;
+    z-index: 2;
   }
   .slick-next:before,.slick-prev:before{
     font-size: 40px ;
-    color:  #009900 !important;
+    color:   #999999 !important;
   }
   .owl-nav button:focus {
     outline: none;
@@ -67,7 +69,7 @@
     /* end button prev - next */
   }
   .owl-carousel .item .item-content h6 {
-    margin-top: 10px;
+    
     padding: 0 10px;
   }
   
@@ -90,22 +92,22 @@
 }
 .item-content-family{
     border-radius: 5px;
+
+    background-color: white;
 }
-.item-content-info{
-  background-color: white;
-}
+
 .item-content-family h4{
     padding : 10px;
     color: white;
     background-color: #e65c00;
     border-radius: 5px;
+    margin-bottom: 0;
 }
 .halfYear h6, .fullYear h6{
   color: #009900;
-  margin-top: 0;
 }
 .fullYear p{
-  margin-bottom: 0;
+  /* margin-bottom: 2px; */
   border-top-left-radius: 15px;
 }
  
