@@ -2,12 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./style.css";
 import Slider from "react-slick";
-Family.propTypes = {
-  families: PropTypes.array,
+
+BoxTV.propTypes = {
+  boxs: PropTypes.array,
 };
 
-function Family(props) {
-  const { families } = props;
+function BoxTV(props) {
+  const { boxs } = props;
   const settings = {
     infinite: true,
     speed: 1000,
@@ -24,18 +25,18 @@ function Family(props) {
   //   format number
   const formatter = new Intl.NumberFormat("es");
   return (
-    <div className="owl-carousel owl-theme">
-      <Slider {...settings}>
-        {families.map((item) => (
-          <div className="container-item" key={item.id}>
-            <div className="item">
-              <a href="#" className="item-content-family">
-                <div>
-                  <h4>
-                    {item.name} &nbsp; {item.speed}
-                  </h4>
-                </div>
-                <div className="item-content-info">
+    <div>
+      <div className="owl-carousel owl-theme">
+        <Slider {...settings}>
+          {boxs.map((item) => (
+            <div className="container-item" key={item.id}>
+              <div className="item">
+                <a href="#" className="item-content-family">
+                  <div>
+                    <h4 className="h4-boxtv">
+                      {item.name} &nbsp; {item.speed}
+                    </h4>
+                  </div>
                   <span className="item-price">
                     {formatter.format(item.price)}
                   </span>
@@ -50,18 +51,22 @@ function Family(props) {
                     <h6>Trả trước 12 tháng </h6>
                     <h6>Tặng {item.fullYear} tháng</h6>
                     <p>Miễn phí lắp đặt</p>
+                    <hr />
+                  </div>
+                  <div className="prepare">
+                    <h6>{item.boxtv} BoxTV + {item.modem} Modem</h6>
                   </div>
                   <div className="container-sale">
                     <div className="sale">Sale</div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 }
 
-export default Family;
+export default BoxTV;

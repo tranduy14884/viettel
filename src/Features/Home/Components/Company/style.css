@@ -1,0 +1,14 @@
+.raderFullYear h6{
+    color: #009900 !important;
+}
+.container-ip .ip{
+    color: red;
+    font-weight: 600;
+}
+.h4Company{
+    background-color: #4d0099!important;
+}
+.slick-next:before,.slick-prev:before{
+    font-size: 40px ;
+    color:  #e65c00;
+  }
