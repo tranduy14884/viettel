@@ -11,6 +11,9 @@ import Family from "../Family";
 import News from "../News";
 import Service from "../Service";
 import "./style.css";
+import HeaderPage from '../../../../Components/HeaderPage';
+import FooterPage from '../../../../Components/FooterPage';
+import Mainbar from '../Mainbar';
 MainContent.propTypes = {};
 
 function MainContent(props) {
@@ -255,8 +258,10 @@ function MainContent(props) {
     <>
       <div>
         {/* START-CONTENT */}
-        {/* <div className="brown"> */}
-        <div className="container">
+        <div className="container-main-content">
+        <div className="container container-content">
+            <HeaderPage />
+            <Mainbar />
           <div className="row">
             <div className="col-md-9 left-content">
               <h2 className="chu-nhap-nhay">CÁP QUANG VIETTEL</h2>
@@ -290,7 +295,7 @@ function MainContent(props) {
             </div>
           </div>
         </div>
-        {/* </div> */}
+        </div>
 
         {/* END - START-CONTENT */}
         {/* START supporr-section */}

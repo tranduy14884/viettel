@@ -95,8 +95,15 @@
     background-color: #e65c00;
     padding: 10px;
 }
-
-
+.container-main-content{
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCM44GRGJwyX0RQ7hgd5r7TYO1sw7FIyM94g&usqp=CAU') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container-content{
+    background-color: white;
+    padding: 0 20px;
+}
 .support-section{
     margin-top: 60px;
 }

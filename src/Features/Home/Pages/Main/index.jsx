@@ -13,8 +13,7 @@ MainPage.propTypes = {
 function MainPage(props) {
     return (
         <>
-            <HeaderPage />
-            <Mainbar />
+            
             <MainContent />
             <FooterPage />
         </>
