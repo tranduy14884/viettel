@@ -139,6 +139,195 @@
     -o-animation: my 700ms infinite; 
     animation: my 700ms infinite;
 }
+/* custom contact */
+.contact .button {
+ 
+    background-color: red;
+   
+    -webkit-border-radius: 10px;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 2;
+    border-radius: 10px;
+     
+    border: none;
+     
+    color: #FFFFFF;
+    font-weight: 600;
+    cursor: pointer;
+     
+    display: inline-block;
+     
+    font-family: Arial;
+     
+    font-size: 20px;
+     
+    padding: 5px 10px;
+     
+    text-align: center;
+     
+    text-decoration: none;
+   
+  }
+  @-webkit-keyframes glowing {
+    0% { background-color: #004A7F; -webkit-box-shadow: 0 0 3px #004A7F; }
+    50% { background-color: #0094FF; -webkit-box-shadow: 0 0 10px #0094FF; }
+    100% { background-color: #004A7F; -webkit-box-shadow: 0 0 3px #004A7F; }
+  }
+   
+  @-moz-keyframes glowing {
+    0% { background-color: #004A7F; -moz-box-shadow: 0 0 3px #004A7F; }
+    50% { background-color: #0094FF; -moz-box-shadow: 0 0 10px #0094FF; }
+    100% { background-color: #004A7F; -moz-box-shadow: 0 0 3px #004A7F; }
+  }
+   
+  @-o-keyframes glowing {
+    0% { background-color: #004A7F; box-shadow: 0 0 3px #004A7F; }
+    50% { background-color: #0094FF; box-shadow: 0 0 10px #0094FF; }
+    100% { background-color: #004A7F; box-shadow: 0 0 3px #004A7F; }
+  }
+   
+  @keyframes glowing {
+    0% { background-color: red; box-shadow: 0 0 3px #0000FF; }
+    50% { background-color: #990000; box-shadow: 0 0 10px #0000CC; }
+    100% { background-color: red; box-shadow: 0 0 3px #0000FF; }
+  }
+   
+  .contact .button {
+    -webkit-animation: glowing 1500ms infinite;
+    -moz-animation: glowing 1500ms infinite;
+    -o-animation: glowing 1500ms infinite;
+    animation: glowing 1500ms infinite;
+  }
+  /* phone */
+  .button-contact{
+      position: fixed;
+      bottom: 170px;
+      right: 120px;
+      z-index: 2;
+  }
+  #button-contact-vr .button-contact {
+    position: relative;
+}
+#button-contact-vr .button-contact .phone-vr {
+    position: relative;
+    visibility: visible;
+    background-color: transparent;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    z-index: 11;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transition: visibility .5s;
+    left: 0;
+    bottom: 0;
+    display: block;
+}
+#phone-vr .phone-vr-circle-fill {
+    opacity: 0.7;
+    box-shadow: 0 0 0 0 #dd3333;
+}
+.phone-bar a, #phone-vr .phone-vr-circle-fill, #phone-vr .phone-vr-img-circle, #phone-vr .phone-bar a {
+    background-color: #dd3333;
+}
+
+.phone-vr-circle-fill {
+    width: 85px;
+    height: 85px;
+    top: 12px;
+    left: 12px;
+    position: absolute;
+    box-shadow: 0 0 0 0 #c31d1d;
+    background-color: rgba(230, 8, 8, 0.7);
+    border-radius: 50%;
+    border: 2px solid transparent;
+    -webkit-animation: phone-vr-circle-fill 2.3s infinite ease-in-out;
+    animation: phone-vr-circle-fill 2.3s infinite ease-in-out;
+    transition: all .5s;
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-animuiion: zoom 1.3s infinite;
+    animation: zoom 1.3s infinite;
+}
+.phone-bar a, #phone-vr .phone-vr-circle-fill, #phone-vr .phone-vr-img-circle, #phone-vr .phone-bar a {
+    background-color: #dd3333;
+}
+.phone-vr-img-circle {
+    background-color: #e60808;
+    width: 60px;
+    height: 60px;
+    line-height: 40px;
+    top: 25px;
+    left: 25px;
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    -webkit-animation: phonering-alo-circle-img-anim 1s infinite ease-in-out;
+    animation: phone-vr-circle-fill 1s infinite ease-in-out;
+}
+.phone-vr-img-circle img{
+    margin-top: 5px;
+}
+@keyframes zoom{
+    0% {
+        transform: scale(.9);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 15px transparent;
+    }
+    100% {
+        transform: scale(.9);
+        box-shadow: 0 0 0 0 transparent;
+    }
+}
+@keyframes phone-vr-circle-fill{
+    0% {
+        -webkit-transform: rotate(0) scale(1) skew(1deg);
+    }
+    10% {
+        -webkit-transform: rotate(
+    -25deg
+    ) scale(1) skew(
+    1deg
+    );
+    }
+    20% {
+        -webkit-transform: rotate(
+    25deg
+    ) scale(1) skew(
+    1deg
+    );
+    }
+    30% {
+        -webkit-transform: rotate(
+    -25deg
+    ) scale(1) skew(
+    1deg
+    );
+    }
+    40% {
+        -webkit-transform: rotate(
+    25deg
+    ) scale(1) skew(
+    1deg
+    );
+    }
+    50% {
+        -webkit-transform: rotate(0) scale(1) skew(
+    1deg
+    );
+    }
+    100% {
+        -webkit-transform: rotate(0) scale(1) skew(
+    1deg
+    );
+    }
+  }
 @media screen and (max-width: 992px){
     .title{
         font-size: 18px;
@@ -161,6 +350,9 @@
     .support-text p:first-child{
         font-size: 20px;
      
+    }
+    .button-contact{
+
     }
     
 }

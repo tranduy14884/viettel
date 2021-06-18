@@ -18,6 +18,7 @@ import Select from "@material-ui/core/Select";
 import * as yup from "yup";
 import TextField from "@material-ui/core/TextField";
 import logo from "../../../../asset/img/logo.png";
+import { useSnackbar } from "notistack";
 
 BoxTV.propTypes = {
   boxs: PropTypes.array,
@@ -33,7 +34,7 @@ function BoxTV(props) {
     autoplaySpeed: 3000,
     slidesToShow: 3,
     slidesToScroll: 1,
-
+    pauseOnFocus : true,
     slickPrev: ['<i class="fas fa-chevron-circle-left"></i>'],
     slickNext: ['<i class="fas fa-chevron-circle-right"></i>'],
   };
@@ -53,7 +54,7 @@ function BoxTV(props) {
     autoplaySpeed: 2000,
     slidesToShow: 2,
     slidesToScroll: 1,
-
+    pauseOnFocus : true,
     slickPrev: ['<i class="fas fa-chevron-circle-left"></i>'],
     slickNext: ['<i class="fas fa-chevron-circle-right"></i>'],
   };
@@ -84,11 +85,14 @@ function BoxTV(props) {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm({
     resolver: yupResolver(schema),
   });
   let checkPacket = 1;
   const [textErrorPacket, setTextErrorPacket] = useState("");
+  const {enqueueSnackbar} = useSnackbar();
+
   const onSubmit = (data) => {
     const dataNews = data;
     dataNews.packet = packet;
@@ -100,9 +104,17 @@ function BoxTV(props) {
     }
     if (checkPacket == 2) {
       setTextErrorPacket("Vui lòng chọn gói cước !");
-    } else if (checkPacket == 1) {
-      setTextErrorPacket("");
+    }
+    else if(checkPacket==1){
+      setTextErrorPacket('');
+    }
+    if(typeof dataNews.fullName !== 'undefined' && typeof dataNews.location !== 'undefined' 
+    && typeof dataNews.phone !=='undefined' && checkPacket == 1)
+    {
+      console.log(dataNews);
+      reset();
       handleClose();
+      enqueueSnackbar('Đăng ký thành công', {variant : 'success'});
     }
   };
   const [packet, setPacket] = useState("");
@@ -225,7 +237,7 @@ function BoxTV(props) {
               {boxs.map((item) => (
                 <div className="container-item" key={item.id}>
                   <div className="item">
-                    <a href="#" className="item-content-family">
+                    <div href="#" className="item-content-family">
                       <div>
                         <h4 className="h4-boxtv">
                           {item.name} &nbsp; {item.speed}
@@ -263,7 +275,7 @@ function BoxTV(props) {
                           <div className="sale">Sale</div>
                         </div>
                       </div>
-                    </a>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -287,7 +299,9 @@ function BoxTV(props) {
                   fullWidth
                   {...register("fullName")}
                 />
-                <p className="data-form-error">{errors.fullName?.message}</p>
+                <div className="data-form-error">
+                  {errors.fullName?.message}
+                </div>
                 <TextField
                   id="outlined-basic"
                   label="Địa chỉ "
@@ -295,7 +309,10 @@ function BoxTV(props) {
                   fullWidth
                   {...register("location")}
                 />
-                <p className="data-form-error">{errors.location?.message}</p>
+                <div className="data-form-error">
+                  {errors.location?.message}
+                </div>
+
                 <TextField
                   id="outlined-basic"
                   label="Số điện thoại "
@@ -303,7 +320,7 @@ function BoxTV(props) {
                   fullWidth
                   {...register("phone")}
                 />
-                <p className="data-form-error">{errors.phone?.message}</p>
+                <div className="data-form-error">{errors.phone?.message}</div>
 
                 <FormControl variant="outlined">
                   <InputLabel id="demo-simple-select-outlined-label">
@@ -327,7 +344,8 @@ function BoxTV(props) {
                   </Select>
                 </FormControl>
                 {checkPacket && (
-                  <p className="data-form-error">{textErrorPacket}</p>
+                  // <p className="data-form-error">{textErrorPacket}</p>
+                  <div className="data-form-error">{textErrorPacket}</div>
                 )}
 
                 <div className="container-btn">
@@ -411,9 +429,9 @@ function BoxTV(props) {
                       fullWidth
                       {...register("fullName")}
                     />
-                    <p className="data-form-error">
+                    <div className="data-form-error">
                       {errors.fullName?.message}
-                    </p>
+                    </div>
                     <TextField
                       id="outlined-basic"
                       label="Địa chỉ "
@@ -421,9 +439,9 @@ function BoxTV(props) {
                       fullWidth
                       {...register("location")}
                     />
-                    <p className="data-form-error">
+                    <div className="data-form-error">
                       {errors.location?.message}
-                    </p>
+                    </div>
                     <TextField
                       id="outlined-basic"
                       label="Số điện thoại "
@@ -431,8 +449,9 @@ function BoxTV(props) {
                       fullWidth
                       {...register("phone")}
                     />
-                    <p className="data-form-error">{errors.phone?.message}</p>
-
+                    <div className="data-form-error">
+                      {errors.phone?.message}
+                    </div>
                     <FormControl variant="outlined">
                       <InputLabel id="demo-simple-select-outlined-label">
                         Gói cước
@@ -455,7 +474,8 @@ function BoxTV(props) {
                       </Select>
                     </FormControl>
                     {checkPacket && (
-                      <p className="data-form-error">{textErrorPacket}</p>
+                      // <p className="data-form-error">{textErrorPacket}</p>
+                      <div className="data-form-error">{textErrorPacket}</div>
                     )}
 
                     <div className="container-btn">

@@ -18,6 +18,7 @@ import Select from "@material-ui/core/Select";
 import * as yup from "yup";
 import TextField from "@material-ui/core/TextField";
 import logo from "../../../../asset/img/logo.png";
+import { useSnackbar } from "notistack";
 Company.propTypes = {
   companies: PropTypes.array,
 };
@@ -43,7 +44,7 @@ function Company(props) {
     autoplaySpeed: 3000,
     slidesToShow: 3,
     slidesToScroll: 1,
-
+    pauseOnFocus : true,
     slickPrev: ['<i class="fas fa-chevron-circle-left"></i>'],
     slickNext: ['<i class="fas fa-chevron-circle-right"></i>'],
   };
@@ -63,7 +64,7 @@ function Company(props) {
     autoplaySpeed: 2000,
     slidesToShow: 2,
     slidesToScroll: 1,
-
+    pauseOnFocus : true,
     slickPrev: ['<i class="fas fa-chevron-circle-left"></i>'],
     slickNext: ['<i class="fas fa-chevron-circle-right"></i>'],
   };
@@ -95,11 +96,14 @@ function Company(props) {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm({
     resolver: yupResolver(schema),
   });
   let checkPacket = 1;
   const [textErrorPacket, setTextErrorPacket] = useState("");
+  const {enqueueSnackbar} = useSnackbar();
+
   const onSubmit = (data) => {
     const dataNews = data;
     dataNews.packet = packet;
@@ -113,7 +117,14 @@ function Company(props) {
       setTextErrorPacket("Vui lòng chọn gói cước !");
     } else if (checkPacket == 1) {
       setTextErrorPacket("");
+      
+    }
+    if(typeof dataNews.fullName !== 'undefined' && typeof dataNews.location !== 'undefined' 
+    && typeof dataNews.phone !=='undefined' && checkPacket == 1)
+    {
+      reset();
       handleClose();
+      enqueueSnackbar('Đăng ký thành công', {variant : 'success'});
     }
   };
   const [packet, setPacket] = useState("");
@@ -293,7 +304,8 @@ function Company(props) {
                     fullWidth
                     {...register("fullName")}
                   />
-                  <p className="data-form-error">{errors.fullName?.message}</p>
+                  <div className="data-form-error">{errors.fullName?.message}</div>
+
                   <TextField
                     id="outlined-basic"
                     label="Địa chỉ "
@@ -301,7 +313,8 @@ function Company(props) {
                     fullWidth
                     {...register("location")}
                   />
-                  <p className="data-form-error">{errors.location?.message}</p>
+                  <div className="data-form-error">{errors.location?.message}</div>
+
                   <TextField
                     id="outlined-basic"
                     label="Số điện thoại "
@@ -309,7 +322,7 @@ function Company(props) {
                     fullWidth
                     {...register("phone")}
                   />
-                  <p className="data-form-error">{errors.phone?.message}</p>
+                  <div className="data-form-error">{errors.phone?.message}</div>
 
                   <FormControl variant="outlined">
                     <InputLabel id="demo-simple-select-outlined-label">
@@ -333,7 +346,9 @@ function Company(props) {
                   </FormControl>
                   {
                     checkPacket && (
-                      <p className="data-form-error">{textErrorPacket}</p>
+                      // <p className="data-form-error">{textErrorPacket}</p>
+                  <div className="data-form-error">{textErrorPacket}</div>
+
                     )
                   }
                  
@@ -425,7 +440,8 @@ function Company(props) {
                     fullWidth
                     {...register("fullName")}
                   />
-                  <p className="data-form-error">{errors.fullName?.message}</p>
+                  <div className="data-form-error">{errors.phone?.message}</div>
+                  
                   <TextField
                     id="outlined-basic"
                     label="Địa chỉ "
@@ -433,7 +449,7 @@ function Company(props) {
                     fullWidth
                     {...register("location")}
                   />
-                  <p className="data-form-error">{errors.location?.message}</p>
+                  <div className="data-form-error">{errors.location?.message}</div>
                   <TextField
                     id="outlined-basic"
                     label="Số điện thoại "
@@ -441,7 +457,7 @@ function Company(props) {
                     fullWidth
                     {...register("phone")}
                   />
-                  <p className="data-form-error">{errors.phone?.message}</p>
+                  <div className="data-form-error">{errors.phone?.message}</div>
 
                   <FormControl variant="outlined">
                     <InputLabel id="demo-simple-select-outlined-label">
@@ -465,7 +481,7 @@ function Company(props) {
                   </FormControl>
                   {
                     checkPacket && (
-                      <p className="data-form-error">{textErrorPacket}</p>
+                      <div className="data-form-error">{textErrorPacket}</div>
                     )
                   }
                  

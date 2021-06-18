@@ -4,12 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { SnackbarProvider } from 'notistack';
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
+    <SnackbarProvider anchorOrigin={{vertical : 'top', horizontal : 'right'}}>
       <App />
+      </SnackbarProvider>
     </BrowserRouter>
-  </React.StrictMode>,
+  // </React.StrictMode>,
+  ,
   document.getElementById('root')
 );
 

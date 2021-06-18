@@ -18,6 +18,7 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import * as yup from "yup";
+import { useSnackbar } from "notistack";
 Family.propTypes = {
   families: PropTypes.array,
 };
@@ -86,12 +87,14 @@ function Family(props) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
   let checkPacket = 1;
   const [textErrorPacket, setTextErrorPacket] = useState('');
+  const {enqueueSnackbar} = useSnackbar();
   const onSubmit = (data) => {
     const dataNews = data;
     dataNews.packet = packet;
@@ -110,13 +113,17 @@ function Family(props) {
     else if(checkPacket==1){
       setTextErrorPacket('');
     }
-    if(typeof dataNews.fullName !== 'undefined' || typeof dataNews.location !== 'undefined' 
-    || typeof dataNews.phone !=='undefined' || checkPacket == 2)
+    if(typeof dataNews.fullName !== 'undefined' && typeof dataNews.location !== 'undefined' 
+    && typeof dataNews.phone !=='undefined' && checkPacket == 1)
     {
-      // reset(data);
+      console.log(dataNews);
+      reset();
+      handleClose();
+      enqueueSnackbar('Đăng ký thành công', {variant : 'success'});
     }
-    console.log(dataNews);
   };
+
+  
   const [packet, setPacket] = useState('');
 
   const handleChange = (event) => {
@@ -240,6 +247,7 @@ function Family(props) {
   ];
   const listPacket = [...families,...boxs,...companies];
   // console.log(listPacket);
+
   return (
     <div className="owl-carousel owl-theme">
       {checkWitdh ? (
@@ -301,7 +309,8 @@ function Family(props) {
                     fullWidth
                     {...register("fullName")}
                   />
-                  <p className="data-form-error">{errors.fullName?.message}</p>
+                  <div className="data-form-error">{errors.fullName?.message}</div>
+
                   <TextField
                     id="outlined-basic"
                     label="Địa chỉ "
@@ -309,7 +318,8 @@ function Family(props) {
                     fullWidth
                     {...register("location")}
                   />
-                  <p className="data-form-error">{errors.location?.message}</p>
+                  <div className="data-form-error">{errors.location?.message}</div>
+
                   <TextField
                     id="outlined-basic"
                     label="Số điện thoại "
@@ -317,7 +327,7 @@ function Family(props) {
                     fullWidth
                     {...register("phone")}
                   />
-                  <p className="data-form-error">{errors.phone?.message}</p>
+                  <div className="data-form-error">{errors.phone?.message}</div>
 
                   <FormControl variant="outlined">
                     <InputLabel id="demo-simple-select-outlined-label">
@@ -341,7 +351,9 @@ function Family(props) {
                   </FormControl>
                   {
                     checkPacket && (
-                      <p className="data-form-error">{textErrorPacket}</p>
+                      // <p className="data-form-error">{textErrorPacket}</p>
+                      <div className="data-form-error">{textErrorPacket}</div>
+
                     )
                   }
                  
@@ -410,7 +422,7 @@ function Family(props) {
             </DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} >
                   <TextField
                     id="outlined-basic"
                     label="Họ tên khách hàng "
@@ -418,7 +430,8 @@ function Family(props) {
                     fullWidth
                     {...register("fullName")}
                   />
-                  <p className="data-form-error">{errors.fullName?.message}</p>
+                  <div className="data-form-error">{errors.fullName?.message}</div>
+
                   <TextField
                     id="outlined-basic"
                     label="Địa chỉ "
@@ -426,7 +439,8 @@ function Family(props) {
                     fullWidth
                     {...register("location")}
                   />
-                  <p className="data-form-error">{errors.location?.message}</p>
+                  <div className="data-form-error">{errors.location?.message}</div>
+
                   <TextField
                     id="outlined-basic"
                     label="Số điện thoại "
@@ -434,7 +448,7 @@ function Family(props) {
                     fullWidth
                     {...register("phone")}
                   />
-                  <p className="data-form-error">{errors.phone?.message}</p>
+                  <div className="data-form-error">{errors.phone?.message}</div>
 
                   <FormControl variant="outlined">
                     <InputLabel id="demo-simple-select-outlined-label">
@@ -458,7 +472,9 @@ function Family(props) {
                   </FormControl>
                   {
                     checkPacket && (
-                      <p className="data-form-error">{textErrorPacket}</p>
+                      // <p className="data-form-error">{textErrorPacket}</p>
+                  <div className="data-form-error">{textErrorPacket}</div>
+
                     )
                   }
                  
