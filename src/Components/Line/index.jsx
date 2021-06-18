@@ -6,7 +6,7 @@ function Line(props) {
   return (
     <div className="container container-line">
       <div className="line">
-          <div className="line-img"><img src={line2} alt="#" width="350px" height="70px" /></div>
+          <div className="line-img"><img src={line2} alt="#"  /></div>
       </div>
     </div>
   );

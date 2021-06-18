@@ -139,3 +139,28 @@
     -o-animation: my 700ms infinite; 
     animation: my 700ms infinite;
 }
+@media screen and (max-width: 992px){
+    .title{
+        font-size: 18px;
+    }
+    .chu-nhap-nhay {
+        font-size: 18px !important;
+    }
+    .wordart.slate .text {
+        font-size: 34px;
+    }
+    .btn-support-phone{
+        margin-top: 20px;
+    }
+    .container-shedule h3, .container-branch h3 ,.container-support h3{
+        font-size: 24px;
+    }
+    .container-support h4{
+        font-size: 20px;
+    }
+    .support-text p:first-child{
+        font-size: 20px;
+     
+    }
+    
+}

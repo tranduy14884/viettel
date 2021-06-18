@@ -14,8 +14,11 @@
 .nav-item{
     background-color:#e65c00 ;
 }
+.nav-item:hover{
+    background-color: #b34700 !important;
+}
 .nav-item a{
-    color: white;
+    color: white !important;
 }
 .dropdown-menu{
     background-color: #e65c00;
@@ -30,19 +33,36 @@
 .menu-bar{
     background-color: #e65c00;
 }
-
-.mainbar h4{
-    font-weight: 700;
-    font-size: 22px;
-    color: red;
-    position: relative;
-    animation: myfirst 3s linear  infinite alternate;
-    text-align: left;
+.container-mainbar{
+    padding: 0;
 }
-@keyframes myfirst {
-    0%   {color:red; left:0px; top:0px;}
-    25%  {color:yellow; left:50px; top:0px;}
-    50%  {color:blue; left:140px; top:0px;}
-    75%  {color:green; left:185px; top:0px;}
-    100% {color:red; left:200px; top:0px;}
+.bg-dark {
+    background-color: #e65c00 !important;
+}
+.navbar-brand{
+    margin-left: 20px;
+    display: none;
+}
+
+@media screen and (min-width: 768px){
+    .navbar-expand-md .navbar-collapse{
+        justify-content: center !important;
+    }
+}
+@media screen and (max-width: 768px){
+    .navbar-brand{
+        display: block;
+        color: white;
+    }
+    .nav-item{
+        background-color:#b34700 ;
+    }
+    .nav-item:active{
+        background-color: #ff6600 !important;
+    }   
+}
+@media screen and (max-width: 992px){
+    .nav-item a{
+        font-size: 12px !important;
+    }
 }

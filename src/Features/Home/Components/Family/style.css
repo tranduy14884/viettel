@@ -199,3 +199,43 @@
     background: red;
     opacity: 0.8;
 }
+.img-dialog-title img{
+  width: 250px;
+  height: 100px;
+}
+@media screen and (max-width: 992px){
+  .item-content-family h4{
+    font-size: 20px;
+}
+  .item-content-info .item-price{
+    font-size: 20px;
+  }
+  .halfYear h6{
+    font-size: 14px;
+  }
+  .halfYear p, .fullYear p{
+    font-size: 14px;
+  }
+  .sale{
+    transform: translateY(-20%) translateX(-46%) translateX(20px) rotate(-60deg);
+  }
+  .btn-register{
+    font-size: 12px;
+    
+  }
+  .MuiFormControl-root{
+    width: 90% !important;
+    margin-left: 5% !important;
+  }
+  .container-btn{
+    padding-bottom: 20px;
+    padding-right: 5%;
+  }
+  .data-form-error{
+    margin-left: 5%;
+  }
+  .img-dialog-title img {
+    width: 180px;
+    height: 70px;
+  }
+}

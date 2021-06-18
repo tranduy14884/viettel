@@ -27,8 +27,11 @@ const schema = yup.object().shape({
   // packet: yup.number().required("Thông tin chưa hợp lệ"),
   phone: yup
     .number()
+    .integer()
     .typeError("Vui lòng nhập số !")
-    .required("Thông tin chưa hợp lệ"),
+    .required("Thông tin chưa hợp lệ")
+    .max(999999999,'Số điện thoại phải ít nhât là 10 số !')
+    // .max(10,'Số điện thoại phải đủ 10 số'),
 });
 function Family(props) {
   const { families } = props;
@@ -107,8 +110,12 @@ function Family(props) {
     else if(checkPacket==1){
       setTextErrorPacket('');
     }
-  console.log(dataNews);
-
+    if(typeof dataNews.fullName !== 'undefined' || typeof dataNews.location !== 'undefined' 
+    || typeof dataNews.phone !=='undefined' || checkPacket == 2)
+    {
+      // reset(data);
+    }
+    console.log(dataNews);
   };
   const [packet, setPacket] = useState('');
 
@@ -282,8 +289,8 @@ function Family(props) {
             aria-describedby="alert-dialog-description"
           >
             <DialogTitle id="alert-dialog-title">
-            <div>
-                <img src={logo} alt="logo" height="100px" width="250px" />
+            <div className="img-dialog-title">
+                <img src={logo} alt="logo" />
               </div>
             </DialogTitle>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -397,7 +404,7 @@ function Family(props) {
             aria-describedby="alert-dialog-description"
           >
             <DialogTitle id="alert-dialog-title">
-              <div>
+              <div >
                 <img src={logo} alt="logo" height="100px" width="250px" />
               </div>
             </DialogTitle>
