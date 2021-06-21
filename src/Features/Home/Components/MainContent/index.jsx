@@ -268,7 +268,7 @@ function MainContent(props) {
           <div class="phone-vr">
             <div class="phone-vr-circle-fill"></div>
             <div class="phone-vr-img-circle">
-              <a href="tel:0935527913">
+              <a href="tel:0355533377">
                 <img src="https://seotct.com/wp-content/plugins/button-contact-vr/img/phone.png" />
               </a>
             </div>

@@ -1,0 +1,34 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.wrapper-sidebar{
+    min-height: 100%;
+    background-color:   #e60000;
+    padding-bottom: 506px;
+    
+}
+.wrapper-sidebar li{
+    list-style-type: none;
+    border-bottom: 1px solid wheat;
+
+}
+.wrapper-sidebar li:hover{
+    background-color: #ff1a1a;
+}
+
+.wrapper-sidebar li a {
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    font-size: 21px;
+    display: block;
+}
+.wrapper-sidebar span i{
+    margin-right: 10px;
+}
+.img-navbar{
+    width: 200px;
+    height: 100px;
+}
