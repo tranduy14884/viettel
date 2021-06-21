@@ -8,6 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import PropTypes from "prop-types";
 import React from "react";
+import { Link } from "react-router-dom";
 CompanyList.propTypes = {
     companies : PropTypes.array,
 };
@@ -51,11 +52,12 @@ function CompanyList(props) {
             <TableHead>
               <TableRow>
                 <StyledTableCell>Name</StyledTableCell>
-                <StyledTableCell align="right">Price</StyledTableCell>
-                <StyledTableCell align="right">Tốc độ</StyledTableCell>
-                <StyledTableCell align="right">KM 6 tháng</StyledTableCell>
-                <StyledTableCell align="right">KM 12 tháng</StyledTableCell>
-                <StyledTableCell align="right">IP tĩnh</StyledTableCell>
+                <StyledTableCell align="center">Price</StyledTableCell>
+                <StyledTableCell align="center">Tốc độ</StyledTableCell>
+                <StyledTableCell align="center">KM 6 tháng</StyledTableCell>
+                <StyledTableCell align="center">KM 12 tháng</StyledTableCell>
+                <StyledTableCell align="center">IP tĩnh</StyledTableCell>
+                <StyledTableCell align="center">Thao tác</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -64,11 +66,12 @@ function CompanyList(props) {
                   <StyledTableCell component="th" scope="row">
                     {row.name}
                   </StyledTableCell>
-                  <StyledTableCell align="right">{row.price}</StyledTableCell>
-                  <StyledTableCell align="right">{row.speed}</StyledTableCell>
-                  <StyledTableCell align="right">{row.halfYear}</StyledTableCell>
-                  <StyledTableCell align="right">{row.fullYear}</StyledTableCell>
-                  <StyledTableCell align="right">{row.Ip}</StyledTableCell>
+                  <StyledTableCell align="center">{row.price}</StyledTableCell>
+                  <StyledTableCell align="center">{row.speed}</StyledTableCell>
+                  <StyledTableCell align="center">{row.halfYear}</StyledTableCell>
+                  <StyledTableCell align="center">{row.fullYear}</StyledTableCell>
+                  <StyledTableCell align="center">{row.Ip}</StyledTableCell>
+                  <StyledTableCell align="center"><span><Link to="#">Sửa</Link> &nbsp; <Link to="#">Xóa</Link> </span></StyledTableCell>
                 </StyledTableRow>
               ))}
             </TableBody>

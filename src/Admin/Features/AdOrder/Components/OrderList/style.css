@@ -1,0 +1,12 @@
+.status{
+  
+    background-color: #e60000;
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    top: 10px;
+}
+.status:focus{
+    outline: none;
+}

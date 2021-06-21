@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import {Link} from "react-router-dom";
 function AdHeader(props) {
   return (
     <>
@@ -11,7 +12,9 @@ function AdHeader(props) {
         
       </div>
       <div className="header-login">
-        <button>Đăng nhập</button>
+        <Link to="/admin/dangnhap" >
+          <button>Đăng nhập</button>
+        </Link>
       </div>
     </>
   );

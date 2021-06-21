@@ -1,3 +1,46 @@
-.page-footer{
-    margin-top: 100px;
+.footer-page{
+    margin-top: 10px;
+    background-color: 	 #e42525;
+    color: white;
+}
+.footer-page .col-md-3{
+    margin: 40px 0;
+}
+.footer-page .col-md-3 p:first-child{
+    font-size: 20px;
+    font-weight: 600;
+}
+.footer-page .col-md-3{
+    text-align: left;
+}
+.footer-page .col-md-3 p{
+    cursor: pointer;
+}
+.footer-page img{
+    margin-bottom: 20px;
+
+}
+.footer-page h4{
+    font-size: 28px;
+    font-size: 600;
+}
+.footer-page-last{
+    background-color: #b30000;
+    color: white;
+    padding-bottom: 20px;
+}
+.footer-page-last ul{
+    display: flex;
+}
+.footer-page-last ul{
+    list-style-type: none;
+    justify-content: center;
+    margin-bottom: 0;
+}
+.footer-page-last ul li{
+    margin: 20px;
+}
+.footer-page-last ul li a i{
+    font-size: 36px;
+    color: white;
 }

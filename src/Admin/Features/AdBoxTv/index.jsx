@@ -3,7 +3,8 @@ import "./style.css";
 import SideBar from "../../Components/SideBar";
 import AdHeader from "../../Components/AdHeader";
 import AdFooter from "../../Components/AdFooter";
-import BoxtvList from "../BoxtvList";
+import BoxtvList from "../AdBoxTv/Components/BoxtvList";
+import {Link} from "react-router-dom";
 function AdminFamily(props) {
     const boxs = [
         {
@@ -69,7 +70,17 @@ function AdminFamily(props) {
           </div>
           {/*Content Row */}
             <div className="packet-name-admin">
+            <span className="redirect-page">
+              <Link to="/Admin">Trang chủ</Link>
+              &nbsp;
+              <i class="fas fa-arrow-right"></i>
+              &nbsp;
+              <Link to="/Admin/boxTv">Gói cước cáp quang + boxTV</Link>
+            </span>
                 <h3>Gói cước cáp quang + boxTv</h3>
+                <Link to="/Admin/boxTv/them">
+                   <button>Thêm gói cước</button>
+                </Link>
             </div>
             {/* Form */}
             <BoxtvList Boxs={boxs}/>

@@ -1,0 +1,13 @@
+.form-add-data{
+    padding: 0 300px;
+    margin-top: 50px;
+}
+.form-add-data form input{
+    width: 100%;
+    height: 45px;
+}
+
+.form-add-data form p{
+    text-align: left !important;
+    margin-bottom: 10px;
+}

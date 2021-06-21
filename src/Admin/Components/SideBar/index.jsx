@@ -7,9 +7,10 @@ function SideBar(props) {
   
                <ul className="wrapper-sidebar">
                 <li><Link to="/Admin"><span><img className="img-navbar" src={navbarImg} alt="#" /> </span></Link></li>
-                <li><Link to="/Admin/giadinh"><span><i className="fas fa-fw fa-folder"></i>Gói gia đình</span></Link></li>
-                <li><Link to="/Admin/boxTv"><span><i className="fas fa-fw fa-table"></i>Gói BoxTv</span></Link></li>
-                <li><Link to="/Admin/doanhnghiep"><span><i className="fas fa-fw fa-table"></i>Gói doanh nghiệp</span></Link></li>
+                <li><Link to="/Admin/giadinh"><span><i class="fas fa-user"></i>Gói gia đình</span></Link></li>
+                <li><Link to="/Admin/boxTv"><span><i class="fas fa-tv"></i>Gói BoxTv</span></Link></li>
+                <li><Link to="/Admin/doanhnghiep"><span><i class="far fa-building"></i>Gói doanh nghiệp</span></Link></li>
+                <li><Link to="/Admin/donhang"><span><i class="fas fa-shopping-cart"></i>Đơn hàng</span></Link></li>
             </ul>
        
     );
