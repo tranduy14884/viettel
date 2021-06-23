@@ -21,6 +21,7 @@ import * as yup from "yup";
 import { useSnackbar } from "notistack";
 Family.propTypes = {
   families: PropTypes.array,
+  listPackets : PropTypes.array,
 };
 const schema = yup.object().shape({
   fullName: yup.string().required("Thông tin chưa hợp lệ"),
@@ -35,7 +36,7 @@ const schema = yup.object().shape({
     // .max(10,'Số điện thoại phải đủ 10 số'),
 });
 function Family(props) {
-  const { families } = props;
+  const { families} = props;
 
   //custom dialog
   const [open, setOpen] = React.useState(false);

@@ -20,7 +20,9 @@ import TextField from "@material-ui/core/TextField";
 import logo from "../../../../asset/img/logo.png";
 import { useSnackbar } from "notistack";
 Company.propTypes = {
-  companies: PropTypes.array,
+  families: PropTypes.array,
+  combos : PropTypes.array,
+  companies : PropTypes.array,
 };
 const schema = yup.object().shape({
   fullName: yup.string().required("Thông tin chưa hợp lệ"),
@@ -35,7 +37,8 @@ const schema = yup.object().shape({
   // .max(10,'Số điện thoại phải đủ 10 số'),
 });
 function Company(props) {
-  const { companies } = props;
+  // const { companies, combos, families } = props;
+  const { companies} = props;
   const settings = {
     infinite: true,
     speed: 1000,
