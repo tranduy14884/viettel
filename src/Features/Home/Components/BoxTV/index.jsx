@@ -22,10 +22,12 @@ import { useSnackbar } from "notistack";
 
 BoxTV.propTypes = {
   boxs: PropTypes.array,
+  listPackets : PropTypes.array,
 };
 
 function BoxTV(props) {
-  const { boxs } = props;
+  
+  const { boxs ,listPackets } = props;
   const settings = {
     infinite: true,
     speed: 1000,
@@ -35,10 +37,9 @@ function BoxTV(props) {
     slidesToShow: 3,
     slidesToScroll: 1,
     pauseOnFocus : true,
-    slickPrev: ['<i class="fas fa-chevron-circle-left"></i>'],
-    slickNext: ['<i class="fas fa-chevron-circle-right"></i>'],
+    slickPrev: ['<i className="fas fa-chevron-circle-left"></i>'],
+    slickNext: ['<i className="fas fa-chevron-circle-right"></i>'],
   };
-
   //   format number
   const formatter = new Intl.NumberFormat("es");
   //check witdh to change carousel
@@ -55,8 +56,8 @@ function BoxTV(props) {
     slidesToShow: 2,
     slidesToScroll: 1,
     pauseOnFocus : true,
-    slickPrev: ['<i class="fas fa-chevron-circle-left"></i>'],
-    slickNext: ['<i class="fas fa-chevron-circle-right"></i>'],
+    slickPrev: ['<i className="fas fa-chevron-circle-left"></i>'],
+    slickNext: ['<i className="fas fa-chevron-circle-right"></i>'],
   };
   //custom dialog
   const [open, setOpen] = React.useState(false);
@@ -123,111 +124,8 @@ function BoxTV(props) {
     setPacket(event.target.value);
   };
 
-  const companies = [
-    {
-      id: 1,
-      name: "Gói F90 N",
-      speed: "90Mb / 2Mb",
-      Ip: 0,
-      price: 440000,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-    {
-      id: 2,
-      name: "Gói F90 Basic",
-      speed: "90Mb / 1Mb",
-      price: 660000,
-      Ip: 1,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-    {
-      id: 3,
-      name: "Gói F90 Plus",
-      speed: "90Mb / 3Mb",
-      price: 880000,
-      Ip: 1,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-    {
-      id: 4,
-      name: "Gói F200 N",
-      speed: "200Mb / 2Mb",
-      price: 1100000,
-      Ip: 1,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-    {
-      id: 5,
-      name: "Gói F200 Basic",
-      speed: "200Mb / 4Mb",
-      price: 2200000,
-      Ip: 1,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-    {
-      id: 6,
-      name: "Gói F200 Plus",
-      speed: "200Mb / 6Mb",
-      price: 4400000,
-      Ip: 1,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-  ];
-  const families = [
-    {
-      id: 1,
-      name: "Gói NET1PLUS ",
-      speed: "30Mbps",
-      price: 165000,
-      halfYear: 0,
-      fullYear: 1,
-    },
-    {
-      id: 2,
-      name: "Gói NET2PLUS ",
-      speed: "80Mbps",
-      price: 180000,
-      halfYear: 1,
-      fullYear: 3,
-    },
-    {
-      id: 3,
-      name: "Gói NET3PLUS ",
-      speed: "110Mbps",
-      price: 210000,
-      halfYear: 1,
-      fullYear: 3,
-    },
-    {
-      id: 4,
-      name: "Gói NET4PLUS ",
-      speed: "140Mbps",
-      price: 260000,
-      halfYear: 1,
-      fullYear: 3,
-    },
-    {
-      id: 5,
-      name: "Gói NET5PLUS ",
-      speed: "300Mbps",
-      price: 430000,
-      halfYear: 1,
-      fullYear: 3,
-    },
-  ];
-  const listPacket = [...families, ...boxs, ...companies];
+ 
+ 
   return (
     <div>
       <div className="owl-carousel owl-theme">
@@ -235,7 +133,7 @@ function BoxTV(props) {
           <>
             <Slider {...settings2}>
               {boxs.map((item) => (
-                <div className="container-item" key={item.id}>
+                <div className="container-item" key={Math.random()}>
                   <div className="item">
                     <div href="#" className="item-content-family">
                       <div>
@@ -333,7 +231,7 @@ function BoxTV(props) {
                     onChange={handleChange}
                     label="Gói cước"
                   >
-                    {listPacket.map((item) => {
+                    {listPackets.map((item) => {
                       return (
                         <MenuItem value={item.name} key={item.name}>
                           {item.name} - {item.speed} -{" "}
@@ -363,7 +261,7 @@ function BoxTV(props) {
           <>
             <Slider {...settings}>
               {boxs.map((item) => (
-                <div className="container-item" key={item.id}>
+                <div className="container-item" key={Math.random()}>
                   <div className="item">
                     <div className="item-content-family">
                       <div>
@@ -463,7 +361,7 @@ function BoxTV(props) {
                         onChange={handleChange}
                         label="Gói cước"
                       >
-                        {listPacket.map((item) => {
+                        {listPackets.map((item) => {
                           return (
                             <MenuItem value={item.name} key={item.name}>
                               {item.name} - {item.speed} -{" "}

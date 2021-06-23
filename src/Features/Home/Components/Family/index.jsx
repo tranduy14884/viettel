@@ -36,8 +36,8 @@ const schema = yup.object().shape({
     // .max(10,'Số điện thoại phải đủ 10 số'),
 });
 function Family(props) {
-  const { families} = props;
-
+  const { families, listPackets} = props;
+// console.log(listPackets);
   //custom dialog
   const [open, setOpen] = React.useState(false);
 
@@ -59,8 +59,8 @@ function Family(props) {
     slidesToShow: 3,
     slidesToScroll: 1,
     pauseOnFocus : true,
-    slickPrev: ['<i class="fas fa-chevron-circle-left"></i>'],
-    slickNext: ['<i class="fas fa-chevron-circle-right"></i>'],
+    slickPrev: ['<i className="fas fa-chevron-circle-left"></i>'],
+    slickNext: ['<i className="fas fa-chevron-circle-right"></i>'],
   };
 
   //   format number
@@ -80,8 +80,8 @@ function Family(props) {
     slidesToShow: 2,
     slidesToScroll: 1,
     pauseOnFocus:true,
-    slickPrev: ['<i class="fas fa-chevron-circle-left"></i>'],
-    slickNext: ['<i class="fas fa-chevron-circle-right"></i>'],
+    slickPrev: ['<i className="fas fa-chevron-circle-left"></i>'],
+    slickNext: ['<i className="fas fa-chevron-circle-right"></i>'],
   };
 
   // custom form
@@ -132,122 +132,122 @@ function Family(props) {
   };
   // console.log(packet);
   
-  const boxs = [
-    {
-      id: 1,
-      name: "Gói Combo NET1",
-      speed: "30Mbps",
-      price: 229000,
-      halfYear: 1,
-      fullYear: 3,
-      modem: 1,
-      boxtv: 1,
-    },
-    {
-      id: 2,
-      name: "Gói Combo NET2",
-      speed: "80Mbps",
-      price: 245000,
-      halfYear: 1,
-      fullYear: 3,
-      modem: 1,
-      boxtv: 1,
-    },
-    {
-      id: 3,
-      name: "Gói Combo NET3",
-      speed: "110Mbps",
-      price: 265000,
-      halfYear: 1,
-      fullYear: 3,
-      modem: 1,
-      boxtv: 1,
-    },
-    {
-      id: 4,
-      name: "Gói Combo NET4",
-      speed: "140Mbps",
-      price: 305000,
-      halfYear: 1,
-      fullYear: 3,
-      modem: 1,
-      boxtv: 1,
-    },
-    {
-      id: 5,
-      name: "Gói Combo NET5",
-      speed: "300Mbps",
-      price: 430000,
-      halfYear: 1,
-      fullYear: 3,
-      modem: 1,
-      boxtv: 2,
-    },
-  ];
-  const companies = [
-    {
-      id: 1,
-      name: "Gói F90 N",
-      speed: "90Mb / 2Mb",
-      Ip: 0,
-      price: 440000,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-    {
-      id: 2,
-      name: "Gói F90 Basic",
-      speed: "90Mb / 1Mb",
-      price: 660000,
-      Ip: 1,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-    {
-      id: 3,
-      name: "Gói F90 Plus",
-      speed: "90Mb / 3Mb",
-      price: 880000,
-      Ip: 1,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-    {
-      id: 4,
-      name: "Gói F200 N",
-      speed: "200Mb / 2Mb",
-      price: 1100000,
-      Ip: 1,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-    {
-      id: 5,
-      name: "Gói F200 Basic",
-      speed: "200Mb / 4Mb",
-      price: 2200000,
-      Ip: 1,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-    {
-      id: 6,
-      name: "Gói F200 Plus",
-      speed: "200Mb / 6Mb",
-      price: 4400000,
-      Ip: 1,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-  ];
-  const listPacket = [...families,...boxs,...companies];
-  // console.log(listPacket);
+  // const boxs = [
+  //   {
+  //     id: 1,
+  //     name: "Gói Combo NET1",
+  //     speed: "30Mbps",
+  //     price: 229000,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     modem: 1,
+  //     boxtv: 1,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Gói Combo NET2",
+  //     speed: "80Mbps",
+  //     price: 245000,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     modem: 1,
+  //     boxtv: 1,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Gói Combo NET3",
+  //     speed: "110Mbps",
+  //     price: 265000,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     modem: 1,
+  //     boxtv: 1,
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Gói Combo NET4",
+  //     speed: "140Mbps",
+  //     price: 305000,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     modem: 1,
+  //     boxtv: 1,
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Gói Combo NET5",
+  //     speed: "300Mbps",
+  //     price: 430000,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     modem: 1,
+  //     boxtv: 2,
+  //   },
+  // ];
+  // const companies = [
+  //   {
+  //     id: 1,
+  //     name: "Gói F90 N",
+  //     speed: "90Mb / 2Mb",
+  //     Ip: 0,
+  //     price: 440000,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     raderFullYear: 4,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Gói F90 Basic",
+  //     speed: "90Mb / 1Mb",
+  //     price: 660000,
+  //     Ip: 1,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     raderFullYear: 4,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Gói F90 Plus",
+  //     speed: "90Mb / 3Mb",
+  //     price: 880000,
+  //     Ip: 1,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     raderFullYear: 4,
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Gói F200 N",
+  //     speed: "200Mb / 2Mb",
+  //     price: 1100000,
+  //     Ip: 1,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     raderFullYear: 4,
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Gói F200 Basic",
+  //     speed: "200Mb / 4Mb",
+  //     price: 2200000,
+  //     Ip: 1,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     raderFullYear: 4,
+  //   },
+  //   {
+  //     id: 6,
+  //     name: "Gói F200 Plus",
+  //     speed: "200Mb / 6Mb",
+  //     price: 4400000,
+  //     Ip: 1,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     raderFullYear: 4,
+  //   },
+  // ];
+  // const listPacket = [...families,...boxs,...companies];
+  // // console.log(listPacket);
 
   return (
     <div className="owl-carousel owl-theme">
@@ -255,7 +255,7 @@ function Family(props) {
         <>
           <Slider {...settings2}>
             {families.map((item) => (
-              <div className="container-item" key={item.id}>
+              <div className="container-item" key={Math.random()}>
                 <div className="item">
                   <div href="#" className="item-content-family">
                     <h4>
@@ -342,7 +342,7 @@ function Family(props) {
                       label="Gói cước"
                     >
                       {
-                        listPacket.map(item =>{
+                        listPackets.map(item =>{
                           return (
                             <MenuItem value={item.name} key={item.name}>{item.name} - {item.speed} - {formatter.format(item.price)}VNĐ</MenuItem>
                           )
@@ -374,7 +374,7 @@ function Family(props) {
         <>
           <Slider {...settings}>
             {families.map((item) => (
-              <div className="container-item" key={item.id}>
+              <div className="container-item" key={Math.random()}>
                 <div className="item">
                   <div className="item-content-family">
                     <h4>
@@ -463,7 +463,7 @@ function Family(props) {
                       label="Gói cước"
                     >
                       {
-                        listPacket.map(item =>{
+                        listPackets.map(item =>{
                           return (
                             <MenuItem value={item.name} key={item.name}>{item.name} - {item.speed} - {formatter.format(item.price)}VNĐ</MenuItem>
                           )

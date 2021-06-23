@@ -22,162 +22,162 @@ import comboApi from "../../../../api/comboApi";
 MainContent.propTypes = {};
 
 function MainContent(props) {
-  const families = [
-    {
-      id: 1,
-      name: "Gói NET1PLUS ",
-      speed: "30Mbps",
-      price: 165000,
-      halfYear: 0,
-      fullYear: 1,
-    },
-    {
-      id: 2,
-      name: "Gói NET2PLUS ",
-      speed: "80Mbps",
-      price: 180000,
-      halfYear: 1,
-      fullYear: 3,
-    },
-    {
-      id: 3,
-      name: "Gói NET3PLUS ",
-      speed: "110Mbps",
-      price: 210000,
-      halfYear: 1,
-      fullYear: 3,
-    },
-    {
-      id: 4,
-      name: "Gói NET4PLUS ",
-      speed: "140Mbps",
-      price: 260000,
-      halfYear: 1,
-      fullYear: 3,
-    },
-    {
-      id: 5,
-      name: "Gói NET5PLUS ",
-      speed: "300Mbps",
-      price: 430000,
-      halfYear: 1,
-      fullYear: 3,
-    },
-  ];
-  const boxs = [
-    {
-      id: 1,
-      name: "Gói Combo NET1",
-      speed: "30Mbps",
-      price: 229000,
-      halfYear: 1,
-      fullYear: 3,
-      modem: 1,
-      boxtv: 1,
-    },
-    {
-      id: 2,
-      name: "Gói Combo NET2",
-      speed: "80Mbps",
-      price: 245000,
-      halfYear: 1,
-      fullYear: 3,
-      modem: 1,
-      boxtv: 1,
-    },
-    {
-      id: 3,
-      name: "Gói Combo NET3",
-      speed: "110Mbps",
-      price: 265000,
-      halfYear: 1,
-      fullYear: 3,
-      modem: 1,
-      boxtv: 1,
-    },
-    {
-      id: 4,
-      name: "Gói Combo NET4",
-      speed: "140Mbps",
-      price: 305000,
-      halfYear: 1,
-      fullYear: 3,
-      modem: 1,
-      boxtv: 1,
-    },
-    {
-      id: 5,
-      name: "Gói Combo NET5",
-      speed: "300Mbps",
-      price: 430000,
-      halfYear: 1,
-      fullYear: 3,
-      modem: 1,
-      boxtv: 2,
-    },
-  ];
-  const companies = [
-    {
-      id: 1,
-      name: "Gói F90 N",
-      speed: "90Mb / 2Mb",
-      Ip: 0,
-      price: 440000,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-    {
-      id: 2,
-      name: "Gói F90 Basic",
-      speed: "90Mb / 1Mb",
-      price: 660000,
-      Ip: 1,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-    {
-      id: 3,
-      name: "Gói F90 Plus",
-      speed: "90Mb / 3Mb",
-      price: 880000,
-      Ip: 1,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-    {
-      id: 4,
-      name: "Gói F200 N",
-      speed: "200Mb / 2Mb",
-      price: 1100000,
-      Ip: 1,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-    {
-      id: 5,
-      name: "Gói F200 Basic",
-      speed: "200Mb / 4Mb",
-      price: 2200000,
-      Ip: 1,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-    {
-      id: 6,
-      name: "Gói F200 Plus",
-      speed: "200Mb / 6Mb",
-      price: 4400000,
-      Ip: 1,
-      halfYear: 1,
-      fullYear: 3,
-      raderFullYear: 4,
-    },
-  ];
+  // const families = [
+  //   {
+  //     id: 1,
+  //     name: "Gói NET1PLUS ",
+  //     speed: "30Mbps",
+  //     price: 165000,
+  //     halfYear: 0,
+  //     fullYear: 1,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Gói NET2PLUS ",
+  //     speed: "80Mbps",
+  //     price: 180000,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Gói NET3PLUS ",
+  //     speed: "110Mbps",
+  //     price: 210000,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Gói NET4PLUS ",
+  //     speed: "140Mbps",
+  //     price: 260000,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Gói NET5PLUS ",
+  //     speed: "300Mbps",
+  //     price: 430000,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //   },
+  // ];
+  // const boxs = [
+  //   {
+  //     id: 1,
+  //     name: "Gói Combo NET1",
+  //     speed: "30Mbps",
+  //     price: 229000,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     modem: 1,
+  //     boxtv: 1,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Gói Combo NET2",
+  //     speed: "80Mbps",
+  //     price: 245000,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     modem: 1,
+  //     boxtv: 1,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Gói Combo NET3",
+  //     speed: "110Mbps",
+  //     price: 265000,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     modem: 1,
+  //     boxtv: 1,
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Gói Combo NET4",
+  //     speed: "140Mbps",
+  //     price: 305000,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     modem: 1,
+  //     boxtv: 1,
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Gói Combo NET5",
+  //     speed: "300Mbps",
+  //     price: 430000,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     modem: 1,
+  //     boxtv: 2,
+  //   },
+  // ];
+  // const companies = [
+  //   {
+  //     id: 1,
+  //     name: "Gói F90 N",
+  //     speed: "90Mb / 2Mb",
+  //     Ip: 0,
+  //     price: 440000,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     raderFullYear: 4,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Gói F90 Basic",
+  //     speed: "90Mb / 1Mb",
+  //     price: 660000,
+  //     Ip: 1,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     raderFullYear: 4,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Gói F90 Plus",
+  //     speed: "90Mb / 3Mb",
+  //     price: 880000,
+  //     Ip: 1,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     raderFullYear: 4,
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Gói F200 N",
+  //     speed: "200Mb / 2Mb",
+  //     price: 1100000,
+  //     Ip: 1,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     raderFullYear: 4,
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Gói F200 Basic",
+  //     speed: "200Mb / 4Mb",
+  //     price: 2200000,
+  //     Ip: 1,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     raderFullYear: 4,
+  //   },
+  //   {
+  //     id: 6,
+  //     name: "Gói F200 Plus",
+  //     speed: "200Mb / 6Mb",
+  //     price: 4400000,
+  //     Ip: 1,
+  //     halfYear: 1,
+  //     fullYear: 3,
+  //     raderFullYear: 4,
+  //   },
+  // ];
   const listBranch = [
     {
       id: 1,
@@ -278,8 +278,8 @@ function MainContent(props) {
     };
     getData();
   }, []);
-  const listPackets = {...Tfamilies};
-  console.log(listPackets);
+  const listPackets = [...Tfamilies,...Tboxs,...Tcompanies];
+  // console.log(listPackets);
  
   return (
     <>
@@ -313,21 +313,21 @@ function MainContent(props) {
                 {/* END-LINE */}
                 <h3 className="title">Giá cước theo hộ gia đình</h3>
                 <div className="families">
-                  <Family families={families}  />
+                  <Family families={Tfamilies}  listPackets={listPackets} />
                 </div>
                 {/* START-LINE */}
                 <Line />
                 {/* END-LINE */}
                 <h3 className="title">Combo Cáp Quang + BoxTV Viettel</h3>
                 <div className="boxtv">
-                  <BoxTV boxs={boxs}     />
+                  <BoxTV boxs={Tboxs}   listPackets={listPackets} />
                 </div>
                 {/* START-LINE */}
                 <Line />
                 {/* END-LINE */}
                 <h3 className="title">Giá cước dành cho doanh nghiệp</h3>
                 <div className="boxtv">
-                  <Company    companies={companies}  />
+                  <Company listPackets={listPackets}   companies={Tcompanies}  />
                 </div>
               </div>
               <div className="col-md-3 right-content">

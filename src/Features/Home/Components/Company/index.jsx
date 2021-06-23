@@ -20,9 +20,8 @@ import TextField from "@material-ui/core/TextField";
 import logo from "../../../../asset/img/logo.png";
 import { useSnackbar } from "notistack";
 Company.propTypes = {
-  families: PropTypes.array,
-  combos : PropTypes.array,
   companies : PropTypes.array,
+  listPackets : PropTypes.array,
 };
 const schema = yup.object().shape({
   fullName: yup.string().required("Thông tin chưa hợp lệ"),
@@ -38,7 +37,7 @@ const schema = yup.object().shape({
 });
 function Company(props) {
   // const { companies, combos, families } = props;
-  const { companies} = props;
+  const { companies, listPackets} = props;
   const settings = {
     infinite: true,
     speed: 1000,
@@ -48,8 +47,8 @@ function Company(props) {
     slidesToShow: 3,
     slidesToScroll: 1,
     pauseOnFocus : true,
-    slickPrev: ['<i class="fas fa-chevron-circle-left"></i>'],
-    slickNext: ['<i class="fas fa-chevron-circle-right"></i>'],
+    slickPrev: ['<i className="fas fa-chevron-circle-left"></i>'],
+    slickNext: ['<i className="fas fa-chevron-circle-right"></i>'],
   };
 
   //   format number
@@ -68,8 +67,8 @@ function Company(props) {
     slidesToShow: 2,
     slidesToScroll: 1,
     pauseOnFocus : true,
-    slickPrev: ['<i class="fas fa-chevron-circle-left"></i>'],
-    slickNext: ['<i class="fas fa-chevron-circle-right"></i>'],
+    slickPrev: ['<i className="fas fa-chevron-circle-left"></i>'],
+    slickNext: ['<i className="fas fa-chevron-circle-right"></i>'],
   };
   //custom dialog
   const [open, setOpen] = React.useState(false);
@@ -135,108 +134,15 @@ function Company(props) {
   const handleChange = (event) => {
     setPacket(event.target.value);
   };
-  const boxs = [
-    {
-      id: 1,
-      name: "Gói Combo NET1",
-      speed: "30Mbps",
-      price: 229000,
-      halfYear: 1,
-      fullYear: 3,
-      modem: 1,
-      boxtv: 1,
-    },
-    {
-      id: 2,
-      name: "Gói Combo NET2",
-      speed: "80Mbps",
-      price: 245000,
-      halfYear: 1,
-      fullYear: 3,
-      modem: 1,
-      boxtv: 1,
-    },
-    {
-      id: 3,
-      name: "Gói Combo NET3",
-      speed: "110Mbps",
-      price: 265000,
-      halfYear: 1,
-      fullYear: 3,
-      modem: 1,
-      boxtv: 1,
-    },
-    {
-      id: 4,
-      name: "Gói Combo NET4",
-      speed: "140Mbps",
-      price: 305000,
-      halfYear: 1,
-      fullYear: 3,
-      modem: 1,
-      boxtv: 1,
-    },
-    {
-      id: 5,
-      name: "Gói Combo NET5",
-      speed: "300Mbps",
-      price: 430000,
-      halfYear: 1,
-      fullYear: 3,
-      modem: 1,
-      boxtv: 2,
-    },
-  ];
-  const families = [
-    {
-      id: 1,
-      name: "Gói NET1PLUS ",
-      speed: "30Mbps",
-      price: 165000,
-      halfYear: 0,
-      fullYear: 1,
-    },
-    {
-      id: 2,
-      name: "Gói NET2PLUS ",
-      speed: "80Mbps",
-      price: 180000,
-      halfYear: 1,
-      fullYear: 3,
-    },
-    {
-      id: 3,
-      name: "Gói NET3PLUS ",
-      speed: "110Mbps",
-      price: 210000,
-      halfYear: 1,
-      fullYear: 3,
-    },
-    {
-      id: 4,
-      name: "Gói NET4PLUS ",
-      speed: "140Mbps",
-      price: 260000,
-      halfYear: 1,
-      fullYear: 3,
-    },
-    {
-      id: 5,
-      name: "Gói NET5PLUS ",
-      speed: "300Mbps",
-      price: 430000,
-      halfYear: 1,
-      fullYear: 3,
-    },
-  ];
-  const listPacket = [...families, ...boxs, ...companies];
+  // const random = Math.random();
+  // console.log(random);
   return (
     <div className="owl-carousel owl-theme">
       {checkWitdh ? (
         <>
           <Slider {...settings2}>
             {companies.map((item) => (
-              <div className="container-item" key={item.id}>
+              <div className="container-item" key={Math.random()}>
                 <div className="item">
                   <div className="item-content-family">
                     <div>
@@ -339,9 +245,9 @@ function Company(props) {
                       label="Gói cước"
                     >
                       {
-                        listPacket.map(item =>{
+                        listPackets.map(item =>{
                           return (
-                            <MenuItem value={item.name} key={item.name}>{item.name} - {item.speed} - {formatter.format(item.price)}VNĐ</MenuItem>
+                            <MenuItem value={item.name} key={Math.random()}>{item.name} - {item.speed} - {formatter.format(item.price)}VNĐ</MenuItem>
                           )
                         })
                       }
@@ -371,7 +277,7 @@ function Company(props) {
         <>
           <Slider {...settings}>
             {companies.map((item) => (
-              <div className="container-item" key={item.id}>
+              <div className="container-item" key={Math.random()}>
                 <div className="item">
                   <div className="item-content-family">
                     <div>
@@ -474,9 +380,9 @@ function Company(props) {
                       label="Gói cước"
                     >
                       {
-                        listPacket.map(item =>{
+                        listPackets.map(item =>{
                           return (
-                            <MenuItem value={item.name} key={item.name}>{item.name} - {item.speed} - {formatter.format(item.price)}VNĐ</MenuItem>
+                            <MenuItem value={item.name} key={Math.random()}>{item.name} - {item.speed} - {formatter.format(item.price)}VNĐ</MenuItem>
                           )
                         })
                       }
