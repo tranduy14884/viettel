@@ -8,6 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import PropTypes from "prop-types";
 import React from "react";
+import SmartHome from "../SmartHome";
 import { Link } from "react-router-dom";
 
 SmartHomeList.propTypes = {
@@ -61,18 +62,7 @@ function SmartHomeList(props) {
           </TableHead>
           <TableBody>
             {smartHomeList.map((row) => (
-              <StyledTableRow key={row.name}>
-                <StyledTableCell component="th" scope="row">
-                  {row.name}
-                </StyledTableCell>
-                <StyledTableCell align="center">{row.price}</StyledTableCell>
-                <StyledTableCell align="center">{row.speed}</StyledTableCell>
-                <StyledTableCell align="center">{row.halfYear}</StyledTableCell>
-                <StyledTableCell align="center">{row.fullYear}</StyledTableCell>
-                <StyledTableCell align="center">{row.modem}</StyledTableCell>
-                <StyledTableCell align="center">{row.wifi}</StyledTableCell>
-                <StyledTableCell align="center"><span><Link to="#">Sửa</Link> &nbsp; <Link to="#">Xóa</Link></span></StyledTableCell>
-              </StyledTableRow>
+              <SmartHome smartHome={row} key={row._id} />
             ))}
           </TableBody>
         </Table>

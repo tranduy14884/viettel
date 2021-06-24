@@ -14,6 +14,8 @@ import './App.css';
 import Home from './Features/Home';
 import FixFamily from './Admin/Features/AdFamily/Components/FixFamily';
 import FixCompany from './Admin/Features/AdCompany/Components/FixCompany';
+import FixBoxtv from './Admin/Features/AdBoxTv/Components/FixBoxtv';
+import FixSmartHome from './Admin/Features/AdSmartHome/Components/FixSmartHome';
 function App() {
   return (
     <div className="App">
@@ -29,12 +31,14 @@ function App() {
         <Route path="/admin/giadinh/sua/:idFamily" component={FixFamily} exact />
         <Route path="/admin/boxTv" component={AdminBoxTv} exact />
         <Route path="/Admin/boxTv/them" component={AddBoxtv} exact />
+        <Route path="/Admin/boxTv/sua/:idBoxtv" component={FixBoxtv} exact />
         <Route path="/admin/doanhnghiep" component={AdCompany} exact />
         <Route path="/Admin/doanhnghiep/them" component={AddCompany} exact />
         <Route path="/Admin/doanhnghiep/sua/:idCompany" component={FixCompany} exact />
         <Route path="/Admin/donhang" component={AdOrder} exact />
         <Route path="/Admin/thongminh" component={AdSmartHome} exact />
         <Route path="/Admin/thongminh/them" component={AddSmartHome} exact />
+        <Route path="/Admin/thongminh/sua/:idSmartHome" component={FixSmartHome} exact />
       </Switch>
     </div>
   );

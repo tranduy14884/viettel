@@ -6,7 +6,7 @@ import AdFooter from "../../../../Components/AdFooter";
 import { Link } from "react-router-dom";
 import FormFix from "../FormFix";
 import "./style.css";
-function FixCompany(props) {
+function FixBoxtv(props) {
   return (
     <div>
       <div className="row">
@@ -24,13 +24,13 @@ function FixCompany(props) {
               &nbsp;
               <i class="fas fa-arrow-right"></i>
               &nbsp;
-              <Link to="/Admin/doanhnghiep">Gói cước doanh nghiệp</Link>
+              <Link to="/Admin/boxtv">Gói cước combo cáp quang + Boxtv</Link>
               &nbsp;
               <i class="fas fa-arrow-right"></i>
               &nbsp;
-              <Link to="/Admin/doanhnghiep/sua">Sửa gói cước</Link>
+              <Link to="/Admin/boxtv/sua">Sửa gói cước</Link>
             </span>
-            <h3>Gói cước doanh nghiệp</h3>
+            <h3>Gói cước combo cáp quang + Boxtv</h3>
           </div>
           {/* Form */}
           <FormFix />
@@ -42,4 +42,4 @@ function FixCompany(props) {
   );
 }
 
-export default FixCompany;
+export default FixBoxtv;

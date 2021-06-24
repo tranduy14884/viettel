@@ -4,6 +4,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
 import { useRef } from "react";
+import { useSnackbar } from "notistack";
+import { useHistory } from "react-router-dom";
+import superApi from "../../../../../api/superApi";
 const schema = yup.object().shape({
     nameInput: yup.string().required("Vui lòng nhập vào trường này"),
     speedInput: yup.string().required('Vui lòng nhập vào trường này'),
@@ -26,8 +29,9 @@ function FormAdd(props) {
       const modemForm = useRef();
       const wifiForm = useRef();
 
-
-      const onSubmit = data => {
+      const {enqueueSnackbar} = useSnackbar();
+      const history = useHistory();
+      const onSubmit = async data => {
           const dataForm = {
             name : nameForm.current.value,
             speed : (speedForm.current.value),
@@ -37,7 +41,10 @@ function FormAdd(props) {
             modem : parseInt(modemForm.current.value),
             wifi : parseInt(wifiForm.current.value),
           }
-          console.log(dataForm);
+          const sendData = await superApi.add(dataForm);
+          history.push('/Admin/thongminh/');
+
+          enqueueSnackbar('Thêm thành công', {variant : 'success'});
       };
   return (
     <div className="container form-add-data">

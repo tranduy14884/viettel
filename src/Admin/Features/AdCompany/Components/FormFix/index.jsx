@@ -10,7 +10,7 @@ import "./style.css";
 
 function FormFix(props) {
 
-  const [dataFamily, setData] = useState([{}]);
+  const [data, setData] = useState([{}]);
   const match = useRouteMatch();
   const {
     params: { idCompany },
@@ -22,7 +22,7 @@ function FormFix(props) {
     };
     getData();
   }, []);
-  // console.log(dataFamily[0]);
+  // console.log(data[0]);
   const nameForm = useRef();
   const speedForm = useRef();
   const priceForm = useRef();
@@ -48,29 +48,29 @@ function FormFix(props) {
     };
     // console.log(dataForm);
     await companyApi.update(dataForm);
-    // enqueueSnackbar('Sửa thành công', {variant : 'success'});
-    // history.push('/Admin/doanhnghiep/');
+    enqueueSnackbar('Sửa thành công', {variant : 'success'});
+    history.push('/Admin/doanhnghiep/');
   };
 
   return (
     <div className="container form-add-data">
         <div className="form-fix">
           <p>Tên gói cước</p>
-          <input type="text" ref={nameForm} defaultValue={dataFamily[0].name} />
+          <input type="text" ref={nameForm} defaultValue={data[0].name} />
           <p>Tốc độ</p>
-          <input type="text" ref={speedForm} defaultValue={dataFamily[0].speed} />
+          <input type="text" ref={speedForm} defaultValue={data[0].speed} />
           <p>Giá</p>
-          <input type="number" ref={priceForm} defaultValue={dataFamily[0].price} />
+          <input type="number" ref={priceForm} defaultValue={data[0].price} />
           <p>Khuyến mãi 6 tháng</p>
-          <input type="number" ref={km6Form} defaultValue={dataFamily[0].halfYear} />
+          <input type="number" ref={km6Form} defaultValue={data[0].halfYear} />
           <p>Khuyến mãi 12 tháng</p>
-          <input type="number" ref={km12Form} defaultValue={dataFamily[0].fullYear} />
+          <input type="number" ref={km12Form} defaultValue={data[0].fullYear} />
           <p>Khuyến mãi 18 tháng</p>
-          <input type="number" ref={km18Form} defaultValue={dataFamily[0].raderFullYear} />
+          <input type="number" ref={km18Form} defaultValue={data[0].raderFullYear} />
           <p>Khuyến mãi Ip tĩnh</p>
-          <input type="number" ref={ipForm} defaultValue={dataFamily[0].Ip} />
+          <input type="number" ref={ipForm} defaultValue={data[0].Ip} />
           <p>Khuyến mãi Ip động</p>
-          <input type="number" ref={iplForm} defaultValue={dataFamily[0].IpL} />
+          <input type="number" ref={iplForm} defaultValue={data[0].IpL} />
           <input type="submit" onClick={onSubmitForm} />
         </div>
     </div>

@@ -40,8 +40,7 @@ function FormAdd(props) {
               Ip : parseInt(iptinhForm.current.value),
               IpL : parseInt(ipdongForm.current.value),
           }
-          console.log('Dang gui yeu cau');
-          console.log(dataForm);
+       
           const sendData = await companyApi.add(dataForm);
           history.push('/Admin/doanhnghiep/');
 

@@ -1,13 +1,18 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useSnackbar } from 'notistack';
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
+import { useHistory } from 'react-router-dom';
 import * as yup from "yup";
+import comboApi from '../../../../../api/comboApi';
 const schema = yup.object().shape({
     nameInput: yup.string().required("Vui lòng nhập vào trường này"),
     speedInput: yup.string().required('Vui lòng nhập vào trường này'),
     priceInput: yup.number().typeError("Vui lòng nhập số").positive().integer().required('Vui lòng nhập vào trường này'),
     km6: yup.number().typeError("Vui lòng nhập số").positive().integer().required('Vui lòng nhập vào trường này'),
     km12: yup.number().typeError("Vui lòng nhập số").positive().integer().required('Vui lòng nhập vào trường này'),
+    kmBoxtv: yup.number().typeError("Vui lòng nhập số").positive().integer().required('Vui lòng nhập vào trường này'),
+    kmModem: yup.number().typeError("Vui lòng nhập số").positive().integer().required('Vui lòng nhập vào trường này'),
   });
 function FormAdd(props) {
     const { register, handleSubmit, formState:{ errors } } = useForm({
@@ -18,15 +23,25 @@ function FormAdd(props) {
       const priceForm = useRef();
       const km6Form = useRef();
       const km12Form = useRef();
-      const onSubmit = data => {
+      const kmBoxtvForm = useRef();
+      const kmModemForm = useRef();
+      const {enqueueSnackbar} = useSnackbar();
+      const history = useHistory();
+      const onSubmit = async data => {
           const dataForm = {
             name : nameForm.current.value,
             speed : (speedForm.current.value),
             price : parseInt(priceForm.current.value),
             halfYear : parseInt(km6Form.current.value),
             fullYear : parseInt(km12Form.current.value),
+            modem : parseInt(kmBoxtvForm.current.value),
+            wifi : parseInt(kmModemForm.current.value),
           }
           console.log(dataForm);
+          const sendData = await comboApi.add(dataForm);
+          history.push('/Admin/boxtv/');
+
+          enqueueSnackbar('Thêm thành công', {variant : 'success'});
       };
   return (
     <div className="container form-add-data">
@@ -46,6 +61,12 @@ function FormAdd(props) {
         <p>Khuyến mãi 12 tháng</p>
         <input {...register("km12")} ref={km12Form}  />
         <p className="data-form-error">{errors.km12?.message}</p>
+        <p>Khuyến mãi Boxtv</p>
+        <input {...register("kmBoxtv")} ref={kmBoxtvForm}  />
+        <p className="data-form-error">{errors.kmBoxtv?.message}</p>
+        <p>Khuyến mãi modem</p>
+        <input {...register("kmModem")} ref={kmModemForm}  />
+        <p className="data-form-error">{errors.kmModem?.message}</p>
         <input type="submit" />
       </form>
     </div>
