@@ -1,23 +1,12 @@
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import PropTypes from "prop-types";
+import SideBar from "../../../../Components/SideBar";
+import AdHeader from "../../../../Components/AdHeader";
+import AdFooter from "../../../../Components/AdFooter";
 import { Link } from "react-router-dom";
-import orderApi from "../../../api/orderApi";
-import AdHeader from "../../Components/AdHeader"
-import SideBar from "../../Components/SideBar";
-import OrderList from "./Components/OrderList";
+import FormAdd from "../FormAdd";
 
-
-function AddBoxtv(props) {
-
-  const [orderList, setOrderList] = useState([]);
-  useEffect(()=>{
-    const getData = async ()=>{
-        const dataApi = await orderApi.getAll();
-        setOrderList(dataApi);
-    }
-    getData()
-  },[]);
+function AddSmartHome(props) {
   return (
     <div>
       <div className="row">
@@ -35,13 +24,16 @@ function AddBoxtv(props) {
               &nbsp;
               <i class="fas fa-arrow-right"></i>
               &nbsp;
-              <Link to="/Admin/donhang">Đơn hàng</Link>
-              
+              <Link to="/Admin/thongminh">Gói cước thông minh</Link>
+              &nbsp;
+              <i class="fas fa-arrow-right"></i>
+              &nbsp;
+              <Link to="/Admin/thongminh/them">Thêm gói cước</Link>
             </span>
-            <h3>Đơn hàng</h3>
+            <h3>Gói cước thông minh</h3>
           </div>
           {/* Form */}
-          <OrderList orderList={orderList} />
+          <FormAdd />
 
           {/* end Content Row */}
         </div>
@@ -50,4 +42,4 @@ function AddBoxtv(props) {
   );
 }
 
-export default AddBoxtv;
+export default AddSmartHome;

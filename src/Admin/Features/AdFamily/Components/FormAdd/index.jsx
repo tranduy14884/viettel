@@ -4,9 +4,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import "./style.css";
 import { useRef } from "react";
+import { useSnackbar } from "notistack";
+import { useHistory } from "react-router-dom";
+import familyApi from "../../../../../api/familyApi";
+import axios from "axios";
 const schema = yup.object().shape({
     nameInput: yup.string().required("Vui lòng nhập vào trường này"),
-    speedInput: yup.number().typeError("Vui lòng nhập số").positive().integer().required('Vui lòng nhập vào trường này'),
+    speedInput: yup.string().required('Vui lòng nhập vào trường này'),
     priceInput: yup.number().typeError("Vui lòng nhập số").positive().integer().required('Vui lòng nhập vào trường này'),
     km6: yup.number().typeError("Vui lòng nhập số").positive().integer().required('Vui lòng nhập vào trường này'),
     km12: yup.number().typeError("Vui lòng nhập số").positive().integer().required('Vui lòng nhập vào trường này'),
@@ -22,16 +26,23 @@ function FormAdd(props) {
       const km6Form = useRef();
       const km12Form = useRef();
 
-
-      const onSubmit = data => {
+      const {enqueueSnackbar} = useSnackbar();
+      const history = useHistory();
+      const onSubmit = async data => {
           const dataForm = {
             name : nameForm.current.value,
-            speed : parseInt(speedForm.current.value),
+            speed : (speedForm.current.value),
             price : parseInt(priceForm.current.value),
             halfYear : parseInt(km6Form.current.value),
             fullYear : parseInt(km12Form.current.value),
           }
-          console.log(dataForm);
+          // console.log('Dang gui yeu cau');
+          // console.log(dataForm);
+          const sendData = await familyApi.add(dataForm);
+          history.push('/Admin/giadinh/');
+
+          enqueueSnackbar('Thêm thành công', {variant : 'success'});
+
       };
   return (
     <div className="container form-add-data">

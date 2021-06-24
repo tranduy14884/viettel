@@ -10,6 +10,7 @@ function SideBar(props) {
                 <li><Link to="/Admin/giadinh"><span><i class="fas fa-user"></i>Gói gia đình</span></Link></li>
                 <li><Link to="/Admin/boxTv"><span><i class="fas fa-tv"></i>Gói BoxTv</span></Link></li>
                 <li><Link to="/Admin/doanhnghiep"><span><i class="far fa-building"></i>Gói doanh nghiệp</span></Link></li>
+                <li><Link to="/Admin/thongminh"><span><i class="fas fa-sun"></i>Gói thông minh</span></Link></li>
                 <li><Link to="/Admin/donhang"><span><i class="fas fa-shopping-cart"></i>Đơn hàng</span></Link></li>
             </ul>
        

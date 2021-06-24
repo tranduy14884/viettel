@@ -9,6 +9,7 @@ import TableRow from "@material-ui/core/TableRow";
 import PropTypes from "prop-types";
 import React from "react";
 import { Link } from "react-router-dom";
+import Company from "../Conpany";
 CompanyList.propTypes = {
     companies : PropTypes.array,
 };
@@ -56,23 +57,15 @@ function CompanyList(props) {
                 <StyledTableCell align="center">Tốc độ</StyledTableCell>
                 <StyledTableCell align="center">KM 6 tháng</StyledTableCell>
                 <StyledTableCell align="center">KM 12 tháng</StyledTableCell>
+                <StyledTableCell align="center">KM 18 tháng</StyledTableCell>
                 <StyledTableCell align="center">IP tĩnh</StyledTableCell>
+                <StyledTableCell align="center">IP động</StyledTableCell>
                 <StyledTableCell align="center">Thao tác</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {companies.map((row) => (
-                <StyledTableRow key={row.name}>
-                  <StyledTableCell component="th" scope="row">
-                    {row.name}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">{row.price}</StyledTableCell>
-                  <StyledTableCell align="center">{row.speed}</StyledTableCell>
-                  <StyledTableCell align="center">{row.halfYear}</StyledTableCell>
-                  <StyledTableCell align="center">{row.fullYear}</StyledTableCell>
-                  <StyledTableCell align="center">{row.Ip}</StyledTableCell>
-                  <StyledTableCell align="center"><span><Link to="#">Sửa</Link> &nbsp; <Link to="#">Xóa</Link> </span></StyledTableCell>
-                </StyledTableRow>
+                <Company company={row} key={row._id} />
               ))}
             </TableBody>
           </Table>

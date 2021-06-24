@@ -1,3 +1,12 @@
 .content-list{
     padding: 40px;
 }
+.del, .fix{
+    cursor: pointer;
+}
+.del{
+    color: red;
+}
+.fix{
+    color: blue;
+}

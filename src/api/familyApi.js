@@ -9,9 +9,10 @@ const familyApi = {
         const url = `/familyApi/${id}`;
         return axiosClient.get(url);
     },
-    add(data){
+    add(data)
+    {
         const url = '/familyApi';
-        return axiosClient.post(url,data);
+        return axiosClient.post(url, data);
     },
     update(data){
         const url = `/familyApi/${data.id}`;

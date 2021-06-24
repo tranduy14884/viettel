@@ -1,23 +1,19 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import orderApi from "../../../api/orderApi";
-import AdHeader from "../../Components/AdHeader"
+import superApi from "../../../api/superApi";
+import AdHeader from "../../Components/AdHeader";
 import SideBar from "../../Components/SideBar";
-import OrderList from "./Components/OrderList";
-
+import SmartHomeList from "./Components/SmartHomeList";
 
 function AddBoxtv(props) {
-
-  const [orderList, setOrderList] = useState([]);
-  useEffect(()=>{
-    const getData = async ()=>{
-        const dataApi = await orderApi.getAll();
-        setOrderList(dataApi);
-    }
-    getData()
-  },[]);
+  const [smartHomes, setSmartHomes] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      const dataApi = await superApi.getAll();
+      setSmartHomes(dataApi);
+    };
+    getData();
+  }, []);
   return (
     <div>
       <div className="row">
@@ -35,13 +31,15 @@ function AddBoxtv(props) {
               &nbsp;
               <i class="fas fa-arrow-right"></i>
               &nbsp;
-              <Link to="/Admin/donhang">Đơn hàng</Link>
-              
+              <Link to="/Admin/thongminh">Gói cước thông minh</Link>
             </span>
-            <h3>Đơn hàng</h3>
+            <h3>Gói cước thông minh</h3>
+            <Link to="/Admin/thongminh/them">
+              <button>Thêm gói cước</button>
+            </Link>
           </div>
           {/* Form */}
-          <OrderList orderList={orderList} />
+          <SmartHomeList smartHomeList={smartHomes} />
 
           {/* end Content Row */}
         </div>
