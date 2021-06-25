@@ -1,36 +1,40 @@
+import { unwrapResult } from "@reduxjs/toolkit";
 import { useSnackbar } from "notistack";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { login } from "./adminSlice";
 import "./style.css";
 function AdminDangNhap(props) {
-  const [email, setEmail] = useState();
+  const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [data, setData] = useState({});
 
-  const handlEmail = (e) => {
-    setEmail(e.target.value);
+  const handlUsername = (e) => {
+    setUsername(e.target.value);
   };
   const handlPassword = (e) => {
     setPassword(e.target.value);
   };
-//   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const history = useHistory();
   const hanldeSubmit = async () => {
-    // try {
-    //   const value = {
-    //     email: email,
-    //     password: password,
-    //   };
-    //   const action = loginAdmin(value);
-    //   const resultAction = await dispatch(action);
-    //   unwrapResult(resultAction);
+    try {
+      const value = {
+        username: username,
+        password: password,
+      };
+      console.log(value);
+      const action = login(value);
+      const resultAction = await dispatch(action);
+      unwrapResult(resultAction);
 
-    //   return history.push("/Admin");
-    // } catch (error) {
-    //   enqueueSnackbar(error.message, { variant: "error" });
-    // }
+      return history.push("/Admin");
+
+    } catch (error) {
+      enqueueSnackbar('Sai tài khoản hoặc mật khẩu !', { variant: "error" });
+    }
   };
   return (
     <div className="contaner-admin">
@@ -50,12 +54,12 @@ function AdminDangNhap(props) {
 
                       <div className="form-group">
                         <input
-                          type="email"
+                          type="text"
                           className="form-control form-control-user"
                           id="exampleInputEmail"
                           aria-describedby="emailHelp"
-                          placeholder="Enter Email Address..."
-                          onChange={handlEmail}
+                          placeholder="Tên đăng nhập"
+                          onChange={handlUsername}
                         />
                       </div>
                       <div className="form-group">
@@ -63,25 +67,11 @@ function AdminDangNhap(props) {
                           type="password"
                           className="form-control form-control-user"
                           id="exampleInputPassword"
-                          placeholder="Password"
+                          placeholder="Mật khẩu"
                           onChange={handlPassword}
                         />
                       </div>
-                      <div className="form-group">
-                        <div className="custom-control custom-checkbox small">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            id="customCheck"
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor="customCheck"
-                          >
-                            Remember Me
-                          </label>
-                        </div>
-                      </div>
+                  
                       <button
                         type="submit"
                         className="btn btn-primary btn-user btn-block"
@@ -89,19 +79,6 @@ function AdminDangNhap(props) {
                       >
                         Login
                       </button>
-                      <hr />
-
-                      <hr />
-                      <div className="text-center">
-                        <a className="small" href="forgot-password.html">
-                          Forgot Password?
-                        </a>
-                      </div>
-                      <div className="text-center">
-                        <a className="small" href="register.html">
-                          Create an Account!
-                        </a>
-                      </div>
                     </div>
                   </div>
                 </div>

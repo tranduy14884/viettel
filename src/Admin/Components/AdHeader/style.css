@@ -9,6 +9,13 @@
     display: flex;
     text-align: center;
 }
+.header-login{
+   padding-top: 20px;
+   padding-right: 10px;
+}
+.header-login span i{
+    font-size: 30px;
+}
 .header-login button{
     position: absolute;
     right: 30px;

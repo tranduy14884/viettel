@@ -24,13 +24,13 @@ function FixBoxtv(props) {
               &nbsp;
               <i class="fas fa-arrow-right"></i>
               &nbsp;
-              <Link to="/Admin/boxtv">Gói cước combo cáp quang + Boxtv</Link>
+              <Link to="/Admin/boxtv">Combo cáp quang + Boxtv</Link>
               &nbsp;
               <i class="fas fa-arrow-right"></i>
               &nbsp;
               <Link to="/Admin/boxtv/sua">Sửa gói cước</Link>
             </span>
-            <h3>Gói cước combo cáp quang + Boxtv</h3>
+            <h3>Combo cáp quang + Boxtv</h3>
           </div>
           {/* Form */}
           <FormFix />
