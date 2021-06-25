@@ -19,15 +19,15 @@ import * as yup from "yup";
 import TextField from "@material-ui/core/TextField";
 import logo from "../../../../asset/img/logo.png";
 import { useSnackbar } from "notistack";
+import orderApi from "../../../../api/orderApi";
 
 BoxTV.propTypes = {
   boxs: PropTypes.array,
-  listPackets : PropTypes.array,
+  listPackets: PropTypes.array,
 };
 
 function BoxTV(props) {
-  
-  const { boxs ,listPackets } = props;
+  const { boxs, listPackets } = props;
   const settings = {
     infinite: true,
     speed: 1000,
@@ -36,7 +36,7 @@ function BoxTV(props) {
     autoplaySpeed: 3000,
     slidesToShow: 3,
     slidesToScroll: 1,
-    pauseOnFocus : true,
+    pauseOnFocus: true,
     slickPrev: ['<i className="fas fa-chevron-circle-left"></i>'],
     slickNext: ['<i className="fas fa-chevron-circle-right"></i>'],
   };
@@ -55,7 +55,7 @@ function BoxTV(props) {
     autoplaySpeed: 2000,
     slidesToShow: 2,
     slidesToScroll: 1,
-    pauseOnFocus : true,
+    pauseOnFocus: true,
     slickPrev: ['<i className="fas fa-chevron-circle-left"></i>'],
     slickNext: ['<i className="fas fa-chevron-circle-right"></i>'],
   };
@@ -78,7 +78,8 @@ function BoxTV(props) {
       .integer()
       .typeError("Vui lòng nhập số !")
       .required("Thông tin chưa hợp lệ")
-      .max(999999999, "Số điện thoại phải ít nhât là 10 số !"),
+      .max(999999999, "Số điện thoại chưa hợp lệ !")
+      .min(111111111, "Số điện thoại chưa hợp lệ !"),
     // .max(10,'Số điện thoại phải đủ 10 số'),
   });
   // custom form
@@ -86,18 +87,25 @@ function BoxTV(props) {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
   });
   let checkPacket = 1;
   const [textErrorPacket, setTextErrorPacket] = useState("");
-  const {enqueueSnackbar} = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
-  const onSubmit = (data) => {
-    const dataNews = data;
-    dataNews.packet = packet;
+  const onSubmit = async (data) => {
+    const dataNews = {
+      name: data.fullName,
+      phone: data.phone,
+      location: data.location,
+      packet: data.packet,
+      status: 0,
+      packet: packet,
+    };
 
+    // console.log(dataNews);
     if (dataNews.packet == "") {
       checkPacket = 2;
     } else {
@@ -105,17 +113,20 @@ function BoxTV(props) {
     }
     if (checkPacket == 2) {
       setTextErrorPacket("Vui lòng chọn gói cước !");
+    } else if (checkPacket == 1) {
+      setTextErrorPacket("");
     }
-    else if(checkPacket==1){
-      setTextErrorPacket('');
-    }
-    if(typeof dataNews.fullName !== 'undefined' && typeof dataNews.location !== 'undefined' 
-    && typeof dataNews.phone !=='undefined' && checkPacket == 1)
-    {
-      console.log(dataNews);
+    if (
+      typeof dataNews.name !== "undefined" &&
+      typeof dataNews.location !== "undefined" &&
+      typeof dataNews.phone !== "undefined" &&
+      checkPacket == 1
+    ) {
+      // console.log(dataNews);
+      await orderApi.add(dataNews);
       reset();
       handleClose();
-      enqueueSnackbar('Đăng ký thành công', {variant : 'success'});
+      enqueueSnackbar("Đăng ký thành công", { variant: "success" });
     }
   };
   const [packet, setPacket] = useState("");
@@ -124,8 +135,6 @@ function BoxTV(props) {
     setPacket(event.target.value);
   };
 
- 
- 
   return (
     <div>
       <div className="owl-carousel owl-theme">
@@ -138,7 +147,7 @@ function BoxTV(props) {
                     <div href="#" className="item-content-family">
                       <div>
                         <h4 className="h4-boxtv">
-                          {item.name} &nbsp; {item.speed}
+                          {item.name} <br /> {item.speed}
                         </h4>
                       </div>
                       <div className="item-content-info">
@@ -160,7 +169,10 @@ function BoxTV(props) {
                         </div>
                         <div className="prepare">
                           <h6>
-                            {item.boxtv} BoxTV + {item.modem} Modem
+                            Tặng thêm :{" "}
+                            <span className="bonus">
+                              {item.boxtv} BoxTV + {item.modem} Modem
+                            </span>
                             <hr />
                           </h6>
                         </div>
@@ -266,7 +278,7 @@ function BoxTV(props) {
                     <div className="item-content-family">
                       <div>
                         <h4 className="h4-boxtv">
-                          {item.name} &nbsp; {item.speed}
+                          {item.name} <br /> {item.speed}
                         </h4>
                       </div>
                       <div className="item-content-info">
@@ -288,7 +300,10 @@ function BoxTV(props) {
                         </div>
                         <div className="prepare">
                           <h6>
-                            {item.boxtv} BoxTV + {item.modem} Modem
+                            Tặng thêm :{" "}
+                            <span className="bonus">
+                              {item.boxtv} BoxTV + {item.modem} Modem
+                            </span>
                             <hr />
                           </h6>
                         </div>

@@ -76,10 +76,10 @@ function Family(props) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Disagree
+            Hủy bỏ
           </Button>
           <Button onClick={handleDel} color="primary">
-            Agree
+            Đồng ý
           </Button>
         </DialogActions>
       </Dialog>

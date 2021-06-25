@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Fade } from "@material-ui/core";
 import "./style.css";
@@ -11,6 +11,9 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import {Link} from "react-router-dom";
+import Order from "../Order";
+import Pagination from "react-js-pagination";
+import { useEffect } from "react";
 OrderList.propTypes = {
   orderList: PropTypes.array,
 };
@@ -44,6 +47,18 @@ const useStyles = makeStyles({
 function OrderList(props) {
   const { orderList } = props;
   const classes = useStyles();
+  const [activePage, setActivePage] = useState(1);
+  const [ordersPerpage, setOrdersPerpage] = useState(7);
+  const lastIndex = activePage*ordersPerpage;
+  const firstIndex = lastIndex - ordersPerpage;
+  const [currentList, setCurrentList] = useState([]);
+  const handlePageChange = (pageNumber)=>{
+    setActivePage(pageNumber);
+  }
+  useEffect(()=>{
+    setCurrentList(orderList.slice(firstIndex,lastIndex));
+  },[orderList.slice(firstIndex,lastIndex).length - activePage]);
+  console.log(currentList);
   return (
     <div className="content-list">
       <TableContainer component={Paper}>
@@ -59,21 +74,25 @@ function OrderList(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {orderList.map((row) => (
-              <StyledTableRow key={row.name}>
-                <StyledTableCell component="th" scope="row">
-                  {row.name}
-                </StyledTableCell>
-                <StyledTableCell align="center">{row.phone}</StyledTableCell>
-                <StyledTableCell align="center">{row.location}</StyledTableCell>
-                <StyledTableCell align="center">{row.packet}</StyledTableCell>
-                <StyledTableCell align="center"><button className="status">Chưa xử lý</button></StyledTableCell>
-                <StyledTableCell align="center"><Link to="#">Xóa</Link> </StyledTableCell>
-              </StyledTableRow>
+            {currentList.map((row) => (
+              <Order order={row} key={Math.random()} />
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <div className="container order-pagination">
+            <div className="pagination">
+              <Pagination
+                itemClass="page-item"
+                linkClass="page-link"
+                activePage={activePage}
+                itemsCountPerPage={ordersPerpage}
+                totalItemsCount={orderList.length}
+                pageRangeDisplayed={Math.ceil(orderList.length/ordersPerpage)}
+                onChange={handlePageChange}
+              />
+            </div>
+          </div>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import orderApi from "../../../api/orderApi";
 import AdHeader from "../../Components/AdHeader"
 import SideBar from "../../Components/SideBar";
 import OrderList from "./Components/OrderList";
-
+import "./style.css";
 
 function AddBoxtv(props) {
 

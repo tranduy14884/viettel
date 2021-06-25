@@ -9,7 +9,6 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import logo from "../../../../asset/img/logo.png";
 import TextField from "@material-ui/core/TextField";
-import "./style.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -20,9 +19,10 @@ import Select from "@material-ui/core/Select";
 import * as yup from "yup";
 import { useSnackbar } from "notistack";
 import orderApi from "../../../../api/orderApi";
-Family.propTypes = {
-  families: PropTypes.array,
-  listPackets : PropTypes.array,
+import "./style.css";
+SmartHome.propTypes = {
+  smartHomes: PropTypes.array,
+  listPackets: PropTypes.array,
 };
 const schema = yup.object().shape({
   fullName: yup.string().required("Thông tin chưa hợp lệ"),
@@ -35,11 +35,11 @@ const schema = yup.object().shape({
     .required("Thông tin chưa hợp lệ")
     .max(999999999,'Số điện thoại chưa hợp lệ !')
     .min(111111111,'Số điện thoại chưa hợp lệ !')
-    // .max(10,'Số điện thoại phải đủ 10 số'),
+  // .max(10,'Số điện thoại phải đủ 10 số'),
 });
-function Family(props) {
-  const { families, listPackets} = props;
-// console.log(listPackets);
+function SmartHome(props) {
+  const { smartHomes, listPackets } = props;
+  console.log(smartHomes);
   //custom dialog
   const [open, setOpen] = React.useState(false);
 
@@ -60,7 +60,7 @@ function Family(props) {
     autoplaySpeed: 3000,
     slidesToShow: 3,
     slidesToScroll: 1,
-    pauseOnFocus : true,
+    pauseOnFocus: true,
     slickPrev: ['<i className="fas fa-chevron-circle-left"></i>'],
     slickNext: ['<i className="fas fa-chevron-circle-right"></i>'],
   };
@@ -81,7 +81,7 @@ function Family(props) {
     autoplaySpeed: 2000,
     slidesToShow: 2,
     slidesToScroll: 1,
-    pauseOnFocus:true,
+    pauseOnFocus: true,
     slickPrev: ['<i className="fas fa-chevron-circle-left"></i>'],
     slickNext: ['<i className="fas fa-chevron-circle-right"></i>'],
   };
@@ -97,17 +97,17 @@ function Family(props) {
   });
   let checkPacket = 1;
   const [textErrorPacket, setTextErrorPacket] = useState('');
-  const {enqueueSnackbar} = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
   const onSubmit = async (data) => {
     const dataNews = {
-      name : data.fullName,
-      phone : data.phone,
-      location : data.location,
-      packet : data.packet,
-      status : 0,
-      packet : packet
+      name: data.fullName,
+      phone: data.phone,
+      location: data.location,
+      packet: data.packet,
+      status: 0,
+      packet: packet
     }
-    
+
     // console.log(dataNews);
     if (dataNews.packet == "") {
       checkPacket = 2;
@@ -117,38 +117,37 @@ function Family(props) {
     if (checkPacket == 2) {
       setTextErrorPacket("Vui lòng chọn gói cước !");
     }
-    else if(checkPacket==1){
+    else if (checkPacket == 1) {
       setTextErrorPacket('');
     }
-    if(typeof dataNews.name !== 'undefined' && typeof dataNews.location !== 'undefined' 
-    && typeof dataNews.phone !=='undefined' && checkPacket == 1)
-    {
+    if (typeof dataNews.name !== 'undefined' && typeof dataNews.location !== 'undefined'
+      && typeof dataNews.phone !== 'undefined' && checkPacket == 1) {
       // console.log(dataNews);
       await orderApi.add(dataNews);
       reset();
       handleClose();
-      enqueueSnackbar('Đăng ký thành công', {variant : 'success'});
+      enqueueSnackbar('Đăng ký thành công', { variant: 'success' });
     }
   };
 
-  
+
   const [packet, setPacket] = useState('');
 
   const handleChange = (event) => {
     setPacket(event.target.value);
   };
-  
+
   return (
     <div className="owl-carousel owl-theme">
       {checkWitdh ? (
         <>
           <Slider {...settings2}>
-            {families.map((item) => (
+            {smartHomes.map((item) => (
               <div className="container-item" key={Math.random()}>
                 <div className="item">
                   <div href="#" className="item-content-family">
-                    <h4>
-                      {item.name} <br /> {item.speed}
+                    <h4 className="h4-smart-home">
+                      {item.name} &nbsp; {item.speed}
                     </h4>
 
                     <div className="item-content-info">
@@ -168,6 +167,15 @@ function Family(props) {
                         <p>Miễn phí lắp đặt</p>
                         <hr />
                       </div>
+                      <div className="prepare">
+                          <h6>
+                            Tặng thêm :{" "}
+                            <span className="bonus">
+                              {item.wifi} Wifi + {item.modem} Modem
+                            </span>
+                            <hr />
+                          </h6>
+                        </div>
                       <div className="btn-register">
                         <button onClick={handleClickOpen}>Đăng ký ngay</button>
                       </div>
@@ -187,86 +195,83 @@ function Family(props) {
             aria-describedby="alert-dialog-description"
           >
             <DialogTitle id="alert-dialog-title">
-            <div className="img-dialog-title">
+              <div className="img-dialog-title">
                 <img src={logo} alt="logo" />
               </div>
             </DialogTitle>
             <form onSubmit={handleSubmit(onSubmit)}>
-                  <TextField
-                    id="outlined-basic"
-                    label="Họ tên khách hàng "
-                    variant="outlined"
-                    fullWidth
-                    {...register("fullName")}
-                  />
-                  <div className="data-form-error">{errors.fullName?.message}</div>
+              <TextField
+                id="outlined-basic"
+                label="Họ tên khách hàng "
+                variant="outlined"
+                fullWidth
+                {...register("fullName")}
+              />
+              <div className="data-form-error">{errors.fullName?.message}</div>
 
-                  <TextField
-                    id="outlined-basic"
-                    label="Địa chỉ "
-                    variant="outlined"
-                    fullWidth
-                    {...register("location")}
-                  />
-                  <div className="data-form-error">{errors.location?.message}</div>
+              <TextField
+                id="outlined-basic"
+                label="Địa chỉ "
+                variant="outlined"
+                fullWidth
+                {...register("location")}
+              />
+              <div className="data-form-error">{errors.location?.message}</div>
 
-                  <TextField
-                    id="outlined-basic"
-                    label="Số điện thoại "
-                    variant="outlined"
-                    fullWidth
-                    {...register("phone")}
-                  />
-                  <div className="data-form-error">{errors.phone?.message}</div>
+              <TextField
+                id="outlined-basic"
+                label="Số điện thoại "
+                variant="outlined"
+                fullWidth
+                {...register("phone")}
+              />
+              <div className="data-form-error">{errors.phone?.message}</div>
 
-                  <FormControl variant="outlined">
-                    <InputLabel id="demo-simple-select-outlined-label">
-                      Gói cước
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-outlined-label"
-                      id="demo-simple-select-outlined"
-                      value={packet}
-                      onChange={handleChange}
-                      label="Gói cước"
-                    >
-                      {
-                        listPackets.map(item =>{
-                          return (
-                            <MenuItem value={item.name} key={item.name}>{item.name} - {item.speed} - {formatter.format(item.price)}VNĐ</MenuItem>
-                          )
-                        })
-                      }
-                    </Select>
-                  </FormControl>
+              <FormControl variant="outlined">
+                <InputLabel id="demo-simple-select-outlined-label">
+                  Gói cước
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  value={packet}
+                  onChange={handleChange}
+                  label="Gói cước"
+                >
                   {
-                    checkPacket && (
-                      // <p className="data-form-error">{textErrorPacket}</p>
-                      <div className="data-form-error">{textErrorPacket}</div>
-
-                    )
+                    listPackets.map(item => {
+                      return (
+                        <MenuItem value={item.name} key={item.name}>{item.name} - {item.speed} - {formatter.format(item.price)}VNĐ</MenuItem>
+                      )
+                    })
                   }
-                 
-
-                  <div className="container-btn">
-                    <button className="btn-comfirm" type="submit">
-                      Đồng ý
-                    </button>{" "}
-                    <button onClick={handleClose} className="btn-cancel">
-                      Hủy bỏ
-                    </button>
-                  </div>
-                </form>
+                </Select>
+              </FormControl>
+              {
+                checkPacket && (
+                  // <p className="data-form-error">{textErrorPacket}</p>
+                  <div className="data-form-error">{textErrorPacket}</div>
+                )
+              }
+              <div className="container-btn">
+                <button className="btn-comfirm" type="submit">
+                  Đồng ý
+                </button>{" "}
+                <button onClick={handleClose} className="btn-cancel">
+                  Hủy bỏ
+                </button>
+              </div>
+            </form>
           </Dialog>
         </>
       ) : (
         <>
           <Slider {...settings}>
-            {families.map((item) => (
+            {smartHomes.map((item) => (
               <div className="container-item" key={Math.random()}>
                 <div className="item">
                   <div className="item-content-family">
-                    <h4>
+                    <h4 className="h4-smart-home">
                       {item.name} <br /> {item.speed}
                     </h4>
 
@@ -287,6 +292,15 @@ function Family(props) {
                         <p>Miễn phí lắp đặt</p>
                         <hr />
                       </div>
+                      <div className="prepare">
+                          <h6>
+                            Tặng thêm :{" "}
+                            <span className="bonus">
+                              {item.wifi} Wifi + {item.modem} Modem
+                            </span>
+                            <hr />
+                          </h6>
+                        </div>
                       <div className="btn-register">
                         <button onClick={handleClickOpen}>Đăng ký ngay</button>
                       </div>
@@ -352,7 +366,7 @@ function Family(props) {
                       label="Gói cước"
                     >
                       {
-                        listPackets.map(item =>{
+                        listPackets.map(item => {
                           return (
                             <MenuItem value={item.name} key={item.name}>{item.name} - {item.speed} - {formatter.format(item.price)}VNĐ</MenuItem>
                           )
@@ -363,12 +377,10 @@ function Family(props) {
                   {
                     checkPacket && (
                       // <p className="data-form-error">{textErrorPacket}</p>
-                  <div className="data-form-error">{textErrorPacket}</div>
+                      <div className="data-form-error">{textErrorPacket}</div>
 
                     )
                   }
-                 
-
                   <div className="container-btn">
                     <button className="btn-comfirm" type="submit">
                       Đồng ý
@@ -387,4 +399,4 @@ function Family(props) {
   );
 }
 
-export default Family;
+export default SmartHome;

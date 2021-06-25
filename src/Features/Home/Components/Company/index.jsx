@@ -19,9 +19,10 @@ import * as yup from "yup";
 import TextField from "@material-ui/core/TextField";
 import logo from "../../../../asset/img/logo.png";
 import { useSnackbar } from "notistack";
+import orderApi from "../../../../api/orderApi";
 Company.propTypes = {
-  companies : PropTypes.array,
-  listPackets : PropTypes.array,
+  companies: PropTypes.array,
+  listPackets: PropTypes.array,
 };
 const schema = yup.object().shape({
   fullName: yup.string().required("Thông tin chưa hợp lệ"),
@@ -37,7 +38,7 @@ const schema = yup.object().shape({
 });
 function Company(props) {
   // const { companies, combos, families } = props;
-  const { companies, listPackets} = props;
+  const { companies, listPackets } = props;
   const settings = {
     infinite: true,
     speed: 1000,
@@ -46,7 +47,7 @@ function Company(props) {
     autoplaySpeed: 3000,
     slidesToShow: 3,
     slidesToScroll: 1,
-    pauseOnFocus : true,
+    pauseOnFocus: true,
     slickPrev: ['<i className="fas fa-chevron-circle-left"></i>'],
     slickNext: ['<i className="fas fa-chevron-circle-right"></i>'],
   };
@@ -66,7 +67,7 @@ function Company(props) {
     autoplaySpeed: 2000,
     slidesToShow: 2,
     slidesToScroll: 1,
-    pauseOnFocus : true,
+    pauseOnFocus: true,
     slickPrev: ['<i className="fas fa-chevron-circle-left"></i>'],
     slickNext: ['<i className="fas fa-chevron-circle-right"></i>'],
   };
@@ -89,27 +90,35 @@ function Company(props) {
       .integer()
       .typeError("Vui lòng nhập số !")
       .required("Thông tin chưa hợp lệ")
-      .max(999999999,'Số điện thoại phải ít nhât là 10 số !')
-      // .max(10,'Số điện thoại phải đủ 10 số'),
+      .max(999999999, "Số điện thoại chưa hợp lệ !")
+      .min(111111111, "Số điện thoại chưa hợp lệ !"),
+    // .max(10,'Số điện thoại phải đủ 10 số'),
   });
- 
+
   // custom form
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
   });
   let checkPacket = 1;
   const [textErrorPacket, setTextErrorPacket] = useState("");
-  const {enqueueSnackbar} = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
-  const onSubmit = (data) => {
-    const dataNews = data;
-    dataNews.packet = packet;
+  const onSubmit = async (data) => {
+    const dataNews = {
+      name: data.fullName,
+      phone: data.phone,
+      location: data.location,
+      packet: data.packet,
+      status: 0,
+      packet: packet,
+    };
 
+    // console.log(dataNews);
     if (dataNews.packet == "") {
       checkPacket = 2;
     } else {
@@ -119,14 +128,18 @@ function Company(props) {
       setTextErrorPacket("Vui lòng chọn gói cước !");
     } else if (checkPacket == 1) {
       setTextErrorPacket("");
-      
     }
-    if(typeof dataNews.fullName !== 'undefined' && typeof dataNews.location !== 'undefined' 
-    && typeof dataNews.phone !=='undefined' && checkPacket == 1)
-    {
+    if (
+      typeof dataNews.name !== "undefined" &&
+      typeof dataNews.location !== "undefined" &&
+      typeof dataNews.phone !== "undefined" &&
+      checkPacket == 1
+    ) {
+      // console.log(dataNews);
+      await orderApi.add(dataNews);
       reset();
       handleClose();
-      enqueueSnackbar('Đăng ký thành công', {variant : 'success'});
+      enqueueSnackbar("Đăng ký thành công", { variant: "success" });
     }
   };
   const [packet, setPacket] = useState("");
@@ -147,7 +160,7 @@ function Company(props) {
                   <div className="item-content-family">
                     <div>
                       <h4 className="h4Company">
-                        {item.name} &nbsp; {item.speed}
+                        {item.name} <br /> {item.speed}
                       </h4>
                       <div className="item-content-info">
                         <span className="item-price">
@@ -172,11 +185,14 @@ function Company(props) {
                           <p>Miễn phí lắp đặt</p>
                           <hr />
                         </div>
-                        <div className="container container-ip">
+                        <div className="prepare">
                           <h6>
-                            IP tĩnh <span className="ip">{item.Ip}</span>
+                            Tặng thêm :{" "}
+                            <span className="bonus">
+                              {item.Ip} IP tĩnh + {item.IpL} IP động
+                            </span>
+                            <hr />
                           </h6>
-                          <hr />
                         </div>
                         <div className="btn-register">
                           <button onClick={handleClickOpen}>
@@ -188,7 +204,6 @@ function Company(props) {
                         </div>
                       </div>
                     </div>
-                    
                   </div>
                 </div>
               </div>
@@ -201,76 +216,73 @@ function Company(props) {
             aria-describedby="alert-dialog-description"
           >
             <DialogTitle id="alert-dialog-title">
-            <div className="img-dialog-title">
+              <div className="img-dialog-title">
                 <img src={logo} alt="logo" />
               </div>
             </DialogTitle>
             <form onSubmit={handleSubmit(onSubmit)}>
-                  <TextField
-                    id="outlined-basic"
-                    label="Họ tên khách hàng "
-                    variant="outlined"
-                    fullWidth
-                    {...register("fullName")}
-                  />
-                  <div className="data-form-error">{errors.fullName?.message}</div>
+              <TextField
+                id="outlined-basic"
+                label="Họ tên khách hàng "
+                variant="outlined"
+                fullWidth
+                {...register("fullName")}
+              />
+              <div className="data-form-error">{errors.fullName?.message}</div>
 
-                  <TextField
-                    id="outlined-basic"
-                    label="Địa chỉ "
-                    variant="outlined"
-                    fullWidth
-                    {...register("location")}
-                  />
-                  <div className="data-form-error">{errors.location?.message}</div>
+              <TextField
+                id="outlined-basic"
+                label="Địa chỉ "
+                variant="outlined"
+                fullWidth
+                {...register("location")}
+              />
+              <div className="data-form-error">{errors.location?.message}</div>
 
-                  <TextField
-                    id="outlined-basic"
-                    label="Số điện thoại "
-                    variant="outlined"
-                    fullWidth
-                    {...register("phone")}
-                  />
-                  <div className="data-form-error">{errors.phone?.message}</div>
+              <TextField
+                id="outlined-basic"
+                label="Số điện thoại "
+                variant="outlined"
+                fullWidth
+                {...register("phone")}
+              />
+              <div className="data-form-error">{errors.phone?.message}</div>
 
-                  <FormControl variant="outlined">
-                    <InputLabel id="demo-simple-select-outlined-label">
-                      Gói cước
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-outlined-label"
-                      id="demo-simple-select-outlined"
-                      value={packet}
-                      onChange={handleChange}
-                      label="Gói cước"
-                    >
-                      {
-                        listPackets.map(item =>{
-                          return (
-                            <MenuItem value={item.name} key={Math.random()}>{item.name} - {item.speed} - {formatter.format(item.price)}VNĐ</MenuItem>
-                          )
-                        })
-                      }
-                    </Select>
-                  </FormControl>
-                  {
-                    checkPacket && (
-                      // <p className="data-form-error">{textErrorPacket}</p>
-                  <div className="data-form-error">{textErrorPacket}</div>
+              <FormControl variant="outlined">
+                <InputLabel id="demo-simple-select-outlined-label">
+                  Gói cước
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  value={packet}
+                  onChange={handleChange}
+                  label="Gói cước"
+                >
+                  {listPackets.map((item) => {
+                    return (
+                      <MenuItem value={item.name} key={Math.random()}>
+                        {item.name} - {item.speed} -{" "}
+                        {formatter.format(item.price)}VNĐ
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+              </FormControl>
+              {checkPacket && (
+                // <p className="data-form-error">{textErrorPacket}</p>
+                <div className="data-form-error">{textErrorPacket}</div>
+              )}
 
-                    )
-                  }
-                 
-
-                  <div className="container-btn">
-                    <button className="btn-comfirm" type="submit">
-                      Đồng ý
-                    </button>{" "}
-                    <button onClick={handleClose} className="btn-cancel">
-                      Hủy bỏ
-                    </button>
-                  </div>
-                </form>
+              <div className="container-btn">
+                <button className="btn-comfirm" type="submit">
+                  Đồng ý
+                </button>{" "}
+                <button onClick={handleClose} className="btn-cancel">
+                  Hủy bỏ
+                </button>
+              </div>
+            </form>
           </Dialog>
         </>
       ) : (
@@ -282,7 +294,7 @@ function Company(props) {
                   <div className="item-content-family">
                     <div>
                       <h4 className="h4Company">
-                        {item.name} &nbsp; {item.speed}
+                        {item.name} <br /> {item.speed}
                       </h4>
                       <div className="item-content-info">
                         <span className="item-price">
@@ -307,11 +319,14 @@ function Company(props) {
                           <p>Miễn phí lắp đặt</p>
                           <hr />
                         </div>
-                        <div className="container container-ip">
+                        <div className="prepare">
                           <h6>
-                            IP tĩnh <span className="ip">{item.Ip}</span>
+                            Tặng thêm :{" "}
+                            <span className="bonus">
+                              {item.Ip} IP tĩnh + {item.IpL} IP động
+                            </span>
+                            <hr />
                           </h6>
-                          <hr />
                         </div>
                         <div className="btn-register">
                           <button onClick={handleClickOpen}>
@@ -335,7 +350,7 @@ function Company(props) {
             aria-describedby="alert-dialog-description"
           >
             <DialogTitle id="alert-dialog-title">
-              <div >
+              <div>
                 <img src={logo} alt="logo" height="100px" width="250px" />
               </div>
             </DialogTitle>
@@ -349,8 +364,10 @@ function Company(props) {
                     fullWidth
                     {...register("fullName")}
                   />
-                  <div className="data-form-error">{errors.phone?.message}</div>
-                  
+                  <div className="data-form-error">
+                    {errors.fullName?.message}
+                  </div>
+
                   <TextField
                     id="outlined-basic"
                     label="Địa chỉ "
@@ -358,7 +375,9 @@ function Company(props) {
                     fullWidth
                     {...register("location")}
                   />
-                  <div className="data-form-error">{errors.location?.message}</div>
+                  <div className="data-form-error">
+                    {errors.location?.message}
+                  </div>
                   <TextField
                     id="outlined-basic"
                     label="Số điện thoại "
@@ -379,21 +398,19 @@ function Company(props) {
                       onChange={handleChange}
                       label="Gói cước"
                     >
-                      {
-                        listPackets.map(item =>{
-                          return (
-                            <MenuItem value={item.name} key={Math.random()}>{item.name} - {item.speed} - {formatter.format(item.price)}VNĐ</MenuItem>
-                          )
-                        })
-                      }
+                      {listPackets.map((item) => {
+                        return (
+                          <MenuItem value={item.name} key={Math.random()}>
+                            {item.name} - {item.speed} -{" "}
+                            {formatter.format(item.price)}VNĐ
+                          </MenuItem>
+                        );
+                      })}
                     </Select>
                   </FormControl>
-                  {
-                    checkPacket && (
-                      <div className="data-form-error">{textErrorPacket}</div>
-                    )
-                  }
-                 
+                  {checkPacket && (
+                    <div className="data-form-error">{textErrorPacket}</div>
+                  )}
 
                   <div className="container-btn">
                     <button className="btn-comfirm" type="submit">

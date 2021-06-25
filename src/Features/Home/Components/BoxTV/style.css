@@ -1,3 +1,12 @@
 .h4-boxtv{
     background-color: #0000b3 !important;
 }
+.bonus {
+    color: #009900;
+}
+@media screen and (max-width: 992px){
+
+    .prepare h6{
+        font-size: 14px;
+    }
+}

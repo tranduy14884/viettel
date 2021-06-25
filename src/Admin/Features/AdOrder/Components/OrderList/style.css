@@ -1,12 +1,23 @@
-.status{
+.status-0, .status-1{
   
-    background-color: #e60000;
+   
     padding: 5px 20px;
     border-radius: 5px;
     border: none;
     color: white;
     top: 10px;
 }
+.status-0{
+    background-color: #e60000;
+}
+.status-1{
+    background-color: blue;
+}
 .status:focus{
     outline: none;
+}
+.order-pagination{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
