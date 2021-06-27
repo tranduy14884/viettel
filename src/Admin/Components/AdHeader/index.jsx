@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import "./style.css";
@@ -23,6 +23,11 @@ function AdHeader(props) {
     const action = logout();
     dispatch(action);
   }
+  const history = useHistory();
+  if(!isLogged){
+    history.push('/admin/dangnhap');
+  }
+ 
   return (
     <>
       <div className="header-img">
@@ -54,7 +59,7 @@ function AdHeader(props) {
         }}
         getContentAnchorEl={null}
       >
-        <MenuItem onClick={handleClose}>Thông tin admin</MenuItem>
+        <MenuItem onClick={handleClose}><Link to="/Admin/adminpage">Thông tin admin</Link> </MenuItem>
         <MenuItem onClick={handleLogout}>Đăng xuất</MenuItem>
       </Menu>
       </>

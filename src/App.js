@@ -16,6 +16,7 @@ import FixFamily from './Admin/Features/AdFamily/Components/FixFamily';
 import FixCompany from './Admin/Features/AdCompany/Components/FixCompany';
 import FixBoxtv from './Admin/Features/AdBoxTv/Components/FixBoxtv';
 import FixSmartHome from './Admin/Features/AdSmartHome/Components/FixSmartHome';
+import AdPage from './Admin/Features/AdPage';
 function App() {
   return (
     <div className="App">
@@ -25,6 +26,7 @@ function App() {
 
         {/* Admin */}
         <Route path="/Admin" component={Admin} exact />
+        <Route path="/Admin/adminpage" component={AdPage} exact />
         <Route path="/Admin/dangnhap" component={Auth} exact />
         <Route path="/admin/giadinh" component={AdminFamily} exact />
         <Route path="/admin/giadinh/them" component={AddFamily} exact />
