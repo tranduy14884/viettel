@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.css";
 import AdFooter from "../../Components/AdFooter";
 import AdHeader from "../../Components/AdHeader";
 import SideBar from "../../Components/SideBar";
+import { useState } from "react";
+import orderApi from "../../../api/orderApi";
 function AdHomePage(props) {
+  const [orderList, setOrderList] = useState([]);
+  useEffect(()=>{
+    const getData = async ()=>{
+        const dataApi = await orderApi.getAll();
+        setOrderList(dataApi);
+    }
+    getData()
+  },[]);
+  let countStatus1 = 0;
+  let countStatus0 = 0;
+  // const [orderHandled,setOrderHandled] = useState(0);
+  // const [orderNoHandl,setOrderNoHandl] = useState(0);
+  orderList.map(item=>{
+    if(item.status ==1)
+    {
+      countStatus1++;
+    }
+    else countStatus0++;
+  });
+  
   return (
     <div>
       <div className="row">
@@ -23,10 +45,10 @@ function AdHomePage(props) {
                   <div className="row no-gutters align-items-center">
                     <div className="col mr-2">
                       <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                        Earnings (Monthly)
+                        Tổng số hóa đơn
                       </div>
                       <div className="h5 mb-0 font-weight-bold text-gray-800">
-                        $40,000
+                       {orderList.length}
                       </div>
                     </div>
                     <div className="col-auto">
@@ -43,10 +65,10 @@ function AdHomePage(props) {
                   <div className="row no-gutters align-items-center">
                     <div className="col mr-2">
                       <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
-                        Earnings (Annual)
+                        Số hóa đơn đã xử lý
                       </div>
                       <div className="h5 mb-0 font-weight-bold text-gray-800">
-                        $215,000
+                       {countStatus1}
                       </div>
                     </div>
                     <div className="col-auto">
@@ -63,26 +85,10 @@ function AdHomePage(props) {
                   <div className="row no-gutters align-items-center">
                     <div className="col mr-2">
                       <div className="text-xs font-weight-bold text-info text-uppercase mb-1">
-                        Tasks
+                        Số hóa đơn chưa xử lý
                       </div>
-                      <div className="row no-gutters align-items-center">
-                        <div className="col-auto">
-                          <div className="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                            50%
-                          </div>
-                        </div>
-                        <div className="col">
-                          <div className="progress progress-sm mr-2">
-                            <div
-                              className="progress-bar bg-info"
-                              role="progressbar"
-                              style={{ width: "50%" }}
-                              aria-valuenow={50}
-                              aria-valuemin={0}
-                              aria-valuemax={100}
-                            />
-                          </div>
-                        </div>
+                      <div className="h5 mb-0 font-weight-bold text-gray-800">
+                        {countStatus0}
                       </div>
                     </div>
                     <div className="col-auto">

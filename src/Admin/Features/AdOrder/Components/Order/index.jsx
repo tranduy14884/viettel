@@ -76,6 +76,7 @@ function Order(props) {
         <StyledTableCell align="center">{order.phone}</StyledTableCell>
         <StyledTableCell align="center">{order.location}</StyledTableCell>
         <StyledTableCell align="center">{order.packet}</StyledTableCell>
+        <StyledTableCell align="center">{order.time}</StyledTableCell>
 
         {checkStatus ? (
           <StyledTableCell align="center">

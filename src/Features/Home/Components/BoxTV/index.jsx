@@ -94,7 +94,7 @@ function BoxTV(props) {
   let checkPacket = 1;
   const [textErrorPacket, setTextErrorPacket] = useState("");
   const { enqueueSnackbar } = useSnackbar();
-
+  const timeOrder = new Date();
   const onSubmit = async (data) => {
     const dataNews = {
       name: data.fullName,
@@ -102,10 +102,11 @@ function BoxTV(props) {
       location: data.location,
       packet: data.packet,
       status: 0,
+      time: `${timeOrder.getDate()}-${timeOrder.getMonth()}-${timeOrder.getFullYear()}`,
       packet: packet,
     };
 
-    // console.log(dataNews);
+    console.log(dataNews);
     if (dataNews.packet == "") {
       checkPacket = 2;
     } else {
@@ -225,7 +226,7 @@ function BoxTV(props) {
 
                 <TextField
                   id="outlined-basic"
-                  label="Số điện thoại "
+                  label="Số điện thoại : (+84) "
                   variant="outlined"
                   fullWidth
                   {...register("phone")}
@@ -357,7 +358,7 @@ function BoxTV(props) {
                     </div>
                     <TextField
                       id="outlined-basic"
-                      label="Số điện thoại "
+                      label="Số điện thoại : (+84) "
                       variant="outlined"
                       fullWidth
                       {...register("phone")}

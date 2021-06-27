@@ -53,8 +53,8 @@ function BoxtvList(props) {
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Name</StyledTableCell>
-              <StyledTableCell align="center">Price</StyledTableCell>
+              <StyledTableCell>Tên gói cước</StyledTableCell>
+              <StyledTableCell align="center">Giá</StyledTableCell>
               <StyledTableCell align="center">Tốc độ</StyledTableCell>
               <StyledTableCell align="center">KM 6 tháng</StyledTableCell>
               <StyledTableCell align="center">KM 12 tháng</StyledTableCell>

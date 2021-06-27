@@ -58,17 +58,18 @@ function OrderList(props) {
   useEffect(()=>{
     setCurrentList(orderList.slice(firstIndex,lastIndex));
   },[orderList.slice(firstIndex,lastIndex).length - activePage]);
-  console.log(currentList);
+  // console.log(currentList);
   return (
     <div className="content-list">
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Name</StyledTableCell>
-              <StyledTableCell align="center">Phone</StyledTableCell>
-              <StyledTableCell align="center">Location</StyledTableCell>
-              <StyledTableCell align="center">Packet</StyledTableCell>
+              <StyledTableCell>Họ tên khách hàng</StyledTableCell>
+              <StyledTableCell align="center">Số điện thoại (+84)</StyledTableCell>
+              <StyledTableCell align="center">Địa chỉ</StyledTableCell>
+              <StyledTableCell align="center">Gói cước</StyledTableCell>
+              <StyledTableCell align="center">Thời gian</StyledTableCell>
               <StyledTableCell align="center">Trạng thái</StyledTableCell>
               <StyledTableCell align="center">Thao tác</StyledTableCell>
             </TableRow>

@@ -4,7 +4,7 @@ import AdHomePage from './Features/AdHomePage';
 
 function Admin(props) {
     const match = useRouteMatch();
-    console.log(match);
+    // console.log(match);
     return (
         <div>
             <Switch>

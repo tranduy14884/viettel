@@ -10,7 +10,7 @@ Branch.propTypes = {
 function Branch(props) {
   const { branchs } = props;
   return (
-    <div className="container-branch">
+    <div className="container-branch" id="location">
       <h3>DANH SÁCH CHI NHÁNH VIETTEL Ở CẦN THƠ</h3>
 
       <div className="container">

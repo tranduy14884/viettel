@@ -18,16 +18,17 @@ import adminApi from "../../../api/adminApi";
 import { set } from "react-hook-form";
 function AdPage(props) {
   const match = useRouteMatch();
-  const [dataAdmin, setDataAdmin] = useState({});
+  const [dataAdmin, setDataAdmin] = useState([{}]);
   const infoAdmin = useSelector((state) => state.admin.current);
-
+  // console.log(infoAdmin);
   useEffect(() => {
-    const getData = () => {
-      setDataAdmin(infoAdmin);
+    const getData = async () => {
+      const dataApi = await adminApi.getAll();
+      setDataAdmin(dataApi);
     };
     getData();
   }, []);
-
+console.log(dataAdmin);
   const nameForm = useRef();
   const passwordOldForm = useRef();
   const passwordNewForm = useRef();
@@ -55,7 +56,7 @@ function AdPage(props) {
         const dataForm = {
           passwordOld: passwordOldForm.current.value,
           passwordNew: passwordNewForm.current.value,
-          id: dataAdmin._id,
+          id: infoAdmin._id,
         };
         await adminApi.update(dataForm);
         handleClose();
@@ -91,6 +92,40 @@ function AdPage(props) {
     setPasswordShown3(passwordShown3 ? false : true);
   };
 
+  //dialog phone
+  const [openPhone, setOpenPhone] = React.useState(false);
+
+  const handleClickOpenPhone = () => {
+    setOpenPhone(true);
+  };
+
+  const handleClosePhone = () => {
+    setOpenPhone(false);
+  };
+  //handling phone
+  const handleChangePhone = async () => {
+    if (phoneForm.current.value.length === 9) {
+      const dataPhone = {
+        phone: parseInt(phoneForm.current.value),
+        id : infoAdmin._id
+      };
+      // console.log(dataPhone);
+      await adminApi.update(dataPhone);
+      handleClosePhone();
+      enqueueSnackbar('Cập nhật số điện thoại thành công', {
+        variant : 'success'
+      });
+      history.push("/admin");
+     
+    }
+    else{
+      handleClosePhone();
+      enqueueSnackbar('Số điện thoại chưa hợp lệ, vui lòng thử lại sau', {
+        variant : 'error'
+      });
+    }
+   
+  };
   return (
     <div>
       <div className="row">
@@ -117,11 +152,11 @@ function AdPage(props) {
             <div className="form-fix form-admin">
               <p>Tên tài khoản</p>
               <span>
-                <input type="text" defaultValue={dataAdmin.username} disabled/>
+                <input type="text" defaultValue={dataAdmin[0].username} disabled />
               </span>
               <p>Mật khẩu</p>
               <span>
-                <input type="password" defaultValue={dataAdmin.password} />
+                <input type="password" defaultValue={infoAdmin.password} />
                 <button className="btn-change-admin" onClick={handleClickOpen}>
                   Thay đổi
                 </button>
@@ -185,15 +220,45 @@ function AdPage(props) {
                   </DialogActions>
                 </Dialog>
               </span>
-              <p>Số điện thoại</p>
+              <p>Số điện thoại (+84) : </p>
               <span>
                 <input
-                  type="text"
+                  type="number"
                   ref={phoneForm}
-                  defaultValue={dataAdmin.phone}
+                  defaultValue={dataAdmin[0].phone}
                 />
-                <button className="btn-change-admin">Thay đổi</button>
+                <button
+                  className="btn-change-admin"
+                  onClick={handleClickOpenPhone}
+                >
+                  Thay đổi
+                </button>
               </span>
+              <Dialog
+                open={openPhone}
+                onClose={handleClosePhone}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+              >
+                <DialogTitle id="alert-dialog-title">
+                  {"Bạn có xác nhận thay đổi số điện thoại"}
+                </DialogTitle>
+                {/* <DialogContent>
+                  <DialogContentText id="alert-dialog-description">
+                    Let Google help apps determine location. This means sending
+                    anonymous location data to Google, even when no apps are
+                    running.
+                  </DialogContentText>
+                </DialogContent> */}
+                <DialogActions>
+                  <Button onClick={handleClosePhone} color="primary">
+                    Hủy bỏ
+                  </Button>
+                  <Button onClick={handleChangePhone} color="primary">
+                    Đồng ý
+                  </Button>
+                </DialogActions>
+              </Dialog>
             </div>
 
             {/* <p>{data.fullYear}</p> */}

@@ -98,12 +98,14 @@ function SmartHome(props) {
   let checkPacket = 1;
   const [textErrorPacket, setTextErrorPacket] = useState('');
   const { enqueueSnackbar } = useSnackbar();
+  const timeOrder = new Date();
   const onSubmit = async (data) => {
     const dataNews = {
       name: data.fullName,
       phone: data.phone,
       location: data.location,
       packet: data.packet,
+      time: `${timeOrder.getDate()}-${timeOrder.getMonth()}-${timeOrder.getFullYear()}`,
       status: 0,
       packet: packet
     }
@@ -220,7 +222,7 @@ function SmartHome(props) {
 
               <TextField
                 id="outlined-basic"
-                label="Số điện thoại "
+                label="Số điện thoại : (+84) "
                 variant="outlined"
                 fullWidth
                 {...register("phone")}
@@ -347,7 +349,7 @@ function SmartHome(props) {
 
                   <TextField
                     id="outlined-basic"
-                    label="Số điện thoại "
+                    label="Số điện thoại : (+84) "
                     variant="outlined"
                     fullWidth
                     {...register("phone")}

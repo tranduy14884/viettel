@@ -1,5 +1,4 @@
-
-.brown{
+.brown {
     background-color: #f2f2f2;
     padding-top: 20px;
     margin-top: 20px;
@@ -15,199 +14,262 @@
     display: inline-block;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-  
-  
-  .wordart.slate {
-      transform: scale(1, 1.5);
-      -webkit-transform: scale(1, 1.5);
-      -moz-transform: scale(1, 1.5);
-      -o-transform: scale(1, 1.5);
-      -ms-transform: scale(1, 1.5);
-  }
-  
-  .wordart.slate .text {
-      font-family: Times, 'Times New Roman', serif;
-      font-weight: normal;
-      color: #2F5485;
-      text-shadow: 0.03em 0.03em 0px #B3B3B3;
-  }
-  .btn-support-phone{
-      margin-top: 10px;
-      padding: 10px 40px;
-      font-size: 25px;
-      background-color: #e65c00;
-      color: white;
-      font-weight: 700;
-      border: none;
-      border-radius: 5px;
-  }
-  .btn-support-phone:focus{
-      outline: none;
-  }
+}
 
-  .left-content{
-      border-right: 2px solid #e6e6e6;
-      margin-top: 20px;
-  }
-  .title{
-      font-weight: 600;
-      font-style: italic;
-  }
+.wordart.slate {
+    transform: scale(1, 1.5);
+    -webkit-transform: scale(1, 1.5);
+    -moz-transform: scale(1, 1.5);
+    -o-transform: scale(1, 1.5);
+    -ms-transform: scale(1, 1.5);
+}
 
+.wordart.slate .text {
+    font-family: Times, "Times New Roman", serif;
+    font-weight: normal;
+    color: #2f5485;
+    text-shadow: 0.03em 0.03em 0px #b3b3b3;
+}
+.btn-support-phone {
+    margin-top: 10px;
+    padding: 10px 40px;
+    font-size: 25px;
+    background-color: #e60000;
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+}
+.btn-support-phone:focus {
+    outline: none;
+}
 
+.left-content {
+    border-right: 2px solid #e6e6e6;
+    margin-top: 20px;
+}
+.title {
+    font-weight: 600;
+    font-style: italic;
+}
 
 /* schedule */
-.container-shedule{
+.container-shedule {
     margin-top: 60px;
     text-align: center;
 }
-.container-shedule h3{
+.container-shedule h3 {
     font-weight: 700;
 }
 
 /* support customer */
-.container-support{
+.container-support {
     padding-top: 30px;
 }
-.container-support h3{
+.container-support h3 {
     font-weight: 700;
 }
-.container-support h4{
+.container-support h4 {
     font-weight: 500;
     color: #000099;
     font-style: italic;
 }
-.support-text p:first-child{
+.support-text p:first-child {
     font-size: 24px;
     font-weight: 600;
 }
 
-
 /* custom title */
-.left-content h2{
-    background-color: #e65c00;
+.left-content h2 {
+    background-color: #e60000;
     padding: 10px;
-
 }
-.right-content h2{
+.right-content h2 {
     margin-top: 20px;
-    background-color: #e65c00;
+    background-color: #e60000;
     padding: 10px;
 }
-.container-main-content{
-    background-image: url('https://mondaycareer.com/wp-content/uploads/2020/11/Background-th%C3%A0nh-ph%E1%BB%91-%C4%91%E1%BA%B9p-hi%E1%BB%87n-%C4%91%E1%BA%A1i-l%C3%BAc-ho%C3%A0ng-h%C3%B4n-768x512.jpg') ;
+.container-main-content {
+    background-image: url("https://mondaycareer.com/wp-content/uploads/2020/11/Background-th%C3%A0nh-ph%E1%BB%91-%C4%91%E1%BA%B9p-hi%E1%BB%87n-%C4%91%E1%BA%A1i-l%C3%BAc-ho%C3%A0ng-h%C3%B4n-768x512.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
-.container-content{
+.container-content {
     background-color: white;
     padding: 0 20px;
 }
-.support-section{
+.support-section {
     margin-top: 60px;
 }
 
-  /* style chữ nhấp nháy */
-  @-webkit-keyframes my {
-    0% { color: #F8CD0A; } 
-    50% { color: #fff;  } 
-    100% { color: #F8CD0A;  } 
+/* style chữ nhấp nháy */
+@-webkit-keyframes my {
+    0% {
+        color: #c6ff1a;
+    }
+    25% {
+        color: #999999;
+    }
+    50% {
+        color: #33ff33;
+    }
+    100% {
+        color: #33ffff;
+    }
 }
-@-moz-keyframes my { 
-    0% { color: #F8CD0A;  } 
-    50% { color: #fff;  }
-    100% { color: #F8CD0A;  } 
+@-moz-keyframes my {
+    0% {
+        color: #c6ff1a;
+    }
+    25% {
+        color: #999999;
+    }
+    50% {
+        color: #33ff33;
+    }
+    100% {
+        color: #33ffff;
+    }
 }
-@-o-keyframes my { 
-    0% { color: #F8CD0A; } 
-    50% { color: #fff; } 
-    100% { color: #F8CD0A;  } 
+@-o-keyframes my {
+    0% {
+        color: #c6ff1a;
+    }
+    25% {
+        color: #999999;
+    }
+    50% {
+        color: #33ff33;
+    }
+    100% {
+        color: #33ffff;
+    }
 }
-@keyframes my { 
-    0% { color: #F8CD0A;  } 
-    25% { color: red;  }
-    50% {color: green;}
-    100% { color: blue;  } 
-} 
+@keyframes my {
+    0% {
+        color: #c6ff1a;
+    }
+    25% {
+        color: #999999;
+    }
+    50% {
+        color: #33ff33;
+    }
+    100% {
+        color: #33ffff;
+    }
+}
 .chu-nhap-nhay {
-       
-        font-size:24px;
-        font-weight:bold;
+    font-size: 24px;
+    font-weight: bold;
     -webkit-animation: my 700ms infinite;
-    -moz-animation: my 700ms infinite; 
-    -o-animation: my 700ms infinite; 
+    -moz-animation: my 700ms infinite;
+    -o-animation: my 700ms infinite;
     animation: my 700ms infinite;
 }
 /* custom contact */
 .contact .button {
- 
     background-color: red;
-   
+
     -webkit-border-radius: 10px;
     position: fixed;
     right: 10px;
     bottom: 10px;
     z-index: 2;
     border-radius: 10px;
-     
+
     border: none;
-     
-    color: #FFFFFF;
+
+    color: #ffffff;
     font-weight: 600;
     cursor: pointer;
-     
+
     display: inline-block;
-     
+
     font-family: Arial;
-     
+
     font-size: 20px;
-     
+
     padding: 5px 10px;
-     
+
     text-align: center;
-     
+
     text-decoration: none;
-   
-  }
-  @-webkit-keyframes glowing {
-    0% { background-color: #004A7F; -webkit-box-shadow: 0 0 3px #004A7F; }
-    50% { background-color: #0094FF; -webkit-box-shadow: 0 0 10px #0094FF; }
-    100% { background-color: #004A7F; -webkit-box-shadow: 0 0 3px #004A7F; }
-  }
-   
-  @-moz-keyframes glowing {
-    0% { background-color: #004A7F; -moz-box-shadow: 0 0 3px #004A7F; }
-    50% { background-color: #0094FF; -moz-box-shadow: 0 0 10px #0094FF; }
-    100% { background-color: #004A7F; -moz-box-shadow: 0 0 3px #004A7F; }
-  }
-   
-  @-o-keyframes glowing {
-    0% { background-color: #004A7F; box-shadow: 0 0 3px #004A7F; }
-    50% { background-color: #0094FF; box-shadow: 0 0 10px #0094FF; }
-    100% { background-color: #004A7F; box-shadow: 0 0 3px #004A7F; }
-  }
-   
-  @keyframes glowing {
-    0% { background-color: red; box-shadow: 0 0 3px #0000FF; }
-    50% { background-color: #990000; box-shadow: 0 0 10px #0000CC; }
-    100% { background-color: red; box-shadow: 0 0 3px #0000FF; }
-  }
-   
-  .contact .button {
+}
+@-webkit-keyframes glowing {
+    0% {
+        background-color: #004a7f;
+        -webkit-box-shadow: 0 0 3px #004a7f;
+    }
+    50% {
+        background-color: #0094ff;
+        -webkit-box-shadow: 0 0 10px #0094ff;
+    }
+    100% {
+        background-color: #004a7f;
+        -webkit-box-shadow: 0 0 3px #004a7f;
+    }
+}
+
+@-moz-keyframes glowing {
+    0% {
+        background-color: #004a7f;
+        -moz-box-shadow: 0 0 3px #004a7f;
+    }
+    50% {
+        background-color: #0094ff;
+        -moz-box-shadow: 0 0 10px #0094ff;
+    }
+    100% {
+        background-color: #004a7f;
+        -moz-box-shadow: 0 0 3px #004a7f;
+    }
+}
+
+@-o-keyframes glowing {
+    0% {
+        background-color: #004a7f;
+        box-shadow: 0 0 3px #004a7f;
+    }
+    50% {
+        background-color: #0094ff;
+        box-shadow: 0 0 10px #0094ff;
+    }
+    100% {
+        background-color: #004a7f;
+        box-shadow: 0 0 3px #004a7f;
+    }
+}
+
+@keyframes glowing {
+    0% {
+        background-color: red;
+        box-shadow: 0 0 3px #0000ff;
+    }
+    50% {
+        background-color: #990000;
+        box-shadow: 0 0 10px #0000cc;
+    }
+    100% {
+        background-color: red;
+        box-shadow: 0 0 3px #0000ff;
+    }
+}
+
+.contact .button {
     -webkit-animation: glowing 1500ms infinite;
     -moz-animation: glowing 1500ms infinite;
     -o-animation: glowing 1500ms infinite;
     animation: glowing 1500ms infinite;
-  }
-  /* phone */
-  .button-contact{
-      position: fixed;
-      bottom: 170px;
-      right: 120px;
-      z-index: 2;
-  }
-  #button-contact-vr .button-contact {
+}
+/* phone */
+.button-contact {
+    position: fixed;
+    bottom: 170px;
+    right: 120px;
+    z-index: 2;
+}
+#button-contact-vr .button-contact {
     position: relative;
 }
 #button-contact-vr .button-contact .phone-vr {
@@ -220,7 +282,7 @@
     z-index: 11;
     -webkit-backface-visibility: hidden;
     -webkit-transform: translateZ(0);
-    transition: visibility .5s;
+    transition: visibility 0.5s;
     left: 0;
     bottom: 0;
     display: block;
@@ -229,7 +291,10 @@
     opacity: 0.7;
     box-shadow: 0 0 0 0 #dd3333;
 }
-.phone-bar a, #phone-vr .phone-vr-circle-fill, #phone-vr .phone-vr-img-circle, #phone-vr .phone-bar a {
+.phone-bar a,
+#phone-vr .phone-vr-circle-fill,
+#phone-vr .phone-vr-img-circle,
+#phone-vr .phone-bar a {
     background-color: #dd3333;
 }
 
@@ -245,14 +310,17 @@
     border: 2px solid transparent;
     -webkit-animation: phone-vr-circle-fill 2.3s infinite ease-in-out;
     animation: phone-vr-circle-fill 2.3s infinite ease-in-out;
-    transition: all .5s;
+    transition: all 0.5s;
     -webkit-transform-origin: 50% 50%;
     -ms-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
     -webkit-animuiion: zoom 1.3s infinite;
     animation: zoom 1.3s infinite;
 }
-.phone-bar a, #phone-vr .phone-vr-circle-fill, #phone-vr .phone-vr-img-circle, #phone-vr .phone-bar a {
+.phone-bar a,
+#phone-vr .phone-vr-circle-fill,
+#phone-vr .phone-vr-img-circle,
+#phone-vr .phone-bar a {
     background-color: #dd3333;
 }
 .phone-vr-img-circle {
@@ -269,67 +337,47 @@
     -webkit-animation: phonering-alo-circle-img-anim 1s infinite ease-in-out;
     animation: phone-vr-circle-fill 1s infinite ease-in-out;
 }
-.phone-vr-img-circle img{
+.phone-vr-img-circle img {
     margin-top: 5px;
 }
-@keyframes zoom{
+@keyframes zoom {
     0% {
-        transform: scale(.9);
+        transform: scale(0.9);
     }
     70% {
         transform: scale(1);
         box-shadow: 0 0 0 15px transparent;
     }
     100% {
-        transform: scale(.9);
+        transform: scale(0.9);
         box-shadow: 0 0 0 0 transparent;
     }
 }
-@keyframes phone-vr-circle-fill{
+@keyframes phone-vr-circle-fill {
     0% {
         -webkit-transform: rotate(0) scale(1) skew(1deg);
     }
     10% {
-        -webkit-transform: rotate(
-    -25deg
-    ) scale(1) skew(
-    1deg
-    );
+        -webkit-transform: rotate(-25deg) scale(1) skew(1deg);
     }
     20% {
-        -webkit-transform: rotate(
-    25deg
-    ) scale(1) skew(
-    1deg
-    );
+        -webkit-transform: rotate(25deg) scale(1) skew(1deg);
     }
     30% {
-        -webkit-transform: rotate(
-    -25deg
-    ) scale(1) skew(
-    1deg
-    );
+        -webkit-transform: rotate(-25deg) scale(1) skew(1deg);
     }
     40% {
-        -webkit-transform: rotate(
-    25deg
-    ) scale(1) skew(
-    1deg
-    );
+        -webkit-transform: rotate(25deg) scale(1) skew(1deg);
     }
     50% {
-        -webkit-transform: rotate(0) scale(1) skew(
-    1deg
-    );
+        -webkit-transform: rotate(0) scale(1) skew(1deg);
     }
     100% {
-        -webkit-transform: rotate(0) scale(1) skew(
-    1deg
-    );
+        -webkit-transform: rotate(0) scale(1) skew(1deg);
     }
-  }
-@media screen and (max-width: 992px){
-    .title{
+}
+@media screen and (max-width: 992px) {
+    .title {
         font-size: 18px;
     }
     .chu-nhap-nhay {
@@ -338,21 +386,18 @@
     .wordart.slate .text {
         font-size: 34px;
     }
-    .btn-support-phone{
+    .btn-support-phone {
         margin-top: 20px;
     }
-    .container-shedule h3, .container-branch h3 ,.container-support h3{
+    .container-shedule h3,
+    .container-branch h3,
+    .container-support h3 {
         font-size: 24px;
     }
-    .container-support h4{
+    .container-support h4 {
         font-size: 20px;
     }
-    .support-text p:first-child{
+    .support-text p:first-child {
         font-size: 20px;
-     
     }
-    .button-contact{
-
-    }
-    
 }
