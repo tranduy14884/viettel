@@ -48,7 +48,7 @@ function OrderList(props) {
   const { orderList } = props;
   const classes = useStyles();
   const [activePage, setActivePage] = useState(1);
-  const [ordersPerpage, setOrdersPerpage] = useState(7);
+  const [ordersPerpage, setOrdersPerpage] = useState(6);
   const lastIndex = activePage*ordersPerpage;
   const firstIndex = lastIndex - ordersPerpage;
   const [currentList, setCurrentList] = useState([]);

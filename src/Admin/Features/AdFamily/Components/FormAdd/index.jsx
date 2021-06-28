@@ -12,8 +12,8 @@ const schema = yup.object().shape({
     nameInput: yup.string().required("Vui lòng nhập vào trường này"),
     speedInput: yup.string().required('Vui lòng nhập vào trường này'),
     priceInput: yup.number().typeError("Vui lòng nhập số").positive().integer().required('Vui lòng nhập vào trường này'),
-    km6: yup.number().typeError("Vui lòng nhập số").positive().integer().required('Vui lòng nhập vào trường này'),
-    km12: yup.number().typeError("Vui lòng nhập số").positive().integer().required('Vui lòng nhập vào trường này'),
+    km6: yup.number().typeError("Vui lòng nhập số").integer().required('Vui lòng nhập vào trường này'),
+    km12: yup.number().typeError("Vui lòng nhập số").integer().required('Vui lòng nhập vào trường này'),
   });
   
 function FormAdd(props) {

@@ -32,7 +32,7 @@ function AdHeader(props) {
     <>
       <div className="header-img">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Viettel_logo_2021.svg/1024px-Viettel_logo_2021.svg.png"
+          src="https://iweb.tatthanh.com.vn/pic/3/blog/images/image(152).png"
           alt="#"
         />
       </div>

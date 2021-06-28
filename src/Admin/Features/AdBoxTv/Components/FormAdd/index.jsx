@@ -34,8 +34,8 @@ function FormAdd(props) {
             price : parseInt(priceForm.current.value),
             halfYear : parseInt(km6Form.current.value),
             fullYear : parseInt(km12Form.current.value),
-            modem : parseInt(kmBoxtvForm.current.value),
-            wifi : parseInt(kmModemForm.current.value),
+            boxtv : parseInt(kmBoxtvForm.current.value),
+            modem : parseInt(kmModemForm.current.value),
           }
           console.log(dataForm);
           const sendData = await comboApi.add(dataForm);

@@ -6,7 +6,7 @@
 .wrapper-sidebar{
     min-height: 100%;
     background-color:   #e60000;
-    padding-bottom: 280px;
+    padding-bottom: 350px;
     
 }
 .wrapper-sidebar li{
@@ -31,3 +31,10 @@
 .img-navbar{
     width: 80%;
 }
+
+@media only screen and (max-width: 767px) {
+    .wrapper-sidebar{
+        padding-bottom: 0px;
+    }
+}
+  
