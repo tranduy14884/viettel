@@ -11,7 +11,6 @@
 .line-img{
     position: absolute;
     margin-top: -28px;
-    z-index: 2;
 }
 .line-img img{
     width :350px ;
