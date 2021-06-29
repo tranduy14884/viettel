@@ -39,7 +39,7 @@ const schema = yup.object().shape({
 });
 function SmartHome(props) {
   const { smartHomes, listPackets } = props;
-  console.log(smartHomes);
+  // console.log(smartHomes);
   //custom dialog
   const [open, setOpen] = React.useState(false);
 
@@ -259,9 +259,9 @@ function SmartHome(props) {
                 <button className="btn-comfirm" type="submit">
                   Đồng ý
                 </button>{" "}
-                <button onClick={handleClose} className="btn-cancel">
+                <div onClick={handleClose} className="btn-cancel">
                   Hủy bỏ
-                </button>
+                </div>
               </div>
             </form>
           </Dialog>
@@ -387,9 +387,9 @@ function SmartHome(props) {
                     <button className="btn-comfirm" type="submit">
                       Đồng ý
                     </button>{" "}
-                    <button onClick={handleClose} className="btn-cancel">
+                    <div onClick={handleClose} className="btn-cancel">
                       Hủy bỏ
-                    </button>
+                    </div>
                   </div>
                 </form>
               </DialogContentText>

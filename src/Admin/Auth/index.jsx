@@ -25,7 +25,7 @@ function AdminDangNhap(props) {
         username: username,
         password: password,
       };
-      console.log(value);
+      // console.log(value);
       const action = login(value);
       const resultAction = await dispatch(action);
       unwrapResult(resultAction);

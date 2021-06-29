@@ -22,7 +22,7 @@ import { useSnackbar } from "notistack";
 import orderApi from "../../../../api/orderApi";
 Family.propTypes = {
   families: PropTypes.array,
-  listPackets : PropTypes.array,
+  listPackets: PropTypes.array,
 };
 const schema = yup.object().shape({
   fullName: yup.string().required("Thông tin chưa hợp lệ"),
@@ -33,13 +33,13 @@ const schema = yup.object().shape({
     .integer()
     .typeError("Vui lòng nhập số !")
     .required("Thông tin chưa hợp lệ")
-    .max(999999999,'Số điện thoại chưa hợp lệ !')
-    .min(111111111,'Số điện thoại chưa hợp lệ !')
-    // .max(10,'Số điện thoại phải đủ 10 số'),
+    .max(999999999, "Số điện thoại chưa hợp lệ !")
+    .min(111111111, "Số điện thoại chưa hợp lệ !"),
+  // .max(10,'Số điện thoại phải đủ 10 số'),
 });
 function Family(props) {
-  const { families, listPackets} = props;
-// console.log(listPackets);
+  const { families, listPackets } = props;
+  // console.log(listPackets);
   //custom dialog
   const [open, setOpen] = React.useState(false);
 
@@ -60,7 +60,7 @@ function Family(props) {
     autoplaySpeed: 3000,
     slidesToShow: 3,
     slidesToScroll: 1,
-    pauseOnFocus : true,
+    pauseOnFocus: true,
     slickPrev: ['<i className="fas fa-chevron-circle-left"></i>'],
     slickNext: ['<i className="fas fa-chevron-circle-right"></i>'],
   };
@@ -81,7 +81,7 @@ function Family(props) {
     autoplaySpeed: 2000,
     slidesToShow: 2,
     slidesToScroll: 1,
-    pauseOnFocus:true,
+    pauseOnFocus: true,
     slickPrev: ['<i className="fas fa-chevron-circle-left"></i>'],
     slickNext: ['<i className="fas fa-chevron-circle-right"></i>'],
   };
@@ -96,20 +96,20 @@ function Family(props) {
     resolver: yupResolver(schema),
   });
   let checkPacket = 1;
-  const [textErrorPacket, setTextErrorPacket] = useState('');
-  const {enqueueSnackbar} = useSnackbar();
+  const [textErrorPacket, setTextErrorPacket] = useState("");
+  const { enqueueSnackbar } = useSnackbar();
   const timeOrder = new Date();
   const onSubmit = async (data) => {
     const dataNews = {
-      name : data.fullName,
-      phone : data.phone,
-      location : data.location,
-      packet : data.packet,
+      name: data.fullName,
+      phone: data.phone,
+      location: data.location,
+      packet: data.packet,
       time: `${timeOrder.getDate()}-${timeOrder.getMonth()}-${timeOrder.getFullYear()}`,
-      status : 0,
-      packet : packet
-    }
-    
+      status: 0,
+      packet: packet,
+    };
+
     // console.log(dataNews);
     if (dataNews.packet == "") {
       checkPacket = 2;
@@ -118,28 +118,29 @@ function Family(props) {
     }
     if (checkPacket == 2) {
       setTextErrorPacket("Vui lòng chọn gói cước !");
+    } else if (checkPacket == 1) {
+      setTextErrorPacket("");
     }
-    else if(checkPacket==1){
-      setTextErrorPacket('');
-    }
-    if(typeof dataNews.name !== 'undefined' && typeof dataNews.location !== 'undefined' 
-    && typeof dataNews.phone !=='undefined' && checkPacket == 1)
-    {
+    if (
+      typeof dataNews.name !== "undefined" &&
+      typeof dataNews.location !== "undefined" &&
+      typeof dataNews.phone !== "undefined" &&
+      checkPacket == 1
+    ) {
       // console.log(dataNews);
       await orderApi.add(dataNews);
       reset();
       handleClose();
-      enqueueSnackbar('Đăng ký thành công', {variant : 'success'});
+      enqueueSnackbar("Đăng ký thành công", { variant: "success" });
     }
   };
 
-  
-  const [packet, setPacket] = useState('');
+  const [packet, setPacket] = useState("");
 
   const handleChange = (event) => {
     setPacket(event.target.value);
   };
-  
+
   return (
     <div className="owl-carousel owl-theme">
       {checkWitdh ? (
@@ -189,76 +190,73 @@ function Family(props) {
             aria-describedby="alert-dialog-description"
           >
             <DialogTitle id="alert-dialog-title">
-            <div className="img-dialog-title">
+              <div className="img-dialog-title">
                 <img src={logo} alt="logo" />
               </div>
             </DialogTitle>
             <form onSubmit={handleSubmit(onSubmit)}>
-                  <TextField
-                    id="outlined-basic"
-                    label="Họ tên khách hàng "
-                    variant="outlined"
-                    fullWidth
-                    {...register("fullName")}
-                  />
-                  <div className="data-form-error">{errors.fullName?.message}</div>
+              <TextField
+                id="outlined-basic"
+                label="Họ tên khách hàng "
+                variant="outlined"
+                fullWidth
+                {...register("fullName")}
+              />
+              <div className="data-form-error">{errors.fullName?.message}</div>
 
-                  <TextField
-                    id="outlined-basic"
-                    label="Địa chỉ "
-                    variant="outlined"
-                    fullWidth
-                    {...register("location")}
-                  />
-                  <div className="data-form-error">{errors.location?.message}</div>
+              <TextField
+                id="outlined-basic"
+                label="Địa chỉ "
+                variant="outlined"
+                fullWidth
+                {...register("location")}
+              />
+              <div className="data-form-error">{errors.location?.message}</div>
 
-                  <TextField
-                    id="outlined-basic"
-                    label="Số điện thoại : (+84) "
-                    variant="outlined"
-                    fullWidth
-                    {...register("phone")}
-                  />
-                  <div className="data-form-error">{errors.phone?.message} </div>
+              <TextField
+                id="outlined-basic"
+                label="Số điện thoại : (+84) "
+                variant="outlined"
+                fullWidth
+                {...register("phone")}
+              />
+              <div className="data-form-error">{errors.phone?.message} </div>
 
-                  <FormControl variant="outlined">
-                    <InputLabel id="demo-simple-select-outlined-label">
-                      Gói cước
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-outlined-label"
-                      id="demo-simple-select-outlined"
-                      value={packet}
-                      onChange={handleChange}
-                      label="Gói cước"
-                    >
-                      {
-                        listPackets.map(item =>{
-                          return (
-                            <MenuItem value={item.name} key={item.name}>{item.name} - {item.speed} - {formatter.format(item.price)}VNĐ</MenuItem>
-                          )
-                        })
-                      }
-                    </Select>
-                  </FormControl>
-                  {
-                    checkPacket && (
-                      // <p className="data-form-error">{textErrorPacket}</p>
-                      <div className="data-form-error">{textErrorPacket}</div>
+              <FormControl variant="outlined">
+                <InputLabel id="demo-simple-select-outlined-label">
+                  Gói cước
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  value={packet}
+                  onChange={handleChange}
+                  label="Gói cước"
+                >
+                  {listPackets.map((item) => {
+                    return (
+                      <MenuItem value={item.name} key={item.name}>
+                        {item.name} - {item.speed} -{" "}
+                        {formatter.format(item.price)}VNĐ
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+              </FormControl>
+              {checkPacket && (
+                // <p className="data-form-error">{textErrorPacket}</p>
+                <div className="data-form-error">{textErrorPacket}</div>
+              )}
 
-                    )
-                  }
-                 
-
-                  <div className="container-btn">
-                    <button className="btn-comfirm" type="submit">
-                      Đồng ý
-                    </button>{" "}
-                    <button onClick={handleClose} className="btn-cancel">
-                      Hủy bỏ
-                    </button>
-                  </div>
-                </form>
+              <div className="container-btn">
+                <button className="btn-comfirm" type="submit">
+                  Đồng ý
+                </button>{" "}
+                <div onClick={handleClose} className="btn-cancel">
+                  Hủy bỏ
+                </div>
+              </div>
+            </form>
           </Dialog>
         </>
       ) : (
@@ -308,13 +306,13 @@ function Family(props) {
             aria-describedby="alert-dialog-description"
           >
             <DialogTitle id="alert-dialog-title">
-              <div >
+              <div>
                 <img src={logo} alt="logo" height="100px" width="250px" />
               </div>
             </DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
-                <form onSubmit={handleSubmit(onSubmit)} >
+                <form onSubmit={handleSubmit(onSubmit)}>
                   <TextField
                     id="outlined-basic"
                     label="Họ tên khách hàng "
@@ -322,8 +320,9 @@ function Family(props) {
                     fullWidth
                     {...register("fullName")}
                   />
-                  <div className="data-form-error">{errors.fullName?.message}</div>
-
+                  <div className="data-form-error">
+                    {errors.fullName?.message}
+                  </div>
                   <TextField
                     id="outlined-basic"
                     label="Địa chỉ "
@@ -331,8 +330,9 @@ function Family(props) {
                     fullWidth
                     {...register("location")}
                   />
-                  <div className="data-form-error">{errors.location?.message}</div>
-
+                  <div className="data-form-error">
+                    {errors.location?.message}
+                  </div>
                   <TextField
                     id="outlined-basic"
                     label="Số điện thoại : (+84) "
@@ -341,7 +341,6 @@ function Family(props) {
                     {...register("phone")}
                   />
                   <div className="data-form-error">{errors.phone?.message}</div>
-
                   <FormControl variant="outlined">
                     <InputLabel id="demo-simple-select-outlined-label">
                       Gói cước
@@ -353,31 +352,28 @@ function Family(props) {
                       onChange={handleChange}
                       label="Gói cước"
                     >
-                      {
-                        listPackets.map(item =>{
-                          return (
-                            <MenuItem value={item.name} key={item.name}>{item.name} - {item.speed} - {formatter.format(item.price)}VNĐ</MenuItem>
-                          )
-                        })
-                      }
+                      {listPackets.map((item) => {
+                        return (
+                          <MenuItem value={item.name} key={item.name}>
+                            {item.name} - {item.speed} -{" "}
+                            {formatter.format(item.price)}VNĐ
+                          </MenuItem>
+                        );
+                      })}
                     </Select>
                   </FormControl>
-                  {
-                    checkPacket && (
-                      // <p className="data-form-error">{textErrorPacket}</p>
-                  <div className="data-form-error">{textErrorPacket}</div>
-
-                    )
-                  }
-                 
+                  {checkPacket && (
+                    // <p className="data-form-error">{textErrorPacket}</p>
+                    <div className="data-form-error">{textErrorPacket}</div>
+                  )}
 
                   <div className="container-btn">
-                    <button className="btn-comfirm" type="submit">
+                    <button className="btn-comfirm" onClick={handleSubmit}>
                       Đồng ý
                     </button>{" "}
-                    <button onClick={handleClose} className="btn-cancel">
+                    <div onClick={handleClose} className="btn-cancel">
                       Hủy bỏ
-                    </button>
+                    </div>
                   </div>
                 </form>
               </DialogContentText>

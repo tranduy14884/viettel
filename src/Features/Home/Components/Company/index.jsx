@@ -279,9 +279,9 @@ function Company(props) {
                 <button className="btn-comfirm" type="submit">
                   Đồng ý
                 </button>{" "}
-                <button onClick={handleClose} className="btn-cancel">
+                <div onClick={handleClose} className="btn-cancel">
                   Hủy bỏ
-                </button>
+                </div>
               </div>
             </form>
           </Dialog>
@@ -417,9 +417,9 @@ function Company(props) {
                     <button className="btn-comfirm" type="submit">
                       Đồng ý
                     </button>{" "}
-                    <button onClick={handleClose} className="btn-cancel">
+                    <div onClick={handleClose} className="btn-cancel">
                       Hủy bỏ
-                    </button>
+                    </div>
                   </div>
                 </form>
               </DialogContentText>

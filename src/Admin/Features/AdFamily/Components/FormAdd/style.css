@@ -1,6 +1,9 @@
 .form-add-data{
-    padding: 0 300px;
+    padding-left: 300px;
+    padding-right: 300px;
+    padding-bottom: 50px;
     margin-top: 50px;
+    
 }
 .form-add-data form input{
     width: 100%;

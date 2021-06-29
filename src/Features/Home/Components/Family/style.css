@@ -155,6 +155,8 @@
 }
 .btn-cancel{
   margin-right: 10px;
+  background-color: #cccccc;
+  cursor: pointer;
 }
 .btn-comfirm{
  background-color: #1a1aff;

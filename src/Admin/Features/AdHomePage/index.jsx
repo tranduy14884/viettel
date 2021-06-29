@@ -6,6 +6,7 @@ import SideBar from "../../Components/SideBar";
 import { useState } from "react";
 import orderApi from "../../../api/orderApi";
 function AdHomePage(props) {
+  //handle digital
   const [orderList, setOrderList] = useState([]);
   useEffect(()=>{
     const getData = async ()=>{

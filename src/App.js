@@ -17,6 +17,7 @@ import FixCompany from './Admin/Features/AdCompany/Components/FixCompany';
 import FixBoxtv from './Admin/Features/AdBoxTv/Components/FixBoxtv';
 import FixSmartHome from './Admin/Features/AdSmartHome/Components/FixSmartHome';
 import AdPage from './Admin/Features/AdPage';
+import NotFound from './Features/Home/Components/NotFound';
 function App() {
   return (
     <div className="App">
@@ -41,6 +42,7 @@ function App() {
         <Route path="/Admin/thongminh" component={AdSmartHome} exact />
         <Route path="/Admin/thongminh/them" component={AddSmartHome} exact />
         <Route path="/Admin/thongminh/sua/:idSmartHome" component={FixSmartHome} exact />
+        <Route component={NotFound}/>
       </Switch>
     </div>
   );
