@@ -21,6 +21,7 @@ import familyApi from "../../../../api/familyApi";
 import companyApi from "../../../../api/companyApi";
 import comboApi from "../../../../api/comboApi";
 import superApi from "../../../../api/superApi";
+import adminApi from "../../../../api/adminApi";
 MainContent.propTypes = {};
 
 function MainContent(props) {
@@ -268,10 +269,14 @@ function MainContent(props) {
   const [boxs, setBoxs] = useState([]);
   const [companies, setCompanies] = useState([]);
   const [smartHome, setSmartHome] = useState([]);
+  const [adminPhone, setAdminPhone] = useState(0);
   useEffect(() => {
     const getData = async () => {
       const datafamilyApi = await familyApi.getAll();
       setFamylies(datafamilyApi);
+
+      const dataAdmin = await adminApi.getAll();
+      setAdminPhone(dataAdmin[0].phone);
 
       const dataComboApi = await comboApi.getAll();
       setBoxs(dataComboApi);
@@ -281,24 +286,35 @@ function MainContent(props) {
 
       const dataSmartHome = await superApi.getAll();
       setSmartHome(dataSmartHome);
+      
+ 
     };
     getData();
   }, []);
+  // console.log(adminPhone);
   const listPackets = [...families, ...boxs, ...companies, ...smartHome];
-  // console.log(listPackets);
-
+  //format number phone
+  const phoneFormat = (input) => {
+    if(!input || isNaN(input)) return `input must be a number was sent ${input}`
+    if(typeof(input) !== 'string') input = input.toString()
+    if(input.length === 9){
+      return input.replace(/(\d{2})(\d{3})(\d{4})/, "$1.$2.$3");
+    } 
+  }
+  
+  // console.log(phoneFormat(123456789));
   return (
     <>
       <div>
         <div className="contact">
-          <a class="button">Tổng đài tư vấn khách hàng : 035.5533.377</a>
+          <a class="button">Tổng đài tư vấn khách hàng : 0{phoneFormat(adminPhone)}</a>
         </div>
         {/* <!-- Phone --> */}
         <div id="phone-vr" class="button-contact">
           <div class="phone-vr">
             <div class="phone-vr-circle-fill"></div>
             <div class="phone-vr-img-circle">
-              <a href="tel:0355533377">
+              <a href={`tel:0${adminPhone}`}>
                 <img src="https://seotct.com/wp-content/plugins/button-contact-vr/img/phone.png" />
               </a>
             </div>
@@ -360,7 +376,7 @@ function MainContent(props) {
             <span class="text">TỔNG ĐÀI HỖ TRỢ VIETTEL CẦN THƠ </span>
           </div>
         </div>
-        <button className="btn-support-phone">035.5533.377</button>
+        <button className="btn-support-phone">0{phoneFormat(adminPhone)}</button>
         {/*END  supporr-section */}
         {/* START-schedule */}
         <div className="container container-shedule">
