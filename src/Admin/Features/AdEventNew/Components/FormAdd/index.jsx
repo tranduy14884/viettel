@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import * as yup from "yup";
-import serviceApi from "../../../../../api/serviceApi";
+import eventNewsApi from "../../../../../api/eventNewsApi";
 const schema = yup.object().shape({
   nameInput: yup.string().required("Vui lòng nhập vào trường này"),
   thumnailInput: yup.string().required("Vui lòng nhập vào trường này"),
@@ -30,13 +30,13 @@ function FormAdd(props) {
 
     try {
       if (image === "") {
-        enqueueSnackbar("Vui lòng thêm hình ảnh cho dịch vụ !!!", {
+        enqueueSnackbar("Vui lòng thêm hình ảnh cho tin tức !!!", {
           variant: "error",
         });
       } else {
         // console.log(dataForm);
-        const sendData = await serviceApi.add(dataForm);
-        history.push("/Admin/dichvu/");
+        const sendData = await eventNewsApi.add(dataForm);
+        history.push("/Admin/tintuc/");
         enqueueSnackbar("Thêm thành công", { variant: "success" });
       }
     } catch (error) {
@@ -59,7 +59,7 @@ function FormAdd(props) {
   return (
     <div className="container form-add-data">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <p>Tên dịch vụ</p>
+        <p>Tên tin tức</p>
         <input {...register("nameInput")} ref={nameForm} />
         <p className="data-form-error">{errors.nameInput?.message}</p>
         <p>Hình ảnh</p>
@@ -72,9 +72,7 @@ function FormAdd(props) {
           accept="image/*"
           className="img-update"
         />
-
         <input type="file" onChange={handleChangeImg} />
-
         <input type="submit" onClick={onSubmit} />
       </form>
     </div>

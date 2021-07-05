@@ -21,6 +21,10 @@ import NotFound from './Features/Home/Components/NotFound';
 import AdminService from './Admin/Features/AdService';
 import AddService from './Admin/Features/AdService/Components/AddService';
 import FixService from './Admin/Features/AdService/Components/FixService';
+
+import AddEventNews from './Admin/Features/AdEventNew/Components/AddEventNews';
+import FixEventNews from './Admin/Features/AdEventNew/Components/FixEventNews';
+import AdminEventNews from './Admin/Features/AdEventNew';
 function App() {
   return (
     <div className="App">
@@ -48,6 +52,9 @@ function App() {
         <Route path="/Admin/dichvu" component={AdminService} exact />
         <Route path="/Admin/dichvu/them" component={AddService} exact />
         <Route path="/Admin/dichvu/sua/:idService" component={FixService} exact />
+        <Route path="/Admin/tintuc" component={AdminEventNews} exact />
+        <Route path="/Admin/tintuc/them" component={AddEventNews} exact />
+        <Route path="/Admin/tintuc/sua/:idEventNews" component={FixEventNews} exact />
         <Route component={NotFound}/>
       </Switch>
     </div>

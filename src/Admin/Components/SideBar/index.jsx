@@ -12,7 +12,8 @@ function SideBar(props) {
                 <li><Link to="/Admin/doanhnghiep"><span><i class="far fa-building"></i>Gói doanh nghiệp</span></Link></li>
                 <li><Link to="/Admin/thongminh"><span><i class="fas fa-sun"></i>Gói thông minh</span></Link></li>
                 <li><Link to="/Admin/donhang"><span><i class="fas fa-shopping-cart"></i>Đơn hàng</span></Link></li>
-                <li><Link to="/Admin/dichvu"><span><i class="fas fa-shopping-cart"></i>Dịch vụ</span></Link></li>
+                <li><Link to="/Admin/dichvu"><span><i class="fab fa-servicestack"></i>Dịch vụ</span></Link></li>
+                <li><Link to="/Admin/tintuc"><span><i class="fas fa-calendar-check"></i>Tin tức</span></Link></li>
             </ul>
        
     );

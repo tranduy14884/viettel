@@ -1,18 +1,18 @@
 import { useSnackbar } from "notistack";
-import React, { createRef, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
-import serviceApi from "../../../../../api/serviceApi";
+import eventNewsApi from "../../../../../api/eventNewsApi";
 import "./style.css";
 
 function FormFix(props) {
   const [data, setData] = useState([{}]);
   const match = useRouteMatch();
   const {
-    params: { idService },
+    params: { idEventNews },
   } = match;
   useEffect(() => {
     const getData = async () => {
-      const dataApi = await serviceApi.get(idService);
+      const dataApi = await eventNewsApi.get(idEventNews);
       setData(dataApi);
     };
     getData();
@@ -38,13 +38,13 @@ function FormFix(props) {
     const dataForm = {
       title: nameForm.current.value,
       thumnailUrl: thumnailUrlForm.current.src,
-      id: idService,
+      id: idEventNews,
     };
     try { 
       // console.log(dataForm);
-      await serviceApi.update(dataForm);
+      await eventNewsApi.update(dataForm);
       enqueueSnackbar("Sửa thành công", { variant: "success" });
-      history.push("/Admin/dichvu/");
+      history.push("/Admin/tintuc/");
       
     } catch (error) {
       enqueueSnackbar("Sửa thất bại, do kích thước ảnh quá lớn", { variant: "error" });
