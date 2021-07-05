@@ -78,13 +78,13 @@ function FormFix(props) {
         <input
           type="number"
           ref={boxtvForm}
-          defaultValue={dataFamily[0].fullYear}
+          defaultValue={dataFamily[0].boxtv}
         />
          <p>Khuyến mãi Modem</p>
         <input
           type="number"
           ref={modemForm}
-          defaultValue={dataFamily[0].fullYear}
+          defaultValue={dataFamily[0].modem}
         />
 
         <input type="submit" onClick={onSubmitForm} />

@@ -7,7 +7,7 @@
 }
 .news-img {
     overflow: hidden;
-    
+    border-radius: 15px;
 }
 .news-img img{
     border-top-left-radius: 15px;

@@ -3,16 +3,16 @@ import "./style.css";
 import SideBar from "../../Components/SideBar";
 import AdHeader from "../../Components/AdHeader";
 import AdFooter from "../../Components/AdFooter";
-import BoxtvList from "../AdBoxTv/Components/BoxtvList";
+import ServiceList from "../AdService/Components/ServiceList";
 import {Link} from "react-router-dom";
-import comboApi from "../../../api/comboApi";
-function AdminBoxtv(props) {
+import serviceApi from "../../../api/serviceApi";
+function AdminService(props) {
    
-    const [boxs, setBoxs] = useState([]);
+    const [services, setServices] = useState([]);
     useEffect(()=>{
       const getData = async ()=>{
-          const dataApi = await comboApi.getAll();
-          setBoxs(dataApi);
+          const dataApi = await serviceApi.getAll();
+          setServices(dataApi);
       }
       getData()
     },[]);
@@ -33,15 +33,15 @@ function AdminBoxtv(props) {
               &nbsp;
               <i class="fas fa-arrow-right"></i>
               &nbsp;
-              <Link to="/Admin/boxTv">Gói cước cáp quang + boxTV</Link>
+              <Link to="/Admin/dichvu">Dịch vụ</Link>
             </span>
-                <h3>Gói cước cáp quang + boxTv</h3>
-                <Link to="/Admin/boxTv/them">
-                   <button>Thêm gói cước</button>
+                <h3>Dịch vụ</h3>
+                <Link to="/Admin/dichvu/them">
+                   <button>Thêm dịch vụ</button>
                 </Link>
             </div>
             {/* Form */}
-            <BoxtvList Boxs={boxs}/>
+            <ServiceList services={services}/>
           {/* end Content Row */}
         </div>
       </div>
@@ -49,4 +49,4 @@ function AdminBoxtv(props) {
   );
 }
 
-export default AdminBoxtv;
+export default AdminService;

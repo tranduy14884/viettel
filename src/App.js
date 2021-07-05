@@ -18,6 +18,9 @@ import FixBoxtv from './Admin/Features/AdBoxTv/Components/FixBoxtv';
 import FixSmartHome from './Admin/Features/AdSmartHome/Components/FixSmartHome';
 import AdPage from './Admin/Features/AdPage';
 import NotFound from './Features/Home/Components/NotFound';
+import AdminService from './Admin/Features/AdService';
+import AddService from './Admin/Features/AdService/Components/AddService';
+import FixService from './Admin/Features/AdService/Components/FixService';
 function App() {
   return (
     <div className="App">
@@ -42,6 +45,9 @@ function App() {
         <Route path="/Admin/thongminh" component={AdSmartHome} exact />
         <Route path="/Admin/thongminh/them" component={AddSmartHome} exact />
         <Route path="/Admin/thongminh/sua/:idSmartHome" component={FixSmartHome} exact />
+        <Route path="/Admin/dichvu" component={AdminService} exact />
+        <Route path="/Admin/dichvu/them" component={AddService} exact />
+        <Route path="/Admin/dichvu/sua/:idService" component={FixService} exact />
         <Route component={NotFound}/>
       </Switch>
     </div>
