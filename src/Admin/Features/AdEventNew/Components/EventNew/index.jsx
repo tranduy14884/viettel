@@ -76,7 +76,7 @@ function EventNew(props) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Thông báo"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Cảnh báo"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             Bạn có thực sự muốn xóa tin tức này ?

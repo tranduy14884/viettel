@@ -43,10 +43,15 @@ function FormFix(props) {
       boxtv: parseInt(boxtvForm.current.value),
       id: idBoxtv,
     };
-    // console.log(dataForm);
-    await comboApi.update(dataForm);
-    enqueueSnackbar("Sửa thành công", { variant: "success" });
-    history.push("/Admin/boxtv/");
+    try {
+      await comboApi.update(dataForm);
+      enqueueSnackbar("Sửa thành công", { variant: "success" });
+      history.push("/Admin/boxtv/");
+    } catch (error) {
+      enqueueSnackbar("Đã xảy ra lỗi trong quá trình sửa, vui lòng thử lại sau", { variant: "error" });
+      
+    }
+  
   };
 
   return (

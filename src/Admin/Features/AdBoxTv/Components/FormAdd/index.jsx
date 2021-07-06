@@ -37,11 +37,14 @@ function FormAdd(props) {
             boxtv : parseInt(kmBoxtvForm.current.value),
             modem : parseInt(kmModemForm.current.value),
           }
-          console.log(dataForm);
-          const sendData = await comboApi.add(dataForm);
-          history.push('/Admin/boxtv/');
-
-          enqueueSnackbar('Thêm thành công', {variant : 'success'});
+          try {
+            const sendData = await comboApi.add(dataForm);
+            history.push('/Admin/boxtv/');
+            enqueueSnackbar('Thêm thành công', {variant : 'success'});
+          } catch (error) {
+            enqueueSnackbar('Đã xảy ra lỗi trong quá trình thêm, vui lòng thử lại sau', {variant :'error'});
+          }
+          
       };
   return (
     <div className="container form-add-data">

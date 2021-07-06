@@ -155,27 +155,29 @@ function BoxTV(props) {
                         <span className="item-price">
                           {formatter.format(item.price)}
                         </span>
-                        <span>Đ/Tháng</span>
+                        <span className="unit-price">Đ/Tháng</span>
                         <div className="container halfYear">
                           <h6>Trả trước 6 tháng </h6>
                           <h6>Tặng {item.halfYear} tháng</h6>
-                          <p>Miễn phí lắp đặt</p>
                           <hr />
                         </div>
                         <div className="container fullYear">
                           <h6>Trả trước 12 tháng </h6>
                           <h6>Tặng {item.fullYear} tháng</h6>
-                          <p>Miễn phí lắp đặt</p>
                           <hr />
                         </div>
                         <div className="prepare">
                           <h6>
-                            Tặng thêm :{" "}
+                            Tặng :{" "}
                             <span className="bonus">
                               {item.boxtv} BoxTV + {item.modem} Modem
                             </span>
                             <hr />
                           </h6>
+                        </div>
+                        <div className="support">
+                          <p>Miễn phí lắp đặt</p>
+                          <hr />
                         </div>
                         <div className="btn-register">
                           <button onClick={handleClickOpen}>
@@ -286,28 +288,31 @@ function BoxTV(props) {
                         <span className="item-price">
                           {formatter.format(item.price)}
                         </span>
-                        <span>Đ/Tháng</span>
+                        <span className="unit-price">Đ/Tháng</span>
                         <div className="container halfYear">
                           <h6>Trả trước 6 tháng </h6>
                           <h6>Tặng {item.halfYear} tháng</h6>
-                          <p>Miễn phí lắp đặt</p>
                           <hr />
                         </div>
                         <div className="container fullYear">
                           <h6>Trả trước 12 tháng </h6>
                           <h6>Tặng {item.fullYear} tháng</h6>
-                          <p>Miễn phí lắp đặt</p>
                           <hr />
                         </div>
                         <div className="prepare">
                           <h6>
-                            Tặng thêm :{" "}
+                            Tặng :{" "}
                             <span className="bonus">
                               {item.boxtv} BoxTV + {item.modem} Modem
                             </span>
                             <hr />
                           </h6>
                         </div>
+                        <div className="support">
+                          <p>Miễn phí lắp đặt</p>
+                          <hr />
+                        </div>
+
                         <div className="btn-register">
                           <button onClick={handleClickOpen}>
                             Đăng ký ngay

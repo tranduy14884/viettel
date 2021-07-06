@@ -158,16 +158,18 @@ function Family(props) {
                       <span className="item-price">
                         {formatter.format(item.price)}
                       </span>
-                      <span>Đ/Tháng</span>
+                      <span className="unit-price">Đ/Tháng</span>
                       <div className="container halfYear">
                         <h6>Trả trước 6 tháng </h6>
                         <h6>Tặng {item.halfYear} tháng</h6>
-                        <p>Miễn phí lắp đặt</p>
                         <hr />
                       </div>
                       <div className="container fullYear">
                         <h6>Trả trước 12 tháng </h6>
                         <h6>Tặng {item.fullYear} tháng</h6>
+                        <hr />
+                      </div>
+                      <div className="support">
                         <p>Miễn phí lắp đặt</p>
                         <hr />
                       </div>
@@ -274,16 +276,18 @@ function Family(props) {
                       <span className="item-price">
                         {formatter.format(item.price)}
                       </span>
-                      <span>Đ/Tháng</span>
+                      <span className="unit-price">Đ/Tháng</span>
                       <div className="container halfYear">
                         <h6>Trả trước 6 tháng </h6>
                         <h6>Tặng {item.halfYear} tháng</h6>
-                        <p>Miễn phí lắp đặt</p>
                         <hr />
                       </div>
                       <div className="container fullYear">
                         <h6>Trả trước 12 tháng </h6>
                         <h6>Tặng {item.fullYear} tháng</h6>
+                        <hr />
+                      </div>
+                      <div className="support">
                         <p>Miễn phí lắp đặt</p>
                         <hr />
                       </div>

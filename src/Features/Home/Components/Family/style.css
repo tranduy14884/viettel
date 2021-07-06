@@ -123,6 +123,12 @@
   outline: none;
 }
  
+.support {
+  padding: 0 10px;
+  font-size: 16px;
+  color: #009900;
+  font-weight: 600;
+}
 /* custom dialog */
 #alert-dialog-title{
  display: flex;
@@ -240,5 +246,11 @@
   .img-dialog-title img {
     width: 180px;
     height: 70px;
+  }
+  .support{
+    font-size: 14px;
+  }
+  .unit-price{
+    font-size: 12px;
   }
 }

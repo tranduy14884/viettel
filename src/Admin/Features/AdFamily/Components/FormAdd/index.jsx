@@ -36,13 +36,15 @@ function FormAdd(props) {
             halfYear : parseInt(km6Form.current.value),
             fullYear : parseInt(km12Form.current.value),
           }
-          // console.log('Dang gui yeu cau');
-          // console.log(dataForm);
+         try {
           const sendData = await familyApi.add(dataForm);
           history.push('/Admin/giadinh/');
-
           enqueueSnackbar('Thêm thành công', {variant : 'success'});
-
+         } catch (error) {
+          enqueueSnackbar('Thêm thất bại, vui lòng thử lại sau', {variant : 'error'});
+           
+         }
+       
       };
   return (
     <div className="container form-add-data">

@@ -41,7 +41,6 @@ function FormFix(props) {
       id: idEventNews,
     };
     try { 
-      // console.log(dataForm);
       await eventNewsApi.update(dataForm);
       enqueueSnackbar("Sửa thành công", { variant: "success" });
       history.push("/Admin/tintuc/");

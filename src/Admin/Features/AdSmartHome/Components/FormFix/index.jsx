@@ -40,10 +40,15 @@ function FormFix(props) {
       wifi: parseInt(wifiForm.current.value),
       id : idSmartHome
     };
-    // console.log(dataForm);
-    await superApi.update(dataForm);
-    enqueueSnackbar('Sửa thành công', {variant : 'success'});
-    history.push('/Admin/thongminh/');
+    try {
+      await superApi.update(dataForm);
+      enqueueSnackbar('Sửa thành công', {variant : 'success'});
+      history.push('/Admin/thongminh/');
+    } catch (error) {
+      enqueueSnackbar('Sửa thất bại, vui lòng thử lại sau', {variant : 'error'});
+      
+    }
+  
   };
 
   return (

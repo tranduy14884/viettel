@@ -4,6 +4,9 @@
 .bonus {
     color: #009900;
 }
+.prepare{
+    padding: 0 10px;
+}
 @media screen and (max-width: 992px){
 
     .prepare h6{

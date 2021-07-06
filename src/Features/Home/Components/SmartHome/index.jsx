@@ -33,8 +33,8 @@ const schema = yup.object().shape({
     .integer()
     .typeError("Vui lòng nhập số !")
     .required("Thông tin chưa hợp lệ")
-    .max(999999999,'Số điện thoại chưa hợp lệ !')
-    .min(111111111,'Số điện thoại chưa hợp lệ !')
+    .max(999999999, "Số điện thoại chưa hợp lệ !")
+    .min(111111111, "Số điện thoại chưa hợp lệ !"),
   // .max(10,'Số điện thoại phải đủ 10 số'),
 });
 function SmartHome(props) {
@@ -96,7 +96,7 @@ function SmartHome(props) {
     resolver: yupResolver(schema),
   });
   let checkPacket = 1;
-  const [textErrorPacket, setTextErrorPacket] = useState('');
+  const [textErrorPacket, setTextErrorPacket] = useState("");
   const { enqueueSnackbar } = useSnackbar();
   const timeOrder = new Date();
   const onSubmit = async (data) => {
@@ -107,8 +107,8 @@ function SmartHome(props) {
       packet: data.packet,
       time: `${timeOrder.getDate()}-${timeOrder.getMonth()}-${timeOrder.getFullYear()}`,
       status: 0,
-      packet: packet
-    }
+      packet: packet,
+    };
 
     // console.log(dataNews);
     if (dataNews.packet == "") {
@@ -118,22 +118,24 @@ function SmartHome(props) {
     }
     if (checkPacket == 2) {
       setTextErrorPacket("Vui lòng chọn gói cước !");
+    } else if (checkPacket == 1) {
+      setTextErrorPacket("");
     }
-    else if (checkPacket == 1) {
-      setTextErrorPacket('');
-    }
-    if (typeof dataNews.name !== 'undefined' && typeof dataNews.location !== 'undefined'
-      && typeof dataNews.phone !== 'undefined' && checkPacket == 1) {
+    if (
+      typeof dataNews.name !== "undefined" &&
+      typeof dataNews.location !== "undefined" &&
+      typeof dataNews.phone !== "undefined" &&
+      checkPacket == 1
+    ) {
       // console.log(dataNews);
       await orderApi.add(dataNews);
       reset();
       handleClose();
-      enqueueSnackbar('Đăng ký thành công', { variant: 'success' });
+      enqueueSnackbar("Đăng ký thành công", { variant: "success" });
     }
   };
 
-
-  const [packet, setPacket] = useState('');
+  const [packet, setPacket] = useState("");
 
   const handleChange = (event) => {
     setPacket(event.target.value);
@@ -156,28 +158,30 @@ function SmartHome(props) {
                       <span className="item-price">
                         {formatter.format(item.price)}
                       </span>
-                      <span>Đ/Tháng</span>
+                      <span className="unit-price">Đ/Tháng</span>
                       <div className="container halfYear">
                         <h6>Trả trước 6 tháng </h6>
                         <h6>Tặng {item.halfYear} tháng</h6>
-                        <p>Miễn phí lắp đặt</p>
                         <hr />
                       </div>
                       <div className="container fullYear">
                         <h6>Trả trước 12 tháng </h6>
                         <h6>Tặng {item.fullYear} tháng</h6>
-                        <p>Miễn phí lắp đặt</p>
                         <hr />
                       </div>
                       <div className="prepare">
-                          <h6>
-                            Tặng thêm :{" "}
-                            <span className="bonus">
-                              {item.wifi} Wifi + {item.modem} Modem
-                            </span>
-                            <hr />
-                          </h6>
-                        </div>
+                        <h6>
+                          Tặng :{" "}
+                          <span className="bonus">
+                            {item.wifi} Wifi + {item.modem} Modem
+                          </span>
+                          <hr />
+                        </h6>
+                      </div>
+                      <div className="support">
+                        <p>Miễn phí lắp đặt</p>
+                        <hr />
+                      </div>
                       <div className="btn-register">
                         <button onClick={handleClickOpen}>Đăng ký ngay</button>
                       </div>
@@ -240,21 +244,20 @@ function SmartHome(props) {
                   onChange={handleChange}
                   label="Gói cước"
                 >
-                  {
-                    listPackets.map(item => {
-                      return (
-                        <MenuItem value={item.name} key={item.name}>{item.name} - {item.speed} - {formatter.format(item.price)}VNĐ</MenuItem>
-                      )
-                    })
-                  }
+                  {listPackets.map((item) => {
+                    return (
+                      <MenuItem value={item.name} key={item.name}>
+                        {item.name} - {item.speed} -{" "}
+                        {formatter.format(item.price)}VNĐ
+                      </MenuItem>
+                    );
+                  })}
                 </Select>
               </FormControl>
-              {
-                checkPacket && (
-                  // <p className="data-form-error">{textErrorPacket}</p>
-                  <div className="data-form-error">{textErrorPacket}</div>
-                )
-              }
+              {checkPacket && (
+                // <p className="data-form-error">{textErrorPacket}</p>
+                <div className="data-form-error">{textErrorPacket}</div>
+              )}
               <div className="container-btn">
                 <button className="btn-comfirm" type="submit">
                   Đồng ý
@@ -281,28 +284,30 @@ function SmartHome(props) {
                       <span className="item-price">
                         {formatter.format(item.price)}
                       </span>
-                      <span>Đ/Tháng</span>
+                      <span className="unit-price">Đ/Tháng</span>
                       <div className="container halfYear">
                         <h6>Trả trước 6 tháng </h6>
                         <h6>Tặng {item.halfYear} tháng</h6>
-                        <p>Miễn phí lắp đặt</p>
                         <hr />
                       </div>
                       <div className="container fullYear">
                         <h6>Trả trước 12 tháng </h6>
                         <h6>Tặng {item.fullYear} tháng</h6>
-                        <p>Miễn phí lắp đặt</p>
                         <hr />
                       </div>
                       <div className="prepare">
-                          <h6>
-                            Tặng thêm :{" "}
-                            <span className="bonus">
-                              {item.wifi} Wifi + {item.modem} Modem
-                            </span>
-                            <hr />
-                          </h6>
-                        </div>
+                        <h6>
+                          Tặng :{" "}
+                          <span className="bonus">
+                            {item.wifi} Wifi + {item.modem} Modem
+                          </span>
+                          <hr />
+                        </h6>
+                      </div>
+                      <div className="support">
+                        <p>Miễn phí lắp đặt</p>
+                        <hr />
+                      </div>
                       <div className="btn-register">
                         <button onClick={handleClickOpen}>Đăng ký ngay</button>
                       </div>
@@ -322,13 +327,13 @@ function SmartHome(props) {
             aria-describedby="alert-dialog-description"
           >
             <DialogTitle id="alert-dialog-title">
-              <div >
+              <div>
                 <img src={logo} alt="logo" height="100px" width="250px" />
               </div>
             </DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
-                <form onSubmit={handleSubmit(onSubmit)} >
+                <form onSubmit={handleSubmit(onSubmit)}>
                   <TextField
                     id="outlined-basic"
                     label="Họ tên khách hàng "
@@ -336,7 +341,9 @@ function SmartHome(props) {
                     fullWidth
                     {...register("fullName")}
                   />
-                  <div className="data-form-error">{errors.fullName?.message}</div>
+                  <div className="data-form-error">
+                    {errors.fullName?.message}
+                  </div>
 
                   <TextField
                     id="outlined-basic"
@@ -345,7 +352,9 @@ function SmartHome(props) {
                     fullWidth
                     {...register("location")}
                   />
-                  <div className="data-form-error">{errors.location?.message}</div>
+                  <div className="data-form-error">
+                    {errors.location?.message}
+                  </div>
 
                   <TextField
                     id="outlined-basic"
@@ -367,22 +376,20 @@ function SmartHome(props) {
                       onChange={handleChange}
                       label="Gói cước"
                     >
-                      {
-                        listPackets.map(item => {
-                          return (
-                            <MenuItem value={item.name} key={item.name}>{item.name} - {item.speed} - {formatter.format(item.price)}VNĐ</MenuItem>
-                          )
-                        })
-                      }
+                      {listPackets.map((item) => {
+                        return (
+                          <MenuItem value={item.name} key={item.name}>
+                            {item.name} - {item.speed} -{" "}
+                            {formatter.format(item.price)}VNĐ
+                          </MenuItem>
+                        );
+                      })}
                     </Select>
                   </FormControl>
-                  {
-                    checkPacket && (
-                      // <p className="data-form-error">{textErrorPacket}</p>
-                      <div className="data-form-error">{textErrorPacket}</div>
-
-                    )
-                  }
+                  {checkPacket && (
+                    // <p className="data-form-error">{textErrorPacket}</p>
+                    <div className="data-form-error">{textErrorPacket}</div>
+                  )}
                   <div className="container-btn">
                     <button className="btn-comfirm" type="submit">
                       Đồng ý

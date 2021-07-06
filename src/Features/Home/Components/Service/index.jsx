@@ -12,7 +12,7 @@ function Service(props) {
         <div className="container-news">
         {listService.map((item) => {
           return (
-            <Link className="news" to="#" key={item.id}>
+            <Link className="news" to="#" key={Math.random()}>
               <div className="news-img">
                 <img
                   src={item.thumnailUrl}

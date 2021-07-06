@@ -40,11 +40,15 @@ function FormAdd(props) {
               Ip : parseInt(iptinhForm.current.value),
               IpL : parseInt(ipdongForm.current.value),
           }
-       
-          const sendData = await companyApi.add(dataForm);
-          history.push('/Admin/doanhnghiep/');
-
-          enqueueSnackbar('Thêm thành công', {variant : 'success'});
+          try {
+            const sendData = await companyApi.add(dataForm);
+            history.push('/Admin/doanhnghiep/');
+            enqueueSnackbar('Thêm thành công', {variant : 'success'});
+          } catch (error) {
+            enqueueSnackbar('Đã xảy ra lỗi trong quá trình thêm, vui lòng thử lại sau', {variant : 'error'});
+            
+          }
+         
       };
   return (
     <div className="container form-add-data">

@@ -41,10 +41,15 @@ function FormAdd(props) {
             modem : parseInt(modemForm.current.value),
             wifi : parseInt(wifiForm.current.value),
           }
-          const sendData = await superApi.add(dataForm);
-          history.push('/Admin/thongminh/');
-
-          enqueueSnackbar('Thêm thành công', {variant : 'success'});
+          try {
+            const sendData = await superApi.add(dataForm);
+            history.push('/Admin/thongminh/');
+            enqueueSnackbar('Thêm thành công', {variant : 'success'});
+          } catch (error) {
+            enqueueSnackbar('Thêm thất bại, vui lòng thử lại sai', {variant : 'error'});
+            
+          }
+        
       };
   return (
     <div className="container form-add-data">

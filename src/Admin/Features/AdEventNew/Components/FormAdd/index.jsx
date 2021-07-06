@@ -34,14 +34,13 @@ function FormAdd(props) {
           variant: "error",
         });
       } else {
-        // console.log(dataForm);
+        
         const sendData = await eventNewsApi.add(dataForm);
         history.push("/Admin/tintuc/");
         enqueueSnackbar("Thêm thành công", { variant: "success" });
       }
     } catch (error) {
       enqueueSnackbar("Thêm thất bại, do kích thước ảnh quá lớn ", { variant: "error" });
-      
     }
     
   };
