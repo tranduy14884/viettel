@@ -27,6 +27,10 @@
 }
 .branch-img{
     overflow: hidden;
+    
+}
+.branch-img:hover{
+    border-radius: 15px;
 }
 .branch-img img{
     transition: 1s;

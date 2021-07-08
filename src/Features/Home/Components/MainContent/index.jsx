@@ -34,7 +34,6 @@ function MainContent(props) {
       name: "Trung tâm Viettel Quận Ninh Kiều",
       location: "210 Trần Phú, Q.Ninh Kiều, Tp. Cần Thơ",
       web: "viettelcantho.vn",
-      phone: "098621621",
       thumnailUrl: "https://viettel.cantho.vn/files/images/CTO.jpg",
     },
     {
@@ -42,7 +41,6 @@ function MainContent(props) {
       name: "Trung tâm Viettel Quận Bình Thủy",
       location: "23 Đường Cách Mạng Tháng 8, P, Bình Thủy, Cần Thơ 900000",
       web: "viettelcantho.vn",
-      phone: "0292 6251 054",
       thumnailUrl:
         "https://i1.wp.com/netviettel.com/wp-content/uploads/2020/10/Viettel-Binh-Thuy-Can-Tho.jpg?ssl=1",
     },
@@ -51,18 +49,16 @@ function MainContent(props) {
       name: "Trung tâm Viettel Quận Ô Môn",
       location: "Tòa Nhà Viettel, Ô Môn, Cần Thơ 904001",
       web: "viettelcantho.vn",
-      phone: "0292 6251 054",
       thumnailUrl:
         "https://i0.wp.com/netviettel.com/wp-content/uploads/2020/10/Viettel-O-Mon-Can-Tho.jpg?ssl=1",
     },
     {
       id: 4,
       name: "Trung tâm Viettel Quận Cái Răng",
-      location: "Tòa Nhà Viettel, Ô Môn, Cần Thơ 904001",
+      location: "Tòa Nhà Viettel, Cái Răng, Cần Thơ ",
       web: "viettelcantho.vn",
-      phone: "0292 6251 054",
       thumnailUrl:
-        "http://viettelcantho.vn/uploads/internet-cap-quang/2018_08/cap-quang-viettel-cai-rang-can-tho.jpg",
+        "https://viettel.cantho.vn/files/images/TNT.jpg",
     },
   ];
  

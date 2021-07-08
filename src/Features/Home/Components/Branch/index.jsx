@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./style.css";
 import { Link } from "react-router-dom";
-
 Branch.propTypes = {
   branchs: PropTypes.array,
 };
@@ -33,7 +32,7 @@ function Branch(props) {
                     <p>
                       Địa chỉ web: <Link to="#">{item.web} </Link>
                     </p>
-                    <p>Số điện thoại : {item.phone}</p>
+                    
                   </div>
                 </div>
               </div>

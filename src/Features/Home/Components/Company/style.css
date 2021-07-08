@@ -12,3 +12,10 @@
     font-size: 40px ;
     color:  #e65c00;
   }
+ 
+  @media screen and (max-width: 992px){
+
+    .raderFullYear h6, .prepare h6{
+        font-size: 14px;
+    }
+  }

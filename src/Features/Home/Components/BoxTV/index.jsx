@@ -30,10 +30,10 @@ function BoxTV(props) {
   const { boxs, listPackets } = props;
   const settings = {
     infinite: true,
-    speed: 1000,
+    speed: 2000,
     autoplay: true,
 
-    autoplaySpeed: 3000,
+    autoplaySpeed: 60000,
     slidesToShow: 3,
     slidesToScroll: 1,
     pauseOnFocus: true,
@@ -49,10 +49,10 @@ function BoxTV(props) {
   }
   const settings2 = {
     infinite: true,
-    speed: 1000,
+    speed: 2000,
     autoplay: true,
     slidersPerRow: 1,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 60000,
     slidesToShow: 2,
     slidesToScroll: 1,
     pauseOnFocus: true,
@@ -102,7 +102,7 @@ function BoxTV(props) {
       location: data.location,
       packet: data.packet,
       status: 0,
-      time: `${timeOrder.getDate()}-${timeOrder.getMonth()}-${timeOrder.getFullYear()}`,
+      time: `${timeOrder.getDate()}-${timeOrder.getMonth()+1}-${timeOrder.getFullYear()}`,
       packet: packet,
     };
 

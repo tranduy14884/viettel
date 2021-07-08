@@ -54,10 +54,10 @@ function SmartHome(props) {
   // custom carousel
   const settings = {
     infinite: true,
-    speed: 1000,
+    speed: 2000,
     autoplay: true,
     slidersPerRow: 1,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 60000,
     slidesToShow: 3,
     slidesToScroll: 1,
     pauseOnFocus: true,
@@ -75,10 +75,10 @@ function SmartHome(props) {
   }
   const settings2 = {
     infinite: true,
-    speed: 1000,
+    speed: 2000,
     autoplay: true,
     slidersPerRow: 1,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 60000,
     slidesToShow: 2,
     slidesToScroll: 1,
     pauseOnFocus: true,
@@ -105,7 +105,7 @@ function SmartHome(props) {
       phone: data.phone,
       location: data.location,
       packet: data.packet,
-      time: `${timeOrder.getDate()}-${timeOrder.getMonth()}-${timeOrder.getFullYear()}`,
+      time: `${timeOrder.getDate()}-${timeOrder.getMonth()+1}-${timeOrder.getFullYear()}`,
       status: 0,
       packet: packet,
     };
